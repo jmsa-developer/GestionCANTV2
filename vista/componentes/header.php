@@ -1,11 +1,13 @@
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <title>Academia Creativa</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <script src="js/jquery.min.js"></script>
 </head>
 
 <body>
@@ -86,97 +88,10 @@
                     </div>
                 </li>
                 <li class="item">
-                    <a href="#" class="menu-btn">
+                    <a href="?pagina=usuario" class="menu-btn">
                         <i class="fas fa-info-circle"></i><span>Ayuda</span>
                     </a>
                 </li>
             </div>
         </div>
         <!--sidebar end-->
-        <br>
-        <!--Formulario-->
-        <div class="main-container">
-
-            <div class="nombre">
-                <center>
-                    <h2>Registro de Usuario</h2>
-                </center>
-            </div>
-            <br>
-
-            <form action="" class="formulario" id="formulario">
-
-                <!-- Grupo: Numero socio -->
-                <div class="formulario__grupo" id="grupo__cedula">
-                    <label for="cedula" class="formulario__label">Cedula</label>
-                    <div class="formulario__grupo-input">
-                        <input type="tel" name="cedula" class="formulario__input" id="cedula" placeholder="28516382" pattern="[0-9]{8}" required="">
-
-                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
-
-
-
-                    </div>
-                    <p class="formulario__input-error">El Número de socio solo puede contener numeros y tiene que ser de 4 a 10 dígitos.</p>
-                </div>
-
-
-                <div class="formulario__grupo" id="grupo__usuario">
-                    <label for="usuario" class="formulario__label">Nombre de usuario</label>
-                    <div class="formulario__grupo-input">
-                        <input type="text" class="formulario__input" name="usuario" id="usuario" placeholder="Luz Raquel" required="">
-                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                    </div>
-                    <p class="formulario__input-error">El nombre tiene que ser de 2 a 16 dígitos y solo puede contener letras.</p>
-                </div>
-
-                <div class="formulario__grupo" id="grupo__password">
-                    <label for="password" class="formulario__label">Contraseña</label>
-                    <div class="formulario__grupo-input">
-                        <input type="password" name="password" id="password" class="formulario__input" pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Una contraseña válida es un conjuto de caracteres, donde cada uno consiste de una letra mayúscula o minúscula, o un dígito. La contraseña debe empezar con una letra y contener al menor un dígito" required>
-                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                    </div>
-                    <p class="formulario__input-error">Una contraseña válida es un conjuto de caracteres, donde cada uno consiste de una letra mayúscula o minúscula, o un dígito. La contraseña debe empezar con una letra y contener al menor un dígito</p>
-                </div>
-                <div class="formulario__grupo" id="grupo__password2">
-                    <label for="password2" class="formulario__label">Confirmar contraseña</label>
-                    <div class="formulario__grupo-input">
-                        <input type="password" name="password2" id="password2" class="formulario__input" pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Una contraseña válida es un conjuto de caracteres, donde cada uno consiste de una letra mayúscula o minúscula, o un dígito. La contraseña debe empezar con una letra y contener al menor un dígito" required>
-                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                    </div>
-                    <p class="formulario__input-error">Las contraseñas no coinciden.</p>
-                </div>
-
-
-
-                <div class="formulario__mensaje" id="formulario__mensaje">
-                    <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
-                </div>
-
-                <div class="formulario__grupo formulario__grupo-btn-enviar">
-                    <button type="submit" class="formulario__btn">Enviar</button>
-                    <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!--wrapper end-->
-
-
-    <script src="js/administrador.js"></script>
-    <script src="js/usuario.js"></script>
-
-    <br><br><br><br>
-
-    <!--footer-->
-    <center>
-        <footer class="footer">
-            <div class="b-footer">
-                <p>Todos los derechos reservados por<br> ©Academia Creativa</p>
-            </div>
-        </footer>
-    </center>
-
-</body>
-
-</html>

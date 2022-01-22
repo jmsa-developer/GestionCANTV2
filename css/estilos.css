@@ -183,7 +183,7 @@ body{
   padding: 15px;
   background: url(background.jpg)no-repeat;
   background-size: cover;
-  height: 100vh;
+  min-height: 90vh;
   transition: 0.3s;
 }
 
@@ -406,20 +406,27 @@ select{
 /*footer*/ 
 
 .footer {
-display: inline-flex;
-flex-flow: row wrap;
-width: 100%;
-height: 10%;
-color: #fff;
-background: #cc877c;
+  display: inline-flex;
+  flex-flow: row wrap;
+  height: 10%;
+  color: #fff;
+  background: #cc877c;
 }
 
 .footer > * {
-flex:  1 100%;
+  flex:  1 100%;
+}
+.footer-responsive{
+  width: calc(100% - 250px);
+  margin-left: 250px;
+}
+.footer-long{
+  width: 100%;
+  margin-left: 0px;
 }
 
 h2 {
-font-size: 15px;
+  font-size: 15px;
 }
 
 .b-footer {
