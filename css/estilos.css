@@ -89,6 +89,7 @@ body{
   top: 70px;
   width: 250px;
   height: calc(100% - 9%);
+  padding-bottom: 20px;
   transition: 0.3s;
   transition-property: width;
   overflow-y: auto;
@@ -225,7 +226,6 @@ body{
 }
 /*menu*/
 .nombre{
-  margin-top: 10%;
   max-width: 1000px;
   position: relative;
   background: #fff;
