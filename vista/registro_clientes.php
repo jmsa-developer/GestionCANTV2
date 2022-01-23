@@ -68,8 +68,7 @@
                     <p class="formulario__input-error">El Número de teléfono solo puede contener numeros y tiene que ser de 7 a 14 dígitos.</p>
                 </div>
 
-                <!-- Grupo: cédula -->
-
+                <!-- Grupo: Correo -->
                 <div class="formulario__grupo" id="grupo__correo">
                     <label for="correo" class="formulario__label">Correo eléctronico</label>
                     <div class="formulario__grupo-input">

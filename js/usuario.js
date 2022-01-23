@@ -4,15 +4,16 @@ const inputs = document.querySelectorAll('#formulario input');
 const expresiones = {
 	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	password: /^.{4,12}$/, // 4 a 12 digitos.
+	apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	password: /^.{4,16}$/, // 4 a 16 digitos.
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	cedula: /^\d{7,10}$/ // 7 a 14 numeros.
 }
 
 const campos = {
-
 	usuario: false,
 	nombre: false,
+	apellido: false,
 	password: false,
 	correo: false,
 	cedula: false
@@ -25,6 +26,9 @@ const validarFormulario = (e) => {
 		break;
 		case "nombre":
 			validarCampo(expresiones.nombre, e.target, 'nombre');
+		break;
+		case "apellido":
+			validarCampo(expresiones.apellido, e.target, 'apellido');
 		break;
 		case "password":
 			validarCampo(expresiones.password, e.target, 'password');
@@ -89,9 +93,8 @@ inputs.forEach((input) => {
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
 
-	const terminos = document.getElementById('terminos');
-	if(campos.usuario && campos.nombre && campos.password && campos.correo && campos.cedula && terminos.checked ){
-		formulario.reset();
+	if(campos.usuario && campos.nombre && campos.password && campos.correo && campos.cedula){
+		// formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
@@ -101,7 +104,14 @@ formulario.addEventListener('submit', (e) => {
 		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
 			icono.classList.remove('formulario__grupo-correcto');
 		});
+
+		let datos = new FormData(document.getElementById('formulario'));
+		registrar(datos);
 	} else {
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}
 });
+
+const registrar = (datos) => {
+	
+}
