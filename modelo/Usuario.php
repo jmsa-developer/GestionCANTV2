@@ -33,7 +33,7 @@ class Usuario extends Persona{
     public function listar(){
         try {
             parent::connect();
-            $consulta = $this->prepare('SELECT id, usuario, CONCAT(nombre," ",apellido) as nombre, cedula, rol, estatus
+            $consulta = $this->prepare('SELECT id, cedula, CONCAT(nombre," ",apellido) as nombre, usuario, rol, estado
               FROM usuarios');
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);

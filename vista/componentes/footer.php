@@ -10,8 +10,10 @@
             <p>Todos los derechos reservados por<br> ©Academia Creativa</p>
         </div>
     </footer>
-    
-    <!-- <script src="js/bootstrap.js"></script> -->
+    <!-- Scripts -->
+    <script src="js/bootstrap.js"></script>
+    <script src="js/datatables/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="js/datatables/datatables/media/js/dataTables.bootstrap4.min.js"></script>
 </body>
 
 </html>

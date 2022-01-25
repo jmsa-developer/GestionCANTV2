@@ -1,8 +1,8 @@
 <?php  
 	if($_SERVER['REQUEST_METHOD'] == "POST"){
 		require_once "modelo/Usuario.php";
-		$usuario = new Usuario;//Instanciar clase Usuario
-		$usuario->setCedula($_POST['cedula']);
+		$usuario = new Usuario;//Instanciar Usuario
+		$usuario->setCedula($_POST['cedula']);//Adjuntarle los valores para sus atributos
 		$usuario->setNombre($_POST['nombre']);
 		$usuario->setApellido($_POST['apellido']);
 		$usuario->setUsuario($_POST['usuario']);
