@@ -79,7 +79,7 @@
                 <label for="rol" class="formulario__label">Rol de Usuario</label>
                 <div class="formulario__grupo-input">
                     <select type="rol" name="rol" id="rol" class="formulario__input" title="Indique el Rol del Usuario" required>
-                        <option value="Asistente">Asistente</option>
+                        <option value="Usuario">Usuario</option>
                         <option value="Administrador">Administrador</option>
                     </select>
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>

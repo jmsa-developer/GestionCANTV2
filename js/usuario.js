@@ -23,31 +23,31 @@ const validarFormulario = (e) => {
 	switch (e.target.name) {
 		case "usuario":
 			validarCampo(expresiones.usuario, e.target, 'usuario');
-		break;
+			break;
 		case "nombre":
 			validarCampo(expresiones.nombre, e.target, 'nombre');
-		break;
+			break;
 		case "apellido":
 			validarCampo(expresiones.apellido, e.target, 'apellido');
-		break;
+			break;
 		case "password":
 			validarCampo(expresiones.password, e.target, 'password');
 			validarPassword2();
-		break;
+			break;
 		case "password2":
 			validarPassword2();
-		break;
+			break;
 		case "correo":
 			validarCampo(expresiones.correo, e.target, 'correo');
-		break;
+			break;
 		case "cedula":
 			validarCampo(expresiones.cedula, e.target, 'cedula');
-		break;
+			break;
 	}
 }
 
 const validarCampo = (expresion, input, campo) => {
-	if(expresion.test(input.value)){
+	if (expresion.test(input.value)) {
 		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
 		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
 		document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
@@ -68,7 +68,7 @@ const validarPassword2 = () => {
 	const inputPassword1 = document.getElementById('password');
 	const inputPassword2 = document.getElementById('password2');
 
-	if(inputPassword1.value !== inputPassword2.value){
+	if (inputPassword1.value !== inputPassword2.value) {
 		document.getElementById(`grupo__password2`).classList.add('formulario__grupo-incorrecto');
 		document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-correcto');
 		document.querySelector(`#grupo__password2 i`).classList.add('fa-times-circle');
@@ -93,7 +93,7 @@ inputs.forEach((input) => {
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
 
-	if(campos.usuario && campos.nombre && campos.password && campos.correo && campos.cedula){
+	if (campos.usuario && campos.nombre && campos.password && campos.correo && campos.cedula) {
 		// formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
@@ -113,5 +113,43 @@ formulario.addEventListener('submit', (e) => {
 });
 
 const registrar = (datos) => {
-	
+	$.ajax({
+		type: "POST",
+		url: "",
+		data: datos,
+		contentType: false,
+		processData: false,
+		success: function (respuesta) {
+			console.log(respuesta)
+			let json = JSON.parse(respuesta);
+			if (json.tipo == 'success') {
+				Swal.fire(
+					json.titulo,
+					json.mensaje,
+					json.tipo
+				);
+				setTimeout(() => {
+					window.location = "?pagina=ver_usuarios";
+				}, 900);
+				// table.ajax.reload();
+				// $('#modalRegistrar').modal('hide');
+				// $('#cerrarModalRegistrar').click();
+				// $('#formularioRegistrar').trigger('reset');
+			} else {
+				Swal.fire(
+					json.titulo,
+					json.mensaje,
+					json.tipo
+				);
+			}
+		},
+		error: (response) => {
+			console.log(response);
+			Swal.fire(
+				'Error!',
+				'Ha ocurrido un problema. Intente de nuevo por favor',
+				'error'
+			)
+		}
+	});
 }
