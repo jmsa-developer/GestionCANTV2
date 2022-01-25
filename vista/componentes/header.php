@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <link href="css/font-awesome/css/all.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="js/sweetalert2/dist/material-ui.css">
+    <link rel="stylesheet" href="js/sweetalert2/dist/sweetalert2.css">
     <link href="js/datatables/datatables/media/css/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
     <script src="js/jquery.min.js"></script>
     <script src="js/sweetalert2/dist/sweetalert2.min.js"></script>

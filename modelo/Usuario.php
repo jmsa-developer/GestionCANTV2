@@ -107,10 +107,10 @@ class Usuario extends Persona{
         }
     }
     
-    public function deshabilitar(){
+    public function inactivar(){
         try {
             parent::connect();
-            $consulta = $this->prepare("UPDATE usuarios SET estatus = 'INACTIVO' WHERE id = $this->id");
+            $consulta = $this->prepare("UPDATE usuarios SET estado = 0 WHERE id = $this->id");
             $respuesta = $consulta->execute();
             return $respuesta;
         } catch(Exception $ex){
@@ -119,10 +119,10 @@ class Usuario extends Persona{
         }
     }
 
-    public function habilitar(){
+    public function activar(){
         try {
             parent::connect();
-            $consulta = $this->prepare("UPDATE usuarios SET estatus = 'ACTIVO' WHERE id = $this->id");
+            $consulta = $this->prepare("UPDATE usuarios SET estado = 1 WHERE id = $this->id");
             $respuesta = $consulta->execute();
             return $respuesta;
         } catch(Exception $ex){

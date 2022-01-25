@@ -42,3 +42,63 @@ $(document).ready(function () {
 		}
 	});
 })
+
+function cambiarEstado(accion, id) {
+	$.ajax({
+		type: 'POST',
+		url: `?pagina=ver_usuarios&metodo=${accion}&id=${id}`,
+		success: function (respuesta) {
+			console.log(respuesta)
+			var json = JSON.parse(respuesta);
+			if (json.tipo == "success") {
+				Swal.fire(
+					json.titulo, json.mensaje, json.tipo
+				)
+				table.ajax.reload();
+			}
+			else {
+				Swal.fire(
+					json.titulo, json.mensaje, json.tipo
+				)
+			}
+		},
+		error: function (respuesta) {
+			Swal.fire(
+				"Error",
+				"Intente otra vez",
+				"error"
+			)
+		}
+	})
+}
+
+$('body').on('click', '.inactivar', function (e) {//Al presionar inactivar
+	e.preventDefault();
+	Swal.fire({
+		title: '¿Desea continuar?',
+		text: "El Usuario será inactivado en el sistema",
+		type: 'warning',
+		showCancelButton: true,
+		cancelButtonText: 'Cancelar',
+		confirmButtonText: 'Si'
+	}).then((result) => {
+		if (result.value) {
+			cambiarEstado('inactivar', $(this).attr('data-id'));
+		}
+	})
+});
+$('body').on('click', '.activar', function (e) {//Al presionar activar
+	e.preventDefault();
+	Swal.fire({
+		title: '¿Desea continuar?',
+		text: "El Usuario será activado en el sistema",
+		type: 'warning',
+		showCancelButton: true,
+		cancelButtonText: 'Cancelar',
+		confirmButtonText: 'Si'
+	}).then((result) => {
+		if (result.value) {
+			cambiarEstado('activar', $(this).attr('data-id'));
+		}
+	})
+});
