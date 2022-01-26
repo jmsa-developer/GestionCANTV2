@@ -2,21 +2,23 @@
 	if($_SERVER['REQUEST_METHOD'] == "POST"){
 		require_once "modelo/Usuario.php";
 		$usuario = new Usuario;//Instanciar Usuario
-		$usuario->setCedula($_POST['cedula']);//Adjuntarle los valores para sus atributos
+		$usuario->setId($_POST['id']);//Adjuntarle los valores para sus atributos
+		$usuario->setCedula($_POST['cedula']);
 		$usuario->setNombre($_POST['nombre']);
 		$usuario->setApellido($_POST['apellido']);
 		$usuario->setUsuario($_POST['usuario']);
 		$usuario->setEmail($_POST['correo']);
-		$usuario->setClave($_POST['password']);
 		$usuario->setRol($_POST['rol']);
-	
-		$res = $usuario->registrar();
+		if ($_POST['password'] != "") {
+			$usuario->setClave($_POST['password']);
+		}
+		$res = $usuario->modificar();
 		if($res) {
 		  http_response_code(200);
 	
 		  echo json_encode([
-		  'titulo' => 'Registro Exitoso',
-		  'mensaje' => 'Usuario registrado en nuestro sistema',
+		  'titulo' => 'Registro Modificado',
+		  'mensaje' => 'El Usuario ha sido modificado exitosamente',
 		  'tipo' => 'success'
 		  ]);    
 		} else{
@@ -30,6 +32,10 @@
 	else{
 		if (is_file("vista/".$pagina.".php")) 
 		{
+			require_once "modelo/Usuario.php";
+			$user = new Usuario;//Instanciar clase Usuario
+			$user->setId($_GET['id']);
+			$usuario = $user->consultar();
 			require_once("vista/".$pagina.".php");
 		}
 		else{

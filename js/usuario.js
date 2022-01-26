@@ -9,16 +9,18 @@ const expresiones = {
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	cedula: /^\d{7,10}$/ // 7 a 14 numeros.
 }
-
-const campos = {
-	usuario: false,
-	nombre: false,
-	apellido: false,
-	password: false,
-	correo: false,
-	cedula: false
+var campoInicial = false
+if(typeof id != 'undefined'){
+	campoInicial = true;
 }
-
+const campos = {
+	usuario: campoInicial,
+	nombre: campoInicial,
+	apellido: campoInicial,
+	password: campoInicial,
+	correo: campoInicial,
+	cedula: campoInicial
+}
 const validarFormulario = (e) => {
 	switch (e.target.name) {
 		case "usuario":
@@ -106,13 +108,16 @@ formulario.addEventListener('submit', (e) => {
 		});
 
 		let datos = new FormData(document.getElementById('formulario'));
-		registrar(datos);
+		if(typeof id != 'undefined'){
+			datos.append('id', id);
+		}
+		enviarDatos(datos);
 	} else {
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}
 });
 
-const registrar = (datos) => {
+const enviarDatos = (datos) => {
 	$.ajax({
 		type: "POST",
 		url: "",
@@ -131,10 +136,6 @@ const registrar = (datos) => {
 				setTimeout(() => {
 					window.location = "?pagina=ver_usuarios";
 				}, 900);
-				// table.ajax.reload();
-				// $('#modalRegistrar').modal('hide');
-				// $('#cerrarModalRegistrar').click();
-				// $('#formularioRegistrar').trigger('reset');
 			} else {
 				Swal.fire(
 					json.titulo,

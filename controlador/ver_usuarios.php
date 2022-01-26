@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		$usuarios = $usu->listar(); //Función para obtener los usuarios
 
 		foreach ($usuarios as $usuario) {
-			$usuario->button = "<a href=?pagina=modificar_usuario&id=" . $usuario->id . " class='editar btn btn-sm btn-warning mr-1 mb-1' title='Editar'><i class='fas fa-pencil-alt'></i></a>";
+			$usuario->button = "<a href=?pagina=modificacion_usuario&id=" . $usuario->id . " class='editar btn btn-sm btn-warning mr-1 mb-1' title='Editar'><i class='fas fa-pencil-alt'></i></a>";
 			if ($usuario->estado == "1") {
 				$usuario->button .= "<button data-id=" . $usuario->id . " class='inactivar btn btn-sm btn-danger mr-1 mb-1' title='Eliminar'><i class='fas fa-trash-alt'></i></a>";
 			} else {

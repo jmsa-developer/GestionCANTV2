@@ -68,7 +68,6 @@ class Usuario extends Persona{
             $consulta->bindParam(":email", $this->email);
             $consulta->bindParam(":clave", $this->clave);
             $consulta->bindParam(":rol", $this->rol);
-
             $consulta->execute();
             return $this->lastInsertId();
 
@@ -77,7 +76,7 @@ class Usuario extends Persona{
             return false;
         }
     }
-    public function actualizar(){
+    public function modificar(){
         try{
             parent::connect();
             if($this->clave == ""){
@@ -89,15 +88,12 @@ class Usuario extends Persona{
                     usuario = :usuario, email = :email, clave = :clave WHERE id = :id");
                 $consulta->bindParam(":clave", $this->clave);
             }
-            
-            
             $consulta->bindParam(":id", $this->id);
             $consulta->bindParam(":cedula", $this->cedula);
             $consulta->bindParam(":nombre", $this->nombre);
             $consulta->bindParam(":apellido", $this->apellido);
             $consulta->bindParam(":usuario", $this->usuario);
             $consulta->bindParam(":email", $this->email);
-
             return $consulta->execute();
 
         } catch(Exception $ex){
