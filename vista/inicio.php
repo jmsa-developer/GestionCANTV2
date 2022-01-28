@@ -2,6 +2,13 @@
     <!--main container start-->
     <div class="main-container">
         <div class="card">
+            <div class="dropdown">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
             <p>
             <h2>Funciones de la Empresa: </h2><br>Brindamos cursos y servicios estéticos de belleza en general.</p>
         </div>

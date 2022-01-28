@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Academia Creativa</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="js/bootstrap/dist/css/bootstrap-journal.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <link href="css/font-awesome/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="js/sweetalert2/dist/sweetalert2.css">
@@ -23,9 +23,15 @@
                 <div class="sidebar-btn">
                     <i class="fas fa-bars"></i>
                 </div>
-                <ul>
-
-                    <li><a href="?pagina=login"><i class="fas fa-power-off"></i></a></li>
+                <ul class="mb-0">
+                    <li class="nav-item dropdown">
+                        <a href="#" id="dd_user" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?= empty($_SESSION['usuario']) ? 'Usuario' : $_SESSION['usuario'] ?></a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd_user">
+                            <a href="?pagina=perfil" class="dropdown-item text-light">Perfil</a>
+                            <a href="?pagina=logout" id="logout" class="dropdown-item text-light">Salir</a>
+                        </div>
+                    </li>
+                    <!-- <li><a href="?pagina=logout"><i class="fas fa-power-off"></i></a></li> -->
                 </ul>
             </div>
         </div>
@@ -38,7 +44,7 @@
                     <p>Administrador</p>
                 </center>
                 <li class="item">
-                    <a href="?pagina=administrador" class="menu-btn">
+                    <a href="" class="menu-btn">
                         <i class="fas fa-home"></i><span>Inicio</span>
                     </a>
                 </li>

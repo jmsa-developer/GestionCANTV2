@@ -39,7 +39,7 @@ function validarFormulario(evento) {
   let datos = new FormData(document.getElementById("formulario"));
   $.ajax({
 		type: "POST",
-		url: "",
+		url: "?pagina=login",
 		data: datos,
 		contentType: false,
 		processData: false,

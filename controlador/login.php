@@ -1,4 +1,8 @@
 <?php
+if(isset($_SESSION['ac_usuario'])){
+	header("Location: ?pagina=inicio");
+}
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	require_once "modelo/Usuario.php";
 	$usuario = new Usuario; //Instanciar Usuario

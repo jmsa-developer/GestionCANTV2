@@ -15,7 +15,8 @@ body{
 /*menu*/
 .wrapper .header{
   z-index: 1;
-  background: #cc877c;
+  /* background: #cc877c; */
+  background: linear-gradient(to left,#e7bab2,#dea495,#dea496);
   position: fixed;
   width: calc(100% - 0%);
   height: 70px;
@@ -63,28 +64,19 @@ body{
 }
 
 .wrapper .header .header-menu ul li a{
-  background: #fff;
-  color: #000;
-  display: block;
-  margin: 0 10px;
-  font-size: 18px;
-  width: 34px;
-  height: 34px;
-  line-height: 35px;
-  text-align: center;
-  border-radius: 50%;
-  transition: 0.3s;
-  transition-property: background, color;
+  color: #FFF;
 }
 
-.wrapper .header .header-menu ul li a:hover{
-  background: #E4D3D0;
-  color: #fff;
+.wrapper .header .header-menu ul li a:hover, .dropdown-item:hover{
+  background: #dea496;
+  /* color: #FFF !important; */
 }
-
+.wrapper .dropdown-menu{
+  background: #e7bab2;
+}
 .wrapper .sidebar{
   z-index: 1;
-  background: #cc877c;
+  background: linear-gradient(to left,#e7bab2,#dea495,#dea496);
   position: fixed;
   top: 70px;
   width: 250px;
@@ -116,12 +108,15 @@ body{
   width: 250px;
   overflow: hidden;
 }
+.wrapper .sidebar .sidebar-menu .item a{
+  text-decoration: none;
+}
 
 .wrapper .sidebar .sidebar-menu .item .menu-btn{
   display: block;
   color: #fff;
   position: relative;
-  padding: 25px 20px;
+  padding: 15px;
   transition: 0.3s;
   transition-property: color;
 }
@@ -141,7 +136,8 @@ body{
 }
 
 .wrapper .sidebar .sidebar-menu .item .sub-menu{
-  background: #CF5966;
+  /* background: #CF5966; */
+  background: linear-gradient(to bottom,#e7bab2,#dea495,#dea496);
   overflow: hidden;
   max-height: 0;
   transition: 0.3s;
@@ -151,10 +147,11 @@ body{
 .wrapper .sidebar .sidebar-menu .item .sub-menu a{
   display: block;
   position: relative;
+  padding-left: 18px !important;
   color: #fff;
   white-space: nowrap;
   font-size: 15px;
-  padding: 20px;
+  padding: 14px;
   transition: 0.3s;
   transition-property: background;
 }
@@ -225,6 +222,7 @@ body{
   color: #CF5966;
 }
 #datatable{
+  width: 100% !important;
   margin-left: auto;
   margin-right: auto;
 }
