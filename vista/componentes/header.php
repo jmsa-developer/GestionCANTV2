@@ -19,13 +19,13 @@
         <!--header menu start-->
         <div class="header">
             <div class="header-menu">
-                <div class="title">Academia <span>Creativa</span></div>
+                <a href="" class="title">Academia <span>Creativa</span></a>
                 <div class="sidebar-btn">
                     <i class="fas fa-bars"></i>
                 </div>
                 <ul class="mb-0">
                     <li class="nav-item dropdown">
-                        <a href="#" id="dd_user" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?= empty($_SESSION['usuario']) ? 'Usuario' : $_SESSION['usuario'] ?></a>
+                        <a href="#" id="dd_user" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?= empty($_SESSION['ac_usuario']) ? 'Usuario' : $_SESSION['ac_usuario'] ?></a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd_user">
                             <a href="?pagina=perfil" class="dropdown-item text-light">Perfil</a>
                             <a href="?pagina=logout" id="logout" class="dropdown-item text-light">Salir</a>
@@ -41,7 +41,7 @@
             <div class="sidebar-menu">
                 <center class="profile">
                     <img src="img/logo.png">
-                    <p>Administrador</p>
+                    <!-- <p>Administrador</p> -->
                 </center>
                 <li class="item">
                     <a href="" class="menu-btn">
@@ -78,24 +78,30 @@
 
                     </div>
                 </li>
-                <li class="item" id="personal">
-                    <a href="#personal" class="menu-btn">
-                        <i class="fas fa-address-card"></i><span>Empleados <i class="fas fa-chevron-down drop-down"></i></span>
-                    </a>
-                    <div class="sub-menu">
-                        <a href="?pagina=registro_empleado"><i class="fas fa-user-plus"></i><span>Nuevo Empleado</span></a>
-                        <a href="?pagina=ver_empleados"><i class="fas fa-copy"></i><span>Consultas Empleados</span></a>
-                    </div>
-                </li>
-                <li class="item" id="usuario">
-                    <a href="#usuario" class="menu-btn">
-                        <i class="fas fa-user-lock"></i><span>Usuario <i class="fas fa-chevron-down drop-down"></i></span>
-                    </a>
-                    <div class="sub-menu">
-                        <a href="?pagina=registro_usuario"><i class="fas fa-user-plus"></i><span>Nuevo usuario</span></a>
-                        <a href="?pagina=ver_usuarios"><i class="fas fa-copy"></i><span>Consultas Usuario</span></a>
-                    </div>
-                </li>
+                <?php
+                    if($_SESSION['ac_rol'] == 'Administrador'){
+                ?>
+                    <li class="item" id="personal">
+                        <a href="#personal" class="menu-btn">
+                            <i class="fas fa-address-card"></i><span>Empleados <i class="fas fa-chevron-down drop-down"></i></span>
+                        </a>
+                        <div class="sub-menu">
+                            <a href="?pagina=registro_empleado"><i class="fas fa-user-plus"></i><span>Nuevo Empleado</span></a>
+                            <a href="?pagina=ver_empleados"><i class="fas fa-copy"></i><span>Consultas Empleados</span></a>
+                        </div>
+                    </li>
+                    <li class="item" id="usuario">
+                        <a href="#usuario" class="menu-btn">
+                            <i class="fas fa-user-lock"></i><span>Usuario <i class="fas fa-chevron-down drop-down"></i></span>
+                        </a>
+                        <div class="sub-menu">
+                            <a href="?pagina=registro_usuario"><i class="fas fa-user-plus"></i><span>Nuevo usuario</span></a>
+                            <a href="?pagina=ver_usuarios"><i class="fas fa-copy"></i><span>Consultas Usuario</span></a>
+                        </div>
+                    </li>
+                <?php
+                    }
+                ?>
                 <li class="item">
                     <a href="?pagina=usuario" class="menu-btn">
                         <i class="fas fa-info-circle"></i><span>Ayuda</span>
