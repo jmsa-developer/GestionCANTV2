@@ -124,31 +124,30 @@ const enviarDatos = (datos) => {
 		data: datos,
 		contentType: false,
 		processData: false,
-		success: function (respuesta) {
-			console.log(respuesta)
-			let json = JSON.parse(respuesta);
-			if (json.tipo == 'success') {
+		success: function (response) {
+			let res = JSON.parse(response);
+			if (res.tipo == 'success') {
 				Swal.fire(
-					json.titulo,
-					json.mensaje,
-					json.tipo
+					res.titulo,
+					res.mensaje,
+					res.tipo
 				);
 				setTimeout(() => {
 					window.location = "?pagina=ver_usuarios";
 				}, 900);
 			} else {
 				Swal.fire(
-					json.titulo,
-					json.mensaje,
-					json.tipo
+					res.titulo,
+					res.mensaje,
+					res.tipo
 				);
 			}
 		},
 		error: (response) => {
 			console.log(response);
 			Swal.fire(
-				'Error!',
-				'Ha ocurrido un problema. Intente de nuevo por favor',
+				'Error',
+				'Intente otra vez',
 				'error'
 			)
 		}

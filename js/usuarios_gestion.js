@@ -47,22 +47,21 @@ function cambiarEstado(accion, id) {
 	$.ajax({
 		type: 'POST',
 		url: `?pagina=ver_usuarios&metodo=${accion}&id=${id}`,
-		success: function (respuesta) {
-			console.log(respuesta)
-			var json = JSON.parse(respuesta);
-			if (json.tipo == "success") {
+		success: function (response) {
+			var res = JSON.parse(response);
+			if (res.tipo == "success") {
 				Swal.fire(
-					json.titulo, json.mensaje, json.tipo
+					res.titulo, res.mensaje, res.tipo
 				)
 				table.ajax.reload();
 			}
 			else {
 				Swal.fire(
-					json.titulo, json.mensaje, json.tipo
+					res.titulo, res.mensaje, res.tipo
 				)
 			}
 		},
-		error: function (respuesta) {
+		error: function (response) {
 			Swal.fire(
 				"Error",
 				"Intente otra vez",

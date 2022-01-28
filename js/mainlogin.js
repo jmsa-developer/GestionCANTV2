@@ -36,10 +36,32 @@ function validarFormulario(evento) {
     alert('La clave no es válida tiene que ser mayor a 6 numeros');
     return;
   }
-
-
-  this.submit();
+  let datos = new FormData(document.getElementById("formulario"));
+  $.ajax({
+		type: "POST",
+		url: "",
+		data: datos,
+		contentType: false,
+		processData: false,
+		success: function (response) {
+      console.log(response)
+			var res = JSON.parse(response);
+			if (res.tipo == "success") {
+				window.location = "?pagina=inicio";        
+			}
+			else {
+				Swal.fire(
+					res.titulo, res.mensaje, res.tipo
+				)
+			}
+		},
+		error: function (response) {
+			Swal.fire(
+				"Error",
+				"Intente otra vez",
+				"error"
+			)
+		}
+	})
 }
-
-
 

@@ -52,7 +52,7 @@
             <div class="formulario__grupo" id="grupo__usuario">
                 <label for="usuario" class="formulario__label">Nombre de Usuario</label>
                 <div class="formulario__grupo-input">
-                    <input type="text" class="formulario__input" name="usuario" id="usuario" placeholder="Usuario" required>
+                    <input type="text" class="formulario__input" name="usuario" id="usuario" placeholder="Usuario" pattern="[a-zA-Z0-9\_\-]{4,16}" required>
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
                 <p class="formulario__input-error">El Nombre de Usuario tiene que ser de 2 a 16 caracteres</p>

@@ -10,9 +10,9 @@
             <table class="table table-inverse" id="datatable">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Cédula</th>
-                        <th scope="col">Nombres y Apellidos</th>
                         <th scope="col">Nombre de Usuario</th>
+                        <th scope="col">Nombres y Apellidos</th>
+                        <th scope="col">Cédula</th>
                         <th scope="col">Rol</th>
                         <th scope="col">Acciones</th>
                     </tr>
