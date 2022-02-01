@@ -87,7 +87,7 @@ formulario.addEventListener('submit', (e) => {
 
 	const terminos = document.getElementById('terminos');
 	if(campos.nombre && campos.apellido && campos.cedula && campos.telefono && campos.direccion && campos.correo ){
-		formulario.reset();
+		// formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
@@ -97,7 +97,49 @@ formulario.addEventListener('submit', (e) => {
 		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
 			icono.classList.remove('formulario__grupo-correcto');
 		});
+		let datos = new FormData(document.getElementById('formulario'));
+		if(typeof id != 'undefined'){
+			datos.append('id', id);
+		}
+		enviarDatos(datos);
 	} else {
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}
 });
+
+const enviarDatos = (datos) => {
+	$.ajax({
+		type: "POST",
+		url: "",
+		data: datos,
+		contentType: false,
+		processData: false,
+		success: function (response) {
+			let res = JSON.parse(response);
+			if (res.tipo == 'success') {
+				Swal.fire(
+					res.titulo,
+					res.mensaje,
+					res.tipo
+				);
+				setTimeout(() => {
+					window.location = "?pagina=ver_clientes";
+				}, 900);
+			} else {
+				Swal.fire(
+					res.titulo,
+					res.mensaje,
+					res.tipo
+				);
+			}
+		},
+		error: (response) => {
+			console.log(response);
+			Swal.fire(
+				'Error',
+				'Intente otra vez',
+				'error'
+			)
+		}
+	});
+}

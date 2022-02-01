@@ -10,7 +10,8 @@ class Persona extends BD{
     protected $direccion;
     protected $telefono;
     protected $email;
-    protected $estatus;
+    protected $fecha_nacimiento;
+    protected $estado;
 
     public function __construct(){
     }
@@ -46,6 +47,9 @@ class Persona extends BD{
     public function getEmail() {
         return $this->email;
     }
+    public function getFecha_nacimiento() {
+        return $this->fecha_nacimiento;
+    }
 
     public function setCedula($cedula) {
         $this->cedula = $cedula;
@@ -70,13 +74,17 @@ class Persona extends BD{
     public function setEmail($email) {
         $this->email = $email;
     }
+
+    public function setFecha_nacimiento($fecha_nacimiento) {
+        $this->fecha_nacimiento = $fecha_nacimiento;
+    }
     
-    public function getEstatus() {
-        return $this->estatus;
+    public function getEstado() {
+        return $this->estado;
     }
 
-    public function setEstatus($estatus) {
-        $this->estatus = $estatus;
+    public function setEstado($estado) {
+        $this->estado = $estado;
     }
 
 }

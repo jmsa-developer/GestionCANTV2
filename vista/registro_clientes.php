@@ -58,7 +58,7 @@
                 <div class="formulario__grupo" id="grupo__telefono">
                     <label for="telefono" class="formulario__label">Teléfono</label>
                     <div class="formulario__grupo-input">
-                        <input type="tel" name="telefono" class="formulario__input" id="telefono" placeholder="04245127665" pattern="[0-9]{11}">
+                        <input type="tel" name="telefono" class="formulario__input" id="telefono" name="telefono" placeholder="04245127665" pattern="[0-9]{11}">
 
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
 
@@ -72,7 +72,7 @@
                 <div class="formulario__grupo" id="grupo__correo">
                     <label for="correo" class="formulario__label">Correo eléctronico</label>
                     <div class="formulario__grupo-input">
-                        <input type="email" class="formulario__input" name="correo" id="correo " placeholder="Jose@gmail.com" multiple required="">
+                        <input type="email" class="formulario__input" name="correo" id="correo" placeholder="Jose@gmail.com" multiple required="">
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
                     <p class="formulario__input-error">El correo solo puede contener letras.</p>
@@ -90,9 +90,9 @@
                 </div>
                 <!-- Grupo: Día de Visita-->
                 <div class="formulario__grupo" id="grupo__fecha">
-                    <label for="fecha" class="formulario__label">Fecha de nacimiento</label>
+                    <label for="fecha_nacimiento" class="formulario__label">Fecha de nacimiento</label>
                     <div class="formulario__grupo-input">
-                        <input type="date" class="formulario__input" name="fecha" id="ffecha" placeholder="01/09/2021" required="">
+                        <input type="date" class="formulario__input" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="01/09/2021" required="">
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
                     <p class="formulario__input-error">La fecha solo puede contener numeros.</p>
