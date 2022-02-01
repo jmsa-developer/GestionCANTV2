@@ -88,7 +88,9 @@ class Empleado extends Persona
             parent::connect();
             $consulta = $this->prepare("UPDATE empleados SET cedula = :cedula, nombre=:nombre, apellido = :apellido, 
                     telefono = :telefono, email = :email, direccion = :direccion, 
-                    fecha_nacimiento = :fecha_nacimiento WHERE id = :id");
+                    fecha_nacimiento = :fecha_nacimiento,  fecha_contrato = :fecha_contrato, 
+                    horario = :horario, rol = :rol
+                    WHERE id = :id");
 
             $consulta->bindParam(":id", $this->id);
             $consulta->bindParam(":cedula", $this->cedula);
@@ -98,6 +100,9 @@ class Empleado extends Persona
             $consulta->bindParam(":email", $this->email);
             $consulta->bindParam(":direccion", $this->direccion);
             $consulta->bindParam(":fecha_nacimiento", $this->fecha_nacimiento);
+            $consulta->bindParam(":fecha_contrato", $this->fecha_contrato);
+            $consulta->bindParam(":horario", $this->horario);
+            $consulta->bindParam(":rol", $this->rol);
             return $consulta->execute();
         } catch (Exception $e) {
             // var_dump($e);
