@@ -74,7 +74,7 @@ class Cliente extends Persona
             $consulta->bindParam(":fecha_nacimiento", $this->fecha_nacimiento);
             return $consulta->execute();
         } catch (Exception $e) {
-            var_dump($e);
+            // var_dump($e);
             $this->error = $e->errorInfo[2];
             return false;
         }
@@ -106,18 +106,4 @@ class Cliente extends Persona
         }
     }
 
-    public function buscarUsuario($usuario)
-    {
-        try {
-            parent::connect();
-            $consulta = $this->prepare("SELECT * FROM usuarios WHERE (usuario = :usuario OR email = :usuario) AND estado = 1");
-            $consulta->bindParam(":usuario", $usuario);
-            $consulta->execute();
-            $respuesta = $consulta->fetch(PDO::FETCH_OBJ);
-            return $respuesta;
-        } catch (Exception $e) {
-            $this->error = $e->errorInfo[2];
-            return false;
-        }
-    }
 }
