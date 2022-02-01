@@ -12,11 +12,12 @@
     <form action="" class="formulario" id="formulario">
 
         <div class="formulario__grupo" id="grupo__cedula">
-            <label for="cedula" class="formulario__label">Cédula</label>
+            <label for="cedula" class="formulario__label">Cedula</label>
             <div class="formulario__grupo-input">
-                <input type="tel" name="cedula" class="formulario__input" id="cedula" placeholder="28516382" pattern="[0-9]{8}">
+                <input type="tel" name="cedula" class="formulario__input" id="cedula" placeholder="28516382" pattern="[0-9]{7,8}">
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">La Cédula tiene que ser de 4 a 10 dígitos y solo puede contener numeros.</p>
+            <p class="formulario__input-error">La cedula solo puede contener numeros y tiene que ser de 7 a 8 dígitos.</p>
         </div>
         <!-- Grupo: Nombre -->
         <div class="formulario__grupo" id="grupo__nombre">
@@ -67,18 +68,18 @@
             <p class="formulario__input-error">La dirección tiene que ser de 2 a 30 dígitos y solo puede contener letras y números.</p>
         </div>
         <!-- Grupo: Día de Visita-->
-        <div class="formulario__grupo" id="grupo__fechanac">
-            <label for="fechanac" class="formulario__label">Fecha de nacimiento</label>
+        <div class="formulario__grupo" id="grupo__fecha_nacimiento">
+            <label for="fecha_nacimiento" class="formulario__label">Fecha de nacimiento</label>
             <div class="formulario__grupo-input">
-                <input type="date" class="formulario__input" name="fechanac" id="fechanac" placeholder="01/09/2021" required="">
+                <input type="date" class="formulario__input" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="01/09/2021" required="">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">La Fecha de nacimiento solo puede contener numeros.</p>
         </div>
-        <div class="formulario__grupo" id="grupo__fechacon">
-            <label for="fechacon" class="formulario__label">Fecha de inicio de contrato</label>
+        <div class="formulario__grupo" id="grupo__fecha_contrato">
+            <label for="fecha_contrato" class="formulario__label">Fecha de inicio de contrato</label>
             <div class="formulario__grupo-input">
-                <input type="date" class="formulario__input" name="fechacon" id="fechacon" placeholder="01/09/2021" required="">
+                <input type="date" class="formulario__input" name="fecha_contrato" id="fecha_contrato" placeholder="01/09/2021" required="">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">La Fecha de inicio de contrato solo puede contener numeros.</p>

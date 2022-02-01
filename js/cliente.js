@@ -3,11 +3,11 @@ const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
 
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,25}$/, // Letras y espacios, pueden llevar acentos.
-	apellido: /^[a-zA-ZÀ-ÿ\s]{1,25}$/, // Letras y espacios, pueden llevar acentos.
-	cedula: /^\d{7,14}$/,  // 7 a 14 numeros.
+	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	cedula: /^\d{7,9}$/,  // 7 a 14 numeros.
 	telefono: /^\d{7,14}$/, // 7 a 14 numeros.
-	direccion: /^.{1,60}$/, // 7 a 14 Letras y espacios, pueden llevar acentos y numeros.
+	direccion: /^.{1,200}$/, // 7 a 14 Letras y espacios, pueden llevar acentos y numeros.
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, //correo
 
 	//fecha: /^\d{7,14}$/, // 7 a 14 numeros.

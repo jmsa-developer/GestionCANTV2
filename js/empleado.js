@@ -3,27 +3,29 @@ const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
 
-	cedula: /^\d{4,10}$/,  // 7 a 14 numeros.
-	nombre: /^[a-zA-ZÀ-ÿ\s]{2,16}$/, // Letras y espacios, pueden llevar acentos.
-	apellido: /^[a-zA-ZÀ-ÿ\s]{2,16}$/, // Letras y espacios, pueden llevar acentos.
-	telefono: /^\d{4,15}$/, // 7 a 14 numeros.
-	direccion: /^.{1,60}$/, // 7 a 14 Letras y espacios, pueden llevar acentos y numeros.
+	cedula: /^\d{7,9}$/,  // 7 a 14 numeros.
+	nombre: /^[a-zA-ZÀ-ÿ\s]{2,40}$/, // Letras y espacios, pueden llevar acentos.
+	apellido: /^[a-zA-ZÀ-ÿ\s]{2,40}$/, // Letras y espacios, pueden llevar acentos.
+	telefono: /^\d{7,14}$/, // 7 a 14 numeros.
+	direccion: /^.{1,200}$/, // 7 a 14 Letras y espacios, pueden llevar acentos y numeros.
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, //correo
 	horario: /^[a-zA-ZÀ-ÿ\s]{2,16}$/, // Letras y espacios, pueden llevar acentos.
 	rol: /^[a-zA-ZÀ-ÿ\s]{2,16}$/, // Letras y espacios, pueden llevar acentos.
 }
-
-
+var campoInicial = false
+if(typeof id != 'undefined'){
+	campoInicial = true;
+}
 const campos = {
 
-	cedula: false,
-	nombre: false,
-	apellido: false,
-	telefono: false,
-	direccion: false,
-	correo: false,
-	horario: false,
-	rol: false,
+	cedula: campoInicial,
+	nombre: campoInicial,
+	apellido: campoInicial,
+	telefono: campoInicial,
+	direccion: campoInicial,
+	correo: campoInicial,
+	horario: campoInicial,
+	rol: campoInicial,
 
 }
 
@@ -90,10 +92,9 @@ inputs.forEach((input) => {
 
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
-
-	const terminos = document.getElementById('terminos');
+console.log(campos)
 	if(campos.nombre && campos.apellido && campos.cedula && campos.telefono && campos.direccion && campos.correo && campos.horario && campos.rol ){
-		formulario.reset();
+		// formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
@@ -103,7 +104,49 @@ formulario.addEventListener('submit', (e) => {
 		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
 			icono.classList.remove('formulario__grupo-correcto');
 		});
+		let datos = new FormData(document.getElementById('formulario'));
+		if(typeof id != 'undefined'){
+			datos.append('id', id);
+		}
+		enviarDatos(datos);
 	} else {
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}
 });
+
+const enviarDatos = (datos) => {
+	$.ajax({
+		type: "POST",
+		url: "",
+		data: datos,
+		contentType: false,
+		processData: false,
+		success: function (response) {
+			let res = JSON.parse(response);
+			if (res.tipo == 'success') {
+				Swal.fire(
+					res.titulo,
+					res.mensaje,
+					res.tipo
+				);
+				setTimeout(() => {
+					window.location = "?pagina=ver_empleados";
+				}, 900);
+			} else {
+				Swal.fire(
+					res.titulo,
+					res.mensaje,
+					res.tipo
+				);
+			}
+		},
+		error: (response) => {
+			console.log(response);
+			Swal.fire(
+				'Error',
+				'Intente otra vez',
+				'error'
+			)
+		}
+	});
+}

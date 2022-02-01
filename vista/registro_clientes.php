@@ -26,14 +26,10 @@
                 <div class="formulario__grupo" id="grupo__cedula">
                     <label for="cedula" class="formulario__label">Cedula</label>
                     <div class="formulario__grupo-input">
-                        <input type="tel" name="cedula" class="formulario__input" id="cedula" placeholder="28516382" pattern="[0-9]{8}">
-
+                        <input type="tel" name="cedula" class="formulario__input" id="cedula" placeholder="28516382" pattern="[0-9]{7,8}">
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
-
-
-
                     </div>
-                    <p class="formulario__input-error">La cedula solo puede contener numeros y tiene que ser de 7 a 14 dígitos.</p>
+                    <p class="formulario__input-error">La cedula solo puede contener numeros y tiene que ser de 7 a 8 dígitos.</p>
                 </div>
 
                 <!-- Grupo: Nombre -->
