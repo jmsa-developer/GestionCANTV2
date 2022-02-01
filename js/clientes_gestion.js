@@ -6,13 +6,13 @@ $(document).ready(function () {
 		searching: true,
 		ajax: {
 			method: 'POST',
-			url: "?pagina=ver_usuarios&metodo=listar"
+			url: "?pagina=ver_clientes&metodo=listar"
 		},
 		columns: [
-			{ data: 'usuario' },
 			{ data: 'nombre' },
 			{ data: 'cedula' },
-			{ data: 'rol' },
+			{ data: 'telefono' },
+			{ data: 'direccion' },
 			{ data: 'button' }
 		],
 
@@ -46,7 +46,7 @@ $(document).ready(function () {
 function cambiarEstado(accion, id) {
 	$.ajax({
 		type: 'POST',
-		url: `?pagina=ver_usuarios&metodo=${accion}&id=${id}`,
+		url: `?pagina=ver_clientes&metodo=${accion}&id=${id}`,
 		success: function (response) {
 			var res = JSON.parse(response);
 			if (res.tipo == "success") {
@@ -75,7 +75,7 @@ $('body').on('click', '.inactivar', function (e) {//Al presionar inactivar
 	e.preventDefault();
 	Swal.fire({
 		title: '¿Desea continuar?',
-		text: "El Usuario será inactivado en el sistema",
+		text: "El Cliente será inactivado en el sistema",
 		type: 'warning',
 		showCancelButton: true,
 		cancelButtonText: 'Cancelar',
@@ -90,7 +90,7 @@ $('body').on('click', '.activar', function (e) {//Al presionar activar
 	e.preventDefault();
 	Swal.fire({
 		title: '¿Desea continuar?',
-		text: "El Usuario será activado en el sistema",
+		text: "El Cliente será activado en el sistema",
 		type: 'warning',
 		showCancelButton: true,
 		cancelButtonText: 'Cancelar',

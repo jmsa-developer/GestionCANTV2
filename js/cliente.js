@@ -13,16 +13,18 @@ const expresiones = {
 	//fecha: /^\d{7,14}$/, // 7 a 14 numeros.
 
 }
-
-
+var campoInicial = false
+if(typeof id != 'undefined'){
+	campoInicial = true;
+}
 const campos = {
-	nombre: false,
-	apellido: false,
-	cedula: false,
-	telefono: false,
-	direccion: false,
-	correo: false,
-	//fecha: false,
+	nombre: campoInicial,
+	apellido: campoInicial,
+	cedula: campoInicial,
+	telefono: campoInicial,
+	direccion: campoInicial,
+	correo: campoInicial,
+	//fecha: campoInicial,
 
 }
 

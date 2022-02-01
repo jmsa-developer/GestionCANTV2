@@ -96,9 +96,8 @@ class Usuario extends Persona{
             $consulta->bindParam(":email", $this->email);
             return $consulta->execute();
 
-        } catch(Exception $ex){
-            var_dump($ex);
-            // $this->error = $ex->errorInfo[2];
+        } catch(Exception $e){
+            $this->error = $e->errorInfo[2];
             return false;
         }
     }
@@ -109,8 +108,8 @@ class Usuario extends Persona{
             $consulta = $this->prepare("UPDATE usuarios SET estado = 0 WHERE id = $this->id");
             $respuesta = $consulta->execute();
             return $respuesta;
-        } catch(Exception $ex){
-            $this->error = $ex->errorInfo[2];
+        } catch(Exception $e){
+            $this->error = $e->errorInfo[2];
             return false;
         }
     }
@@ -121,8 +120,8 @@ class Usuario extends Persona{
             $consulta = $this->prepare("UPDATE usuarios SET estado = 1 WHERE id = $this->id");
             $respuesta = $consulta->execute();
             return $respuesta;
-        } catch(Exception $ex){
-            $this->error = $ex->errorInfo[2];
+        } catch(Exception $e){
+            $this->error = $e->errorInfo[2];
             return false;
         }
     }
@@ -135,8 +134,8 @@ class Usuario extends Persona{
             $consulta->execute();
             $respuesta = $consulta->fetch(PDO::FETCH_OBJ);
             return $respuesta;
-        } catch(Exception $ex){
-            $this->error = $ex->errorInfo[2];
+        } catch(Exception $e){
+            $this->error = $e->errorInfo[2];
             return false;
         }
     }
