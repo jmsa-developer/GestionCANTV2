@@ -93,7 +93,7 @@
             </div>
 
             <div class="formulario__grupo formulario__grupo-btn-enviar">
-                <button type="submit" class="formulario__btn">Enviar</button>
+                <button type="submit" class="formulario__btn">Guardar</button>
                 <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Procesando...</p>
             </div>
         </form>

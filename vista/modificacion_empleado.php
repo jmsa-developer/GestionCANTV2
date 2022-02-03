@@ -106,7 +106,7 @@
         </div>
 
         <div class="formulario__grupo formulario__grupo-btn-enviar">
-            <button type="submit" class="formulario__btn">Registrar</button>
+            <button type="submit" class="formulario__btn">Modificar</button>
             <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
         </div>
     </form>
