@@ -72,8 +72,8 @@
                     <div class="sub-menu">
                         <a href="?pagina=registro_curso"><i class="fas fa-book-open"></i><span>Nuevo cursos</span></a>
                         <a href="?pagina=ver_cursos"><i class="fas fa-book-reader"></i><span>Consultas Cursos</span></a>
-                        <a href="?pagina=registro_estudiante"><i class="fas fa-user-plus"></i><span>Nuevo Participante</span></a>
-                        <a href="?pagina=ver_estudiantes"><i class="far fa-file-alt"></i><span>Consultas Participante</span></a>
+                        <a href="?pagina=registro_participante"><i class="fas fa-user-plus"></i><span>Nuevo Participante</span></a>
+                        <a href="?pagina=ver_participantes"><i class="far fa-file-alt"></i><span>Consultas Participante</span></a>
                         <a href="?pagina=ver_pagoscursos"><i class="far fa-money-bill-alt"></i><span>Consultas Pago</span></a>
 
                     </div>

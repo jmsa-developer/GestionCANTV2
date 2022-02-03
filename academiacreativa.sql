@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-02-2022 a las 16:27:57
+-- Tiempo de generación: 03-02-2022 a las 20:44:40
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -74,8 +74,34 @@ CREATE TABLE `empleados` (
 --
 
 INSERT INTO `empleados` (`id`, `cedula`, `nombre`, `apellido`, `direccion`, `telefono`, `email`, `fecha_nacimiento`, `fecha_contrato`, `horario`, `rol`, `estado`) VALUES
-(1, '22121212', 'Luz', 'Fernandez', 'Cabudare', '04260001112', 'luz@gmail.com', NULL, NULL, 'Mañana', 'Gerente', 1),
-(2, '1440211', 'Angel', 'Timaure', 'Quibor', '04260001111', 'angel@hotmail.com', '1992-01-01', '2021-11-01', 'Mañana', 'Asistente', 1);
+(1, '23121212', 'Luz Maria', 'Fernandez', 'Cabudare', '04260301112', 'luz@gmail.com', '1990-11-03', '2010-01-01', 'Tarde', 'Dueña', 1),
+(2, '1440211', 'Angel', 'Timaure', 'Quibor', '04262221111', 'angel@hotmail.com', '1992-01-01', '2021-11-01', 'Mañana', 'Asistente', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `participantes`
+--
+
+CREATE TABLE `participantes` (
+  `id` int(11) NOT NULL,
+  `cedula` varchar(12) NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
+  `apellido` varchar(50) DEFAULT NULL,
+  `direccion` varchar(250) DEFAULT NULL,
+  `telefono` varchar(12) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
+  `estado` int(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `participantes`
+--
+
+INSERT INTO `participantes` (`id`, `cedula`, `nombre`, `apellido`, `direccion`, `telefono`, `email`, `fecha_nacimiento`, `estado`) VALUES
+(1, '265888222', 'Gabriela', 'Villa', 'Av San Vicente', '04245294781', 'gabriela@gmail.com', NULL, 1),
+(2, '24000011', 'Jessica', 'Montes', 'Av Lara', '04260001111', 'j24@gmail.com', '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -129,6 +155,13 @@ ALTER TABLE `empleados`
   ADD UNIQUE KEY `cedula` (`cedula`);
 
 --
+-- Indices de la tabla `participantes`
+--
+ALTER TABLE `participantes`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `cedula` (`cedula`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -151,6 +184,12 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `participantes`
+--
+ALTER TABLE `participantes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --

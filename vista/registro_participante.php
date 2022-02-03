@@ -70,7 +70,7 @@
         <div class="formulario__grupo" id="grupo__fecha">
             <label for="fecha" class="formulario__label">Fecha de nacimiento</label>
             <div class="formulario__grupo-input">
-                <input type="date" class="formulario__input" name="fecha" id="fecha" placeholder="01/09/2021">
+                <input type="date" class="formulario__input" name="fecha_nacimiento" id="fecha" placeholder="01/09/2021">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">La fecha de nacimiento solo puede contener numeros.</p>
@@ -84,7 +84,7 @@
         <div class="formulario__grupo formulario__grupo-btn-enviar">
             <button type="submit" class="formulario__btn">Registrar</button>
             <br>
-            <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+            <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Procesando...</p>
         </div>
     </form>
 
@@ -94,5 +94,5 @@
     <br><br>
 </div>
 <!--main container end-->
-<script src="js/estudiante.js"></script>
+<script src="js/participante.js"></script>
 <?php require "vista/componentes/footer.php" ?>

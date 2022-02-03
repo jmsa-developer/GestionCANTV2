@@ -13,22 +13,22 @@ const expresiones = {
 	//fecha: /^\d{7,14}$/, // 7 a 14 numeros.
 
 }
-
-
+var campoInicial = false
+if(typeof id != 'undefined'){
+	campoInicial = true;
+}
 const campos = {
-	nombre: false,
-	apellido: false,
-	cedula: false,
-	telefono: false,
-	direccion: false,
-	correo: false,
-	//fecha: false,
+	nombre: campoInicial,
+	apellido: campoInicial,
+	cedula: campoInicial,
+	telefono: campoInicial,
+	direccion: campoInicial,
+	correo: campoInicial,
+	//fecha: campoInicial,
 
 }
-
 const validarFormulario = (e) => {
 	switch (e.target.name) {
-	
 		case "nombre":
 			validarCampo(expresiones.nombre, e.target, 'nombre');
 		break;
@@ -85,9 +85,8 @@ inputs.forEach((input) => {
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
 
-	const terminos = document.getElementById('terminos');
 	if(campos.nombre && campos.apellido && campos.cedula && campos.telefono && campos.direccion && campos.correo ){
-		formulario.reset();
+		// formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
@@ -97,7 +96,49 @@ formulario.addEventListener('submit', (e) => {
 		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
 			icono.classList.remove('formulario__grupo-correcto');
 		});
+		let datos = new FormData(document.getElementById('formulario'));
+		if(typeof id != 'undefined'){
+			datos.append('id', id);
+		}
+		enviarDatos(datos);
 	} else {
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}
 });
+
+const enviarDatos = (datos) => {
+	$.ajax({
+		type: "POST",
+		url: "",
+		data: datos,
+		contentType: false,
+		processData: false,
+		success: function (response) {
+			let res = JSON.parse(response);
+			if (res.tipo == 'success') {
+				Swal.fire(
+					res.titulo,
+					res.mensaje,
+					res.tipo
+				);
+				setTimeout(() => {
+					window.location = "?pagina=ver_participantes";
+				}, 900);
+			} else {
+				Swal.fire(
+					res.titulo,
+					res.mensaje,
+					res.tipo
+				);
+			}
+		},
+		error: (response) => {
+			console.log(response);
+			Swal.fire(
+				'Error',
+				'Intente otra vez',
+				'error'
+			)
+		}
+	});
+}
