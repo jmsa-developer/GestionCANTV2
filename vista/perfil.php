@@ -4,13 +4,11 @@
 
         <div class="nombre">
             <center>
-                <h2>Modificación de Usuario</h2>
+                <h2>Perfil</h2>
             </center>
         </div>
         <br>
-
         <form action="" class="formulario" id="formulario">
-
             <!-- Grupo: Numero socio -->
             <div class="formulario__grupo" id="grupo__cedula">
                 <label for="cedula" class="formulario__label">Cedula</label>
@@ -74,7 +72,7 @@
                 </div>
                 <p class="formulario__input-error">Las contraseñas no coinciden.</p>
             </div>
-
+            <?php if($_SESSION['ac_rol'] == "Administrador" && $_SESSION['ac_id'] != 1){?>
             <div class="formulario__grupo" id="grupo__rol">
                 <label for="rol" class="formulario__label">Rol de Usuario</label>
                 <div class="formulario__grupo-input">
@@ -86,7 +84,9 @@
                 </div>
                 <p class="formulario__input-error">Indique el Rol del Usuario</p>
             </div>
-
+            <?php }else{ ?>
+            <input type="hidden" name="rol" id="rol" value="<?= $usuario->rol ?>" />
+            <?php } ?>
 
             <div class="formulario__mensaje" id="formulario__mensaje">
                 <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>

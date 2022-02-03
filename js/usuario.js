@@ -13,6 +13,9 @@ var campoInicial = false
 if(typeof id != 'undefined'){
 	campoInicial = true;
 }
+if(typeof usuario_rol != 'undefined'){
+	console.log($('select#rol').val(usuario_rol));
+}
 const campos = {
 	usuario: campoInicial,
 	nombre: campoInicial,
@@ -21,6 +24,7 @@ const campos = {
 	correo: campoInicial,
 	cedula: campoInicial
 }
+console.log(campos)
 const validarFormulario = (e) => {
 	switch (e.target.name) {
 		case "usuario":

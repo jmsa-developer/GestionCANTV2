@@ -81,11 +81,11 @@ class Usuario extends Persona{
             parent::connect();
             if($this->clave == ""){
                 $consulta = $this->prepare("UPDATE usuarios SET cedula = :cedula, nombre=:nombre, apellido = :apellido, 
-                    usuario = :usuario, email = :email WHERE id = :id");
+                    usuario = :usuario, email = :email, rol = :rol WHERE id = :id");
             }
             else{
                 $consulta = $this->prepare("UPDATE usuarios SET cedula = :cedula, nombre=:nombre, apellido = :apellido, 
-                    usuario = :usuario, email = :email, clave = :clave WHERE id = :id");
+                    usuario = :usuario, email = :email, rol = :rol, clave = :clave WHERE id = :id");
                 $consulta->bindParam(":clave", $this->clave);
             }
             $consulta->bindParam(":id", $this->id);
@@ -94,6 +94,7 @@ class Usuario extends Persona{
             $consulta->bindParam(":apellido", $this->apellido);
             $consulta->bindParam(":usuario", $this->usuario);
             $consulta->bindParam(":email", $this->email);
+            $consulta->bindParam(":rol", $this->rol);
             return $consulta->execute();
 
         } catch(Exception $e){
