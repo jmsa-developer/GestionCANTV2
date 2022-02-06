@@ -2,29 +2,23 @@ const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
-	idservicio: /^.{4,10}$/,
-	nombre: /^[a-zA-ZÀ-ÿ\s]{2,16}$/, // Letras y espacios, pueden llevar acentos.
-	tipo: /^[a-zA-ZÀ-ÿ\s]{2,16}$/, // Letras y espacios, pueden llevar acentos.
-	costo: /^.{1,10}$/, // 7 a 14 Letras y espacios, pueden llevar acentos y numeros.
+	nombre: /^[a-zA-ZÀ-ÿ\s]{2,50}$/, // Letras y espacios, pueden llevar acentos.
+	tipo: /^[a-zA-ZÀ-ÿ\s]{2,30}$/, // Letras y espacios, pueden llevar acentos.
+	costo: /^[0-9]{1,11}$/, // solo numeros numeros, maximo 11 digitos.
 	
 }
-
-
+var campoInicial = false
+if(typeof id != 'undefined'){
+	campoInicial = true;
+}
 const campos = {
-
-	idservicio: false,
-	nombre: false,
-	tipo: false,
-	costo: false,
+	nombre: campoInicial,
+	tipo: campoInicial,
+	costo: campoInicial,
 }
 
 const validarFormulario = (e) => {
-	switch (e.target.name) {
-
-		case "idservicio":
-		validarCampo(expresiones.idservicio, e.target, 'idservicio');
-		break;
-	
+	switch (e.target.name) {	
 		case "nombre":
 			validarCampo(expresiones.nombre, e.target, 'nombre');
 		break;
@@ -67,9 +61,8 @@ inputs.forEach((input) => {
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
 
-	const terminos = document.getElementById('terminos');
-	if(campos.idservicio && campos.nombre && campos.tipo && campos.costo ){
-		formulario.reset();
+	if(campos.nombre && campos.tipo && campos.costo ){
+		// formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
@@ -79,7 +72,49 @@ formulario.addEventListener('submit', (e) => {
 		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
 			icono.classList.remove('formulario__grupo-correcto');
 		});
+		let datos = new FormData(document.getElementById('formulario'));
+		if(typeof id != 'undefined'){
+			datos.append('id', id);
+		}
+		enviarDatos(datos);
 	} else {
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}
 });
+
+const enviarDatos = (datos) => {
+	$.ajax({
+		type: "POST",
+		url: "",
+		data: datos,
+		contentType: false,
+		processData: false,
+		success: function (response) {
+			let res = JSON.parse(response);
+			if (res.tipo == 'success') {
+				Swal.fire(
+					res.titulo,
+					res.mensaje,
+					res.tipo
+				);
+				setTimeout(() => {
+					window.location = "?pagina=ver_serviciosesteticos";
+				}, 900);
+			} else {
+				Swal.fire(
+					res.titulo,
+					res.mensaje,
+					res.tipo
+				);
+			}
+		},
+		error: (response) => {
+			console.log(response);
+			Swal.fire(
+				'Error',
+				'Intente otra vez',
+				'error'
+			)
+		}
+	});
+}

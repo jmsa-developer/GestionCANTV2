@@ -10,16 +10,6 @@
     <br>
 
     <form action="" class="formulario" id="formulario">
-
-        <div class="formulario__grupo" id="grupo__idservicio">
-            <label for="idservicio" class="formulario__label">Id Servicio Estético</label>
-            <div class="formulario__grupo-input">
-                <input type="number" name="idservicio" class="formulario__input" id="idservicio" placeholder="id servicio estético" value="" min="1" max="1000" step="1" required="" />
-
-                <i class="formulario__validacion-estado fas fa-times-circle"></i>
-            </div>
-            <p class="formulario__input-error">El Número de socio solo puede contener numeros y tiene que ser de 4 a 10 dígitos.</p>
-        </div>
         <!-- Grupo: Nombre -->
         <div class="formulario__grupo" id="grupo__nombre">
             <label for="nombre" class="formulario__label">Nombre del Servicio Estético</label>
