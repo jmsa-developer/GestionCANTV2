@@ -2,6 +2,7 @@
 require_once "BD.php";
 class ServicioEstetico extends BD
 {
+    private $id;
     private $nombre;
     private $costo;
     private $tipo;
@@ -11,6 +12,12 @@ class ServicioEstetico extends BD
     {
     }
 
+    public function getId(){
+        return $this->id;
+    }
+    public function setId($id){
+        $this->id = $id;
+    }
     public function getNombre(){
         return $this->nombre;
     }

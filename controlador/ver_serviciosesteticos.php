@@ -23,10 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	}
 	if ($metodo == "inactivar") {//Proceso para inactivar registro
 		$id = $_GET['id'];
-		require_once "modelo/Cliente.php";
-		$cliente = new Cliente; //Instanciar Cliente
-		$cliente->setId($id);
-		$res = $cliente->inactivar();//Función para cambiar el estado del registro a 0
+		require_once "modelo/ServicioEstetico.php";
+		$servicio = new ServicioEstetico; //Instanciar ServicioEstetico
+		$servicio->setId($id);
+		$res = $servicio->inactivar();//Función para cambiar el estado del registro a 0
 		if ($res) {
 			http_response_code(200);
 
@@ -38,17 +38,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		} else {
 			echo json_encode([
 				'titulo' => 'Error',
-				'mensaje' => $cliente->getError(),
+				'mensaje' => $servicio->getError(),
 				'tipo' => 'error'
 			]);
 		}
 	}
 	if ($metodo == "activar") {//Proceso para activar registro
 		$id = $_GET['id'];
-		require_once "modelo/Cliente.php";
-		$cliente = new Cliente; //Instanciar Cliente
-		$cliente->setId($id);
-		$res = $cliente->activar();//Función para cambiar el estado del registro a 1
+		require_once "modelo/ServicioEstetico.php";
+		$servicio = new ServicioEstetico; //Instanciar ServicioEstetico
+		$servicio->setId($id);
+		$res = $servicio->activar();//Función para cambiar el estado del registro a 1
 		if ($res) {
 			http_response_code(200);
 
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		} else {
 			echo json_encode([
 				'titulo' => 'Error',
-				'mensaje' => $cliente->getError(),
+				'mensaje' => $servicio->getError(),
 				'tipo' => 'error'
 			]);
 		}
