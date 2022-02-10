@@ -2,6 +2,7 @@
 require_once "BD.php";
 class Cita extends BD
 {
+    private $id;
     private $cliente_id;
     private $servicio_estetico_id;
     private $pago_id;
@@ -14,6 +15,12 @@ class Cita extends BD
     {
     }
 
+    public function getId(){
+        return $this->id;
+    }
+    public function setId($id){
+        $this->id = $id;
+    }
     public function getCliente_id(){
         return $this->cliente_id;
     }
@@ -61,8 +68,10 @@ class Cita extends BD
     {
         try {
             parent::connect();
-            $consulta = $this->prepare('SELECT id, cedula, CONCAT(nombre," ",apellido) as nombre, telefono, horario, rol, estado
-              FROM citas');
+            $consulta = $this->prepare('SELECT CONCAT(cl.nombre," ",cl.apellido) as cliente, s.nombre as servicio, 
+                c.id, c.fecha, c.cita_realizada, c.estado FROM citas c 
+                INNER JOIN clientes cl ON c.cliente_id = cl.id INNER JOIN servicios_esteticos s 
+                ON c.servicio_estetico_id = s.id');
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;

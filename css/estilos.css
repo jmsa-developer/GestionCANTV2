@@ -226,6 +226,10 @@ a{
   margin-left: auto;
   margin-right: auto;
 }
+.main-container h1{
+  background: linear-gradient(to right,#e7bab2,#dea495,#dea496) !important;
+  /* linear-gradient(to left,#e7bab2,#dea495,#dea496); */
+}
 /*menu*/
 .nombre{
   max-width: 1000px;
@@ -244,7 +248,9 @@ main {
   margin: auto;
   padding: 40px;
 }
-
+#datatable_wrapper{
+  overflow-x: auto;
+}
 .formulario {
   display: grid;
   grid-template-columns: 1fr 1fr;
