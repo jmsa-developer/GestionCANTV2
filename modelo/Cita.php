@@ -71,7 +71,7 @@ class Cita extends BD
             $consulta = $this->prepare('SELECT CONCAT(cl.nombre," ",cl.apellido) as cliente, s.nombre as servicio, 
                 c.id, c.fecha, c.cita_realizada, c.estado FROM citas c 
                 INNER JOIN clientes cl ON c.cliente_id = cl.id INNER JOIN servicios_esteticos s 
-                ON c.servicio_estetico_id = s.id');
+                ON c.servicio_estetico_id = s.id ORDER BY c.fecha DESC, c.hora DESC');
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;
@@ -118,23 +118,16 @@ class Cita extends BD
     {
         try {
             parent::connect();
-            $consulta = $this->prepare("UPDATE citas SET cedula = :cedula, nombre=:nombre, apellido = :apellido, 
-                    telefono = :telefono, email = :email, direccion = :direccion, 
-                    fecha_nacimiento = :fecha_nacimiento,  fecha_contrato = :fecha_contrato, 
-                    horario = :horario, rol = :rol
+            $consulta = $this->prepare("UPDATE citas SET cliente_id = :cliente_id, servicio_estetico_id = :servicio_estetico_id,
+                    fecha = :fecha, hora = :hora, cita_realizada = :cita_realizada
                     WHERE id = :id");
 
             $consulta->bindParam(":id", $this->id);
-            $consulta->bindParam(":cedula", $this->cedula);
-            $consulta->bindParam(":nombre", $this->nombre);
-            $consulta->bindParam(":apellido", $this->apellido);
-            $consulta->bindParam(":telefono", $this->telefono);
-            $consulta->bindParam(":email", $this->email);
-            $consulta->bindParam(":direccion", $this->direccion);
-            $consulta->bindParam(":fecha_nacimiento", $this->fecha_nacimiento);
-            $consulta->bindParam(":fecha_contrato", $this->fecha_contrato);
-            $consulta->bindParam(":horario", $this->horario);
-            $consulta->bindParam(":rol", $this->rol);
+            $consulta->bindParam(":cliente_id", $this->cliente_id);
+            $consulta->bindParam(":servicio_estetico_id", $this->servicio_estetico_id);
+            $consulta->bindParam(":fecha", $this->fecha);
+            $consulta->bindParam(":hora", $this->hora);
+            $consulta->bindParam(":cita_realizada", $this->cita_realizada);
             return $consulta->execute();
         } catch (Exception $e) {
             // var_dump($e);

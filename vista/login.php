@@ -9,6 +9,7 @@
 	<script src="js/jquery.min.js"></script>
 	<link rel="stylesheet" href="js/sweetalert2/dist/sweetalert2.css">
 	<script src="js/sweetalert2/dist/sweetalert2.min.js"></script>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
 	<img class="wave" src="img/Academiacreativa.png">

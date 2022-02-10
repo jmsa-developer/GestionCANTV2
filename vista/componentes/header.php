@@ -13,6 +13,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="js/select2/dist/js/select2.min.js"></script>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
