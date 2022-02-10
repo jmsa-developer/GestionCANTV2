@@ -8,9 +8,11 @@
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <link href="css/font-awesome/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="js/sweetalert2/dist/sweetalert2.css">
+    <link rel="stylesheet" href="js/select2/dist/css/select2.min.css">
     <link href="js/datatables/datatables/media/css/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
     <script src="js/jquery.min.js"></script>
     <script src="js/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="js/select2/dist/js/select2.min.js"></script>
 </head>
 
 <body>
