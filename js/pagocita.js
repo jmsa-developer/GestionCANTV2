@@ -2,67 +2,28 @@ const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
-
-	cedula: /^\d{4,10}$/,  // 7 a 14 numeros.
-	nombre: /^[a-zA-ZÀ-ÿ\s]{2,16}$/, // Letras y espacios, pueden llevar acentos.
-	apellido: /^[a-zA-ZÀ-ÿ\s]{2,16}$/, // Letras y espacios, pueden llevar acentos.
-	telefono: /^\d{4,15}$/, // 7 a 14 numeros.
-	direccion: /^.{1,60}$/, // 7 a 14 Letras y espacios, pueden llevar acentos y numeros.
-	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, //correo
-	horario: /^[a-zA-ZÀ-ÿ\s]{2,16}$/, // Letras y espacios, pueden llevar acentos.
-	rol: /^[a-zA-ZÀ-ÿ\s]{2,16}$/, // Letras y espacios, pueden llevar acentos.
+	fecha: /^.{5,20}$/,
+	hora: /^.{5,20}$/,
+	nro_comprobante: /^[0-9]{4,14}$/,
+	pago_total: /[0-9]/,
 }
-
-
+const expresionId = /^[0-9]{1,11}$/
+var campoInicial = false
+if(typeof id != 'undefined'){
+	campoInicial = true;
+}
 const campos = {
-
-	cedula: false,
-	nombre: false,
-	apellido: false,
-	telefono: false,
-	direccion: false,
-	correo: false,
-	horario: false,
-	rol: false,
+	cita_id: campoInicial,
+	fecha: campoInicial,
+	hora: campoInicial,
+	nro_comprobante: campoInicial,
+	pago_total: campoInicial,
 
 }
 
 const validarFormulario = (e) => {
-	switch (e.target.name) {
-	
-		case "nombre":
-			validarCampo(expresiones.nombre, e.target, 'nombre');
-		break;
-
-		case "apellido":
-			validarCampo(expresiones.apellido, e.target, 'apellido');
-		break;
-
-		case "cedula":
-			validarCampo(expresiones.cedula, e.target, 'cedula');
-		break;
-
-		case "telefono":
-			validarCampo(expresiones.telefono, e.target, 'telefono');
-		break;
-
-		case "direccion":
-			validarCampo(expresiones.direccion, e.target, 'direccion');
-		break;
-
-		case "correo":
-			validarCampo(expresiones.correo, e.target, 'correo');
-		break;
-
-		case "horario":
-			validarCampo(expresiones.horario, e.target, 'horario');
-		break;
-
-		case "rol":
-			validarCampo(expresiones.rol, e.target, 'rol');
-		break;
-
-	}
+	let campo = e.target.name
+	validarCampo(expresiones[campo], e.target, campo)
 }
 
 const validarCampo = (expresion, input, campo) => {
@@ -90,11 +51,9 @@ inputs.forEach((input) => {
 
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
-
-	const terminos = document.getElementById('terminos');
-	if(campos.nombre && campos.apellido && campos.cedula && campos.telefono && campos.direccion && campos.correo && campos.horario && campos.rol ){
-		formulario.reset();
-
+	validarCampo(expresionId, document.getElementById('cita_id'),'cita_id')
+	if(campos.cita_id && campos.fecha && campos.hora && campos.pago_total && campos.nro_comprobante){
+		// formulario.reset();
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
 			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
@@ -103,7 +62,49 @@ formulario.addEventListener('submit', (e) => {
 		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
 			icono.classList.remove('formulario__grupo-correcto');
 		});
+		let datos = new FormData(document.getElementById('formulario'));
+		if(typeof id != 'undefined'){
+			datos.append('id', id);
+		}
+		enviarDatos(datos);
 	} else {
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}
 });
+
+const enviarDatos = (datos) => {
+	$.ajax({
+		type: "POST",
+		url: "",
+		data: datos,
+		contentType: false,
+		processData: false,
+		success: function (response) {
+			let res = JSON.parse(response);
+			if (res.tipo == 'success') {
+				Swal.fire(
+					res.titulo,
+					res.mensaje,
+					res.tipo
+				);
+				setTimeout(() => {
+					window.location = "?pagina=ver_pagoscitas";
+				}, 900);
+			} else {
+				Swal.fire(
+					res.titulo,
+					res.mensaje,
+					res.tipo
+				);
+			}
+		},
+		error: (response) => {
+			console.log(response);
+			Swal.fire(
+				'Error',
+				'Intente otra vez',
+				'error'
+			)
+		}
+	});
+}

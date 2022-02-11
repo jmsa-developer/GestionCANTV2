@@ -1,14 +1,14 @@
 <?php
 require_once "BD.php";
-class Cita extends BD
+class PagoCita extends BD
 {
     private $id;
-    private $cliente_id;
-    private $servicio_estetico_id;
-    private $pago_id;
+    private $tipo;
+    private $nro_comprobante;
+    private $pago_total;
     private $fecha;
     private $hora;
-    private $cita_realizada;
+    private $descripcion;
     private $estado;
 
     public function __construct()
@@ -21,23 +21,23 @@ class Cita extends BD
     public function setId($id){
         $this->id = $id;
     }
-    public function getCliente_id(){
-        return $this->cliente_id;
+    public function getTipo(){
+        return $this->tipo;
     }
-    public function setCliente_id($cliente_id){
-        $this->cliente_id = $cliente_id;
+    public function setTipo($tipo){
+        $this->tipo = $tipo;
     }
-    public function getServicio_estetico_id(){
-        return $this->servicio_estetico_id;
+    public function getNro_comprobante(){
+        return $this->nro_comprobante;
     }
-    public function setServicio_estetico_id($servicio_estetico_id){
-        $this->servicio_estetico_id = $servicio_estetico_id;
+    public function setNro_comprobante($nro_comprobante){
+        $this->nro_comprobante = $nro_comprobante;
     }
-    public function getPago_id(){
-        return $this->pago_id;
+    public function getPago_total(){
+        return $this->pago_total;
     }
-    public function setPago_id($pago_id){
-        $this->pago_id = $pago_id;
+    public function setPago_total($pago_total){
+        $this->pago_total = $pago_total;
     }
     public function getFecha(){
         return $this->fecha;
@@ -51,11 +51,11 @@ class Cita extends BD
     public function setHora($hora){
         $this->hora = $hora;
     }
-    public function getCita_realizada(){
-        return $this->cita_realizada;
+    public function getDescripcion(){
+        return $this->descripcion;
     }
-    public function setCita_realizada($cita_realizada){
-        $this->cita_realizada = $cita_realizada;
+    public function setDescripcion($descripcion){
+        $this->descripcion = $descripcion;
     }
     public function getEstado() {
         return $this->estado;
@@ -69,7 +69,7 @@ class Cita extends BD
         try {
             parent::connect();
             $consulta = $this->prepare('SELECT CONCAT(cl.nombre," ",cl.apellido) as cliente, s.nombre as servicio, 
-                c.id, c.fecha, c.cita_realizada, c.estado FROM citas c 
+                c.id, c.fecha, c.cita_realizada, c.estado FROM pagos_citas c 
                 INNER JOIN clientes cl ON c.cliente_id = cl.id INNER JOIN servicios_esteticos s 
                 ON c.servicio_estetico_id = s.id ORDER BY c.fecha DESC, c.hora DESC');
             $consulta->execute();
@@ -85,7 +85,7 @@ class Cita extends BD
         try {
             parent::connect();
             $consulta = $this->prepare('SELECT CONCAT(cl.nombre," ",cl.apellido) as cliente, s.nombre as servicio, 
-                c.id, c.fecha FROM citas c 
+                c.id, c.fecha FROM pagos_citas c 
                 INNER JOIN clientes cl ON c.cliente_id = cl.id INNER JOIN servicios_esteticos s 
                 ON c.servicio_estetico_id = s.id WHERE c.estado = 1 AND c.pago_id IS NULL ORDER BY c.fecha, c.hora');
             $consulta->execute();
@@ -100,7 +100,7 @@ class Cita extends BD
     {
         try {
             parent::connect();
-            $consulta = $this->prepare("SELECT * FROM citas WHERE id = $this->id");
+            $consulta = $this->prepare("SELECT * FROM pagos_citas WHERE id = $this->id");
             $consulta->execute();
             $respuesta = $consulta->fetch(PDO::FETCH_OBJ);
             return $respuesta;
@@ -113,16 +113,17 @@ class Cita extends BD
     {
         try {
             parent::connect();
-            $consulta = $this->prepare("INSERT INTO citas(cliente_id, servicio_estetico_id, 
-                fecha, hora, cita_realizada)"
-                . "VALUES (:cliente_id, :servicio_estetico_id, 
-                :fecha, :hora, :cita_realizada)");
+            $consulta = $this->prepare("INSERT INTO pagos_citas(tipo, nro_comprobante, 
+                pago_total, fecha, hora, descripcion)"
+                . "VALUES (:tipo, :nro_comprobante, 
+                :pago_total, :fecha, :hora, :descripcion)");
 
-            $consulta->bindParam(":cliente_id", $this->cliente_id);
-            $consulta->bindParam(":servicio_estetico_id", $this->servicio_estetico_id);
+            $consulta->bindParam(":tipo", $this->tipo);
+            $consulta->bindParam(":nro_comprobante", $this->nro_comprobante);
+            $consulta->bindParam(":pago_total", $this->pago_total);
             $consulta->bindParam(":fecha", $this->fecha);
             $consulta->bindParam(":hora", $this->hora);
-            $consulta->bindParam(":cita_realizada", $this->cita_realizada);
+            $consulta->bindParam(":descripcion", $this->descripcion);
             $consulta->execute();
             return $this->lastInsertId();
         } catch (Exception $e) {
@@ -134,7 +135,7 @@ class Cita extends BD
     {
         try {
             parent::connect();
-            $consulta = $this->prepare("UPDATE citas SET cliente_id = :cliente_id, servicio_estetico_id = :servicio_estetico_id,
+            $consulta = $this->prepare("UPDATE pagos_citas SET cliente_id = :cliente_id, servicio_estetico_id = :servicio_estetico_id,
                     fecha = :fecha, hora = :hora, cita_realizada = :cita_realizada
                     WHERE id = :id");
 
@@ -151,28 +152,12 @@ class Cita extends BD
             return false;
         }
     }
-    public function modificarPagoId()
-    {
-        try {
-            parent::connect();
-            $consulta = $this->prepare("UPDATE citas SET pago_id = :pago_id
-                    WHERE id = :id");
-
-            $consulta->bindParam(":id", $this->id);
-            $consulta->bindParam(":pago_id", $this->pago_id);
-            return $consulta->execute();
-        } catch (Exception $e) {
-            // var_dump($e);
-            $this->error = $e->errorInfo[2];
-            return false;
-        }
-    }
 
     public function inactivar()
     {
         try {
             parent::connect();
-            $consulta = $this->prepare("UPDATE citas SET estado = 0 WHERE id = $this->id");
+            $consulta = $this->prepare("UPDATE pagos_citas SET estado = 0 WHERE id = $this->id");
             $respuesta = $consulta->execute();
             return $respuesta;
         } catch (Exception $e) {
@@ -185,7 +170,7 @@ class Cita extends BD
     {
         try {
             parent::connect();
-            $consulta = $this->prepare("UPDATE citas SET estado = 1 WHERE id = $this->id");
+            $consulta = $this->prepare("UPDATE pagos_citas SET estado = 1 WHERE id = $this->id");
             $respuesta = $consulta->execute();
             return $respuesta;
         } catch (Exception $e) {

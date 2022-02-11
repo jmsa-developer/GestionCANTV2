@@ -64,7 +64,8 @@
                         <a href="?pagina=ver_citas"><i class="far fa-calendar-check"></i><span>Consultas Citas</span></a>
                         <a href="?pagina=registro_cliente"><i class="fas fa-user-plus"></i><span>Nuevo Cliente</span></a>
                         <a href="?pagina=ver_clientes"><i class="far fa-file-alt"></i><span>Consultas Cliente</span></a>
-                        <a href="?pagina=ver_pagoscitas"><i class="far fa-money-bill-alt"></i><span>Consultas Pago</span></a>
+                        <a href="?pagina=registro_pagocita"><i class="far fa-money-bill-alt"></i><span>Nuevo Pago de Cita</span></a>
+                        <a href="?pagina=ver_pagoscitas"><i class="far fa-calendar-check"></i><span>Consultas Pago</span></a>
 
                     </div>
                 </li>
