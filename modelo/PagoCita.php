@@ -69,7 +69,7 @@ class PagoCita extends BD
         try {
             parent::connect();
             $consulta = $this->prepare('SELECT c.id as cita_id, pc.*, DATE_FORMAT(pc.fecha, "%d/%m/%Y") as fecha 
-                FROM `citas` c INNER JOIN pagos_citas pc ON c.pago_id = pc.id WHERE c.estado = 1');
+                FROM `citas` c INNER JOIN pagos_citas pc ON c.pago_id = pc.id WHERE c.estado = 1 ORDER BY fecha DESC');
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;
@@ -117,19 +117,19 @@ class PagoCita extends BD
     {
         try {
             parent::connect();
-            $consulta = $this->prepare("UPDATE pagos_citas SET cliente_id = :cliente_id, servicio_estetico_id = :servicio_estetico_id,
-                    fecha = :fecha, hora = :hora, cita_realizada = :cita_realizada
-                    WHERE id = :id");
+            $consulta = $this->prepare("UPDATE pagos_citas SET tipo = :tipo, nro_comprobante = :nro_comprobante,
+                pago_total = :pago_total, fecha = :fecha, hora = :hora, descripcion = :descripcion
+                WHERE id = :id");
 
             $consulta->bindParam(":id", $this->id);
-            $consulta->bindParam(":cliente_id", $this->cliente_id);
-            $consulta->bindParam(":servicio_estetico_id", $this->servicio_estetico_id);
+            $consulta->bindParam(":tipo", $this->tipo);
+            $consulta->bindParam(":nro_comprobante", $this->nro_comprobante);
+            $consulta->bindParam(":pago_total", $this->pago_total);
             $consulta->bindParam(":fecha", $this->fecha);
             $consulta->bindParam(":hora", $this->hora);
-            $consulta->bindParam(":cita_realizada", $this->cita_realizada);
+            $consulta->bindParam(":descripcion", $this->descripcion);
             return $consulta->execute();
         } catch (Exception $e) {
-            // var_dump($e);
             $this->error = $e->errorInfo[2];
             return false;
         }

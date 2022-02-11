@@ -80,14 +80,15 @@ class Cita extends BD
             return false;
         }
     }
-    public function listarActivos()
+    public function listarActivos($id = NULL)
     {
         try {
             parent::connect();
             $consulta = $this->prepare('SELECT CONCAT(cl.nombre," ",cl.apellido) as cliente, s.nombre as servicio, 
                 c.id, DATE_FORMAT(c.fecha, "%d/%m/%Y") as fecha FROM citas c 
                 INNER JOIN clientes cl ON c.cliente_id = cl.id INNER JOIN servicios_esteticos s 
-                ON c.servicio_estetico_id = s.id WHERE c.estado = 1 AND c.pago_id IS NULL ORDER BY c.fecha, c.hora');
+                ON c.servicio_estetico_id = s.id WHERE (c.estado = 1 AND c.pago_id IS NULL) OR c.id = :id ORDER BY c.fecha, c.hora');
+            $consulta->bindParam(":id", $id);
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;
@@ -155,9 +156,13 @@ class Cita extends BD
     {
         try {
             parent::connect();
+            $consult = $this->prepare("UPDATE citas SET pago_id = NULL
+            WHERE pago_id = :pago_id");
+            $consult->bindParam(":pago_id", $this->pago_id);
+            $consult->execute();
+
             $consulta = $this->prepare("UPDATE citas SET pago_id = :pago_id
                     WHERE id = :id");
-
             $consulta->bindParam(":id", $this->id);
             $consulta->bindParam(":pago_id", $this->pago_id);
             return $consulta->execute();
