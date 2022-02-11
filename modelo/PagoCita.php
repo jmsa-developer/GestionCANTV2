@@ -68,26 +68,8 @@ class PagoCita extends BD
     {
         try {
             parent::connect();
-            $consulta = $this->prepare('SELECT CONCAT(cl.nombre," ",cl.apellido) as cliente, s.nombre as servicio, 
-                c.id, c.fecha, c.cita_realizada, c.estado FROM pagos_citas c 
-                INNER JOIN clientes cl ON c.cliente_id = cl.id INNER JOIN servicios_esteticos s 
-                ON c.servicio_estetico_id = s.id ORDER BY c.fecha DESC, c.hora DESC');
-            $consulta->execute();
-            $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
-            return $respuesta;
-        } catch (Exception $e) {
-            $this->error = $e->errorInfo[2];
-            return false;
-        }
-    }
-    public function listarActivos()
-    {
-        try {
-            parent::connect();
-            $consulta = $this->prepare('SELECT CONCAT(cl.nombre," ",cl.apellido) as cliente, s.nombre as servicio, 
-                c.id, c.fecha FROM pagos_citas c 
-                INNER JOIN clientes cl ON c.cliente_id = cl.id INNER JOIN servicios_esteticos s 
-                ON c.servicio_estetico_id = s.id WHERE c.estado = 1 AND c.pago_id IS NULL ORDER BY c.fecha, c.hora');
+            $consulta = $this->prepare('SELECT c.id as cita_id, pc.*, DATE_FORMAT(pc.fecha, "%d/%m/%Y") as fecha 
+                FROM `citas` c INNER JOIN pagos_citas pc ON c.pago_id = pc.id WHERE c.estado = 1');
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;
