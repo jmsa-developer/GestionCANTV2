@@ -13,6 +13,7 @@ $(document).ready(function () {
 			{ data: 'cliente' },
 			{ data: 'fecha' },
 			{ data: 'realizada' },
+			{ data: 'pago' },
 			{ data: 'button' }
 		],
 

@@ -69,9 +69,10 @@ class Cita extends BD
         try {
             parent::connect();
             $consulta = $this->prepare('SELECT CONCAT(cl.nombre," ",cl.apellido) as cliente, s.nombre as servicio, 
-                c.id, DATE_FORMAT(c.fecha, "%d/%m/%Y") as fecha, c.cita_realizada, c.estado FROM citas c 
-                INNER JOIN clientes cl ON c.cliente_id = cl.id INNER JOIN servicios_esteticos s 
-                ON c.servicio_estetico_id = s.id ORDER BY c.fecha DESC, c.hora DESC');
+                c.id, DATE_FORMAT(c.fecha, "%d/%m/%Y") as fecha, c.cita_realizada, c.pago_id, c.estado, pc.estado as pago_estado FROM citas c 
+                INNER JOIN clientes cl ON c.cliente_id = cl.id INNER JOIN servicios_esteticos s ON c.servicio_estetico_id = s.id 
+                LEFT JOIN pagos_citas pc ON c.pago_id = pc.id
+                ORDER BY c.fecha DESC, c.hora DESC');
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;
@@ -87,7 +88,8 @@ class Cita extends BD
             $consulta = $this->prepare('SELECT CONCAT(cl.nombre," ",cl.apellido) as cliente, s.nombre as servicio, 
                 c.id, DATE_FORMAT(c.fecha, "%d/%m/%Y") as fecha FROM citas c 
                 INNER JOIN clientes cl ON c.cliente_id = cl.id INNER JOIN servicios_esteticos s 
-                ON c.servicio_estetico_id = s.id WHERE (c.estado = 1 AND c.pago_id IS NULL) OR c.id = :id ORDER BY c.fecha, c.hora');
+                ON c.servicio_estetico_id = s.id LEFT JOIN pagos_citas pc ON c.pago_id = pc.id
+                WHERE c.estado = 1 AND (c.pago_id IS NULL OR pc.estado = 0 OR c.id = :id) ORDER BY c.fecha, c.hora');
             $consulta->bindParam(":id", $id);
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);

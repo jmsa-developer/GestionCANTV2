@@ -11,7 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$cita->realizada = "";
 			if($cita->cita_realizada){
 				$cita->realizada = "<i class='fa fa-check'></i>";
-			}			
+			}	
+			$cita->pago = "";
+			if($cita->pago_estado == "1"){
+				$cita->pago = "<a href=?pagina=modificacion_pagocita&id=" . $cita->pago_id . "&cita_id=" . $cita->id . " class='editar btn btn-sm btn-info mr-1 mb-1' title='Ver Pago'><i class='fas fa-search'></i></a>";
+			}		
+			else{
+				$cita->pago = "<a href=?pagina=registro_pagocita class='agregar btn btn-sm btn-primary mr-1 mb-1' title='Registrar Pago'><i class='fas fa-plus'></i></a>";
+			}
 
 			$cita->button = "<a href=?pagina=modificacion_cita&id=" . $cita->id . " class='editar btn btn-sm btn-warning mr-1 mb-1' title='Editar'><i class='fas fa-pencil-alt'></i></a>";
 			if ($cita->estado == "1") {
