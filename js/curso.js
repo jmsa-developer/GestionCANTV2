@@ -3,39 +3,30 @@ const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
 
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,25}$/, // Letras y espacios, pueden llevar acentos.
-	duracion: /^.{1,60}$/, // 7 a 14 Letras y espacios, pueden llevar acentos y numeros.
-	costo: /^.{1,60}$/, // 7 a 14 Letras y espacios, pueden llevar acentos y numeros.
-
+	nombre: /^[a-zA-ZÀ-ÿ\s]{1,50}$/, // Letras y espacios, pueden llevar acentos.
+	fecha: /^.{5,20}$/,
+	horario: /^.{5,20}$/,
+	duracion: /^.{1,30}$/, // 7 a 14 Letras y espacios, pueden llevar acentos y numeros.
+	costo: /^[0-9]{1,11}$/, // solo numeros numeros, maximo 11 digitos.
 }
-/*	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	password: /^.{4,12}$/, // 4 a 12 digitos.
-	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	telefono: /^\d{7,14}$/ // 7 a 14 numeros.*/
-
+const expresionId = /^[0-9]{1,11}$/
+var campoInicial = false
+if(typeof id != 'undefined'){
+	campoInicial = true;
+}
 const campos = {
-	nombre: false,
-	duracion: false,
-	costo: false,
+	nombre: campoInicial,
+	empleado_id: campoInicial,
+	fecha: campoInicial,
+	horario: campoInicial,
+	duracion: campoInicial,
+	costo: campoInicial,
 
 }
 
 const validarFormulario = (e) => {
-	switch (e.target.name) {
-	
-		case "nombre":
-			validarCampo(expresiones.nombre, e.target, 'nombre');
-		break;
-
-		case "duracion":
-			validarCampo(expresiones.duracion, e.target, 'duracion');
-		break;
-
-		case "costo":
-			validarCampo(expresiones.costo, e.target, 'costo');
-		break;
-	}
+	let campo = e.target.name
+	validarCampo(expresiones[campo], e.target, campo)
 }
 
 const validarCampo = (expresion, input, campo) => {
@@ -63,11 +54,9 @@ inputs.forEach((input) => {
 
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
-
-	const terminos = document.getElementById('terminos');
-	if(campos.nombre && campos.duracion && campos.costo ){
-		formulario.reset();
-
+	validarCampo(expresionId, document.getElementById('empleado_id'),'empleado_id')
+	if(campos.nombre && campos.empleado_id && campos.fecha && campos.horario &&  campos.duracion && campos.costo ){
+		// formulario.reset();
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
 			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
@@ -76,7 +65,49 @@ formulario.addEventListener('submit', (e) => {
 		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
 			icono.classList.remove('formulario__grupo-correcto');
 		});
+		let datos = new FormData(document.getElementById('formulario'));
+		if(typeof id != 'undefined'){
+			datos.append('id', id);
+		}
+		enviarDatos(datos);
 	} else {
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}
 });
+
+const enviarDatos = (datos) => {
+	$.ajax({
+		type: "POST",
+		url: "",
+		data: datos,
+		contentType: false,
+		processData: false,
+		success: function (response) {
+			let res = JSON.parse(response);
+			if (res.tipo == 'success') {
+				Swal.fire(
+					res.titulo,
+					res.mensaje,
+					res.tipo
+				);
+				setTimeout(() => {
+					window.location = "?pagina=ver_cursos";
+				}, 900);
+			} else {
+				Swal.fire(
+					res.titulo,
+					res.mensaje,
+					res.tipo
+				);
+			}
+		},
+		error: (response) => {
+			console.log(response);
+			Swal.fire(
+				'Error',
+				'Intente otra vez',
+				'error'
+			)
+		}
+	});
+}

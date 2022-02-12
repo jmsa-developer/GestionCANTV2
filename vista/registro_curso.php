@@ -10,16 +10,6 @@
     <br>
 
     <form action="" class="formulario" id="formulario">
-
-        <div class="formulario__grupo" id="grupo__idcurso">
-            <label for="idcurso" class="formulario__label">Id Curso</label>
-            <div class="formulario__grupo-input">
-                <input type="number" name="idcurso" class="formulario__input" id="idcurso" placeholder="costo del servicio" value="" min="1" max="1000" step="1" required="" />
-
-                <i class="formulario__validacion-estado fas fa-times-circle"></i>
-            </div>
-            <p class="formulario__input-error">El ID del curso solo puede contener numeros y tiene que ser de 4 a 10 dígitos.</p>
-        </div>
         <!-- Grupo: Nombre -->
         <div class="formulario__grupo" id="grupo__nombre">
             <label for="nombre" class="formulario__label">Nombre del curso</label>
@@ -28,6 +18,19 @@
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">El nombre del curso tiene que ser de 2 a 16 dígitos y solo puede contener letras.</p>
+        </div>
+        <div class="formulario__grupo" id="grupo__empleado_id">
+            <label for="empleado_id" class="formulario__label">Instructor del Curso</label>
+            <div class="formulario__grupo-input">
+                <select class="formulario__input select-especial" id="empleado_id" name="empleado_id">
+                    <option value=""></option>
+                    <?php foreach ($empleados as $empleado) : ?>
+                        <option value="<?= $empleado->id ?>"><?= $empleado->cedula ?> // <?= $empleado->nombre ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">Seleccione el Instructor</p>
         </div>
 
         <div class="formulario__grupo" id="grupo__fecha">
@@ -70,7 +73,7 @@
         <div class="formulario__grupo" id="grupo__descripcion">
             <label for="descripcion" class="formulario__label">Descripcion del curso</label>
             <div class="formulario__grupo-input">
-                <textarea name="descripcion" class="formulario__input" id="descripcion" placeholder="Colocar la descripcion del curso" required=""></textarea>
+                <textarea name="descripcion" class="formulario__input" id="descripcion" placeholder="Colocar la descripcion del curso" maxlength="250"></textarea>
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">La Descripcion del curso solo puede contener letras.</p>
@@ -88,5 +91,10 @@
         </div>
     </form>
 </div>
+<script>
+    $(document).ready(function() {
+        $('.select-especial').select2();
+    });
+</script>
 <script src="js/curso.js"></script>
 <?php require "vista/componentes/footer.php" ?>
