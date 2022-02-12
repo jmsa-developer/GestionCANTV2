@@ -75,7 +75,7 @@ class Curso extends BD
     {
         try {
             parent::connect();
-            $consulta = $this->prepare('SELECT c.*, CONCAT(e.nombre, " ", e.apellido) as instructor 
+            $consulta = $this->prepare('SELECT c.*, DATE_FORMAT(c.fecha,"%d/%m/%Y") as fecha, CONCAT(e.nombre, " ", e.apellido) as instructor 
                 FROM `cursos` c INNER JOIN empleados e ON c.empleado_id = e.id');
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);

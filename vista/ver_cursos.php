@@ -13,8 +13,8 @@
                         <th scope="col">Curso</th>
                         <th scope="col">Instructor</th>
                         <th scope="col">Fecha</th>
-                        <th scope="col">Duracion</th>
-                        <th scope="col">Descripcion</th>
+                        <th scope="col">Duración</th>
+                        <th scope="col">Costo</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>

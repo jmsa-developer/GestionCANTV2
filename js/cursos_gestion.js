@@ -13,7 +13,7 @@ $(document).ready(function () {
 			{ data: 'instructor' },
 			{ data: 'fecha' },
 			{ data: 'duracion' },
-			{ data: 'descripcion' },
+			{ data: 'costo' },
 			{ data: 'button' }
 		],
 

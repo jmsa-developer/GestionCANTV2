@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-02-2022 a las 18:47:41
+-- Tiempo de generación: 12-02-2022 a las 22:19:50
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -76,6 +76,31 @@ INSERT INTO `clientes` (`id`, `cedula`, `nombre`, `apellido`, `direccion`, `tele
 (3, '28397000', 'Lina Rin', 'Lee', 'Ruiz pineda', '04261235611', 'linalee@gmail.com', '2002-02-01', 1),
 (5, '13520800', 'Jose', 'Perez', 'Sur', '04162262266', 'jose@gmail.com', '1995-12-01', 0),
 (6, '25000111', 'Rosa', 'Jimenez', 'Villa Crepuscular', '04242112324', 'rosa@gmail.com', '1997-03-01', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cursos`
+--
+
+CREATE TABLE `cursos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
+  `empleado_id` int(11) NOT NULL,
+  `costo` float DEFAULT NULL,
+  `fecha` date NOT NULL,
+  `horario` time NOT NULL,
+  `duracion` varchar(30) DEFAULT NULL,
+  `descripcion` varchar(250) DEFAULT NULL,
+  `estado` int(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `cursos`
+--
+
+INSERT INTO `cursos` (`id`, `nombre`, `empleado_id`, `costo`, `fecha`, `horario`, `duracion`, `descripcion`, `estado`) VALUES
+(1, 'Masajes', 1, 35, '2022-02-16', '08:00:00', '3 dias', 'Lunes a Miercoles', 1);
 
 -- --------------------------------------------------------
 
@@ -235,6 +260,13 @@ ALTER TABLE `clientes`
   ADD UNIQUE KEY `cedula` (`cedula`);
 
 --
+-- Indices de la tabla `cursos`
+--
+ALTER TABLE `cursos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `empleado_id` (`empleado_id`);
+
+--
 -- Indices de la tabla `empleados`
 --
 ALTER TABLE `empleados`
@@ -287,6 +319,12 @@ ALTER TABLE `clientes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT de la tabla `cursos`
+--
+ALTER TABLE `cursos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
@@ -327,6 +365,12 @@ ALTER TABLE `citas`
   ADD CONSTRAINT `citas_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `citas_ibfk_2` FOREIGN KEY (`servicio_estetico_id`) REFERENCES `servicios_esteticos` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `citas_ibfk_3` FOREIGN KEY (`pago_id`) REFERENCES `pagos_citas` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `cursos`
+--
+ALTER TABLE `cursos`
+  ADD CONSTRAINT `cursos_ibfk_1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
