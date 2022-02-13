@@ -13,6 +13,7 @@ class PagoCurso extends BD
     private $estado;
     private $participante_id;
     private $curso_id;
+    private $participacion_id;
 
     public function __construct()
     {
@@ -106,6 +107,14 @@ class PagoCurso extends BD
     {
         $this->participante_id = $participante_id;
     }
+    public function getParticipacion_id()
+    {
+        return $this->participacion_id;
+    }
+    public function setParticipacion_id($participacion_id)
+    {
+        $this->participacion_id = $participacion_id;
+    }
 
     public function listar()
     {
@@ -130,6 +139,19 @@ class PagoCurso extends BD
         try {
             parent::connect();
             $consulta = $this->prepare("SELECT * FROM pagos_cursos WHERE id = $this->id");
+            $consulta->execute();
+            $respuesta = $consulta->fetch(PDO::FETCH_OBJ);
+            return $respuesta;
+        } catch (Exception $e) {
+            $this->error = $e->errorInfo[2];
+            return false;
+        }
+    }
+    public function consultarParticipacion()
+    {
+        try {
+            parent::connect();
+            $consulta = $this->prepare("SELECT * FROM participaciones WHERE pago_id = $this->id");
             $consulta->execute();
             $respuesta = $consulta->fetch(PDO::FETCH_OBJ);
             return $respuesta;
@@ -175,7 +197,6 @@ class PagoCurso extends BD
             $consulta = $this->prepare("UPDATE pagos_cursos SET tipo = :tipo, nro_comprobante = :nro_comprobante,
                 pago_total = :pago_total, abono = :abono, fecha = :fecha, hora = :hora, descripcion = :descripcion
                 WHERE id = :id");
-
             $consulta->bindParam(":id", $this->id);
             $consulta->bindParam(":tipo", $this->tipo);
             $consulta->bindParam(":nro_comprobante", $this->nro_comprobante);
@@ -184,7 +205,15 @@ class PagoCurso extends BD
             $consulta->bindParam(":fecha", $this->fecha);
             $consulta->bindParam(":hora", $this->hora);
             $consulta->bindParam(":descripcion", $this->descripcion);
-            return $consulta->execute();
+            $consulta->execute();
+
+            $consult = $this->prepare("UPDATE participaciones SET curso_id = :curso_id, participante_id = :participante_id
+                WHERE id = :id");
+            $consult->bindParam(":id", $this->participacion_id);
+            $consult->bindParam(":curso_id", $this->curso_id);
+            $consult->bindParam(":participante_id", $this->participante_id);
+            $consult->execute();
+            return true;
         } catch (Exception $e) {
             $this->error = $e->errorInfo[2];
             return false;

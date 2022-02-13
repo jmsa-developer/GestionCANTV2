@@ -4,24 +4,37 @@
 
     <div class="nombre">
         <center>
-            <h2>Modificación del Pago</h2>
+            <h2>Modificación del Pago de Curso</h2>
         </center>
     </div>
     <br>
 
     <form action="" class="formulario" id="formulario">
-        <div class="formulario__grupo" id="grupo__cita_id">
-            <label for="cita_id" class="formulario__label">Cita</label>
+        <div class="formulario__grupo" id="grupo__curso_id">
+            <label for="curso_id" class="formulario__label">Curso</label>
             <div class="formulario__grupo-input">
-                <select class="formulario__input select-especial" id="cita_id" name="cita_id">
+                <select class="formulario__input select-especial" id="curso_id" name="curso_id" required>
                     <option value=""></option>
-                    <?php foreach ($citas as $cita) : ?>
-                        <option value="<?= $cita->id ?>"><?= $cita->fecha ?> // <?= $cita->cliente ?> // <?= $cita->servicio ?></option>
+                    <?php foreach ($cursos as $curso) : ?>
+                        <option value="<?= $curso->id ?>"><?= $curso->fecha ?> // <?= $curso->nombre ?></option>
                     <?php endforeach; ?>
                 </select>
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">Seleccione la Cita</p>
+            <p class="formulario__input-error">Seleccione el Curso</p>
+        </div>
+        <div class="formulario__grupo" id="grupo__participante_id">
+            <label for="participante_id" class="formulario__label">Participante</label>
+            <div class="formulario__grupo-input">
+                <select class="formulario__input select-especial" id="participante_id" name="participante_id" required>
+                    <option value=""></option>
+                    <?php foreach ($participantes as $participante) : ?>
+                        <option value="<?= $participante->id ?>"><?= $participante->cedula ?> // <?= $participante->nombre ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">Seleccione el Participante</p>
         </div>
 
         <!-- Grupo: fecha -->
@@ -74,12 +87,20 @@
         </div>
 
         <div class="formulario__grupo" id="grupo__pago_total">
-            <label for="pago_total" class="formulario__label">Pago Total del Servicio</label>
+            <label for="pago_total" class="formulario__label">Pago Total del Curso</label>
             <div class="formulario__grupo-input">
                 <input type="number" name="pago_total" class="formulario__input" id="pago_total" placeholder="Monto del pago" min="1" step="any" required="" value="<?= $pago->pago_total ?>"/>
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">El pago es obligatorio</p>
+        </div>
+        <div class="formulario__grupo" id="grupo__abono">
+            <label for="abono" class="formulario__label">Abono</label>
+            <div class="formulario__grupo-input">
+                <input type="number" name="abono" class="formulario__input" id="abono" placeholder="Abono" min="1" step="any" required="" value="<?= $pago->abono ?>"/>
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">El abono es obligatorio</p>
         </div>
 
         <div class="formulario__grupo" id="grupo__descripcion">
@@ -88,7 +109,7 @@
                 <textarea name="descripcion" class="formulario__input" id="descripcion" placeholder="Descripcion del pago" rows="2" maxlength="250"><?= $pago->descripcion ?></textarea>
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El día de visita solo puede contener numeros.</p>
+            <p class="formulario__input-error"></p>
         </div>
 
         <div class="formulario__mensaje" id="formulario__mensaje">
@@ -96,7 +117,7 @@
         </div>
 
         <div class="formulario__grupo formulario__grupo-btn-enviar">
-            <button type="submit" class="formulario__btn">Modificar</button>
+            <button type="submit" class="formulario__btn">Registrar</button>
 
             <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Procesando...</p>
         </div>
@@ -105,11 +126,13 @@
 </div>
 <script>
     $(document).ready(function() {
-        $('#cita_id').val(<?= $pago->cita_id ?>)
+        $('#curso_id').val(<?= $participacion->curso_id ?>)
+        $('#participante_id').val(<?= $participacion->participante_id ?>)
         $('.select-especial').select2();
         $('#tipo').val("<?= $pago->tipo ?>");
     });
 </script>
 <script>const id = <?= $pago->id ?>;</script>
-<script src="js/pagocita.js"></script>
+<script>const participacion_id = <?= $participacion->id ?>;</script>
+<script src="js/pagocurso.js"></script>
 <?php require "vista/componentes/footer.php" ?>

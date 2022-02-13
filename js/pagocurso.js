@@ -69,6 +69,7 @@ formulario.addEventListener('submit', (e) => {
 		let datos = new FormData(document.getElementById('formulario'));
 		if(typeof id != 'undefined'){
 			datos.append('id', id);
+			datos.append('participacion_id', participacion_id);
 		}
 		enviarDatos(datos);
 	} else {

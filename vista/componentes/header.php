@@ -22,7 +22,7 @@
         <!--header menu start-->
         <div class="header">
             <div class="header-menu">
-                <a href="" class="title">Academia <span>Creativa</span></a>
+                <a href="?pagina=inicio" class="title">Academia <span>Creativa</span></a>
                 <div class="sidebar-btn">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -47,7 +47,7 @@
                     <!-- <p>Administrador</p> -->
                 </center>
                 <li class="item">
-                    <a href="" class="menu-btn">
+                    <a href="?pagina=inicio" class="menu-btn">
                         <i class="fas fa-home"></i><span>Inicio</span>
                     </a>
                 </li>

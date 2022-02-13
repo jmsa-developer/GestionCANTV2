@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-02-2022 a las 22:19:50
+-- Tiempo de generación: 13-02-2022 a las 15:49:34
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -44,8 +44,8 @@ CREATE TABLE `citas` (
 --
 
 INSERT INTO `citas` (`id`, `cliente_id`, `servicio_estetico_id`, `pago_id`, `fecha`, `hora`, `cita_realizada`, `estado`) VALUES
-(1, 3, 1, 1, '2022-02-08', '14:00:00', 1, 1),
-(2, 3, 1, NULL, '2022-02-09', '13:00:00', 0, 1),
+(1, 3, 1, 1, '2022-02-08', '14:30:00', 1, 1),
+(2, 3, 1, 4, '2022-02-09', '13:00:00', 0, 1),
 (3, 6, 2, 3, '2022-02-08', '07:00:00', 0, 1),
 (4, 6, 2, 2, '2022-02-11', '11:55:00', 0, 1);
 
@@ -100,7 +100,8 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`id`, `nombre`, `empleado_id`, `costo`, `fecha`, `horario`, `duracion`, `descripcion`, `estado`) VALUES
-(1, 'Masajes', 1, 35, '2022-02-16', '08:00:00', '3 dias', 'Lunes a Miercoles', 1);
+(1, 'Masajes', 1, 35, '2022-02-16', '08:00:00', '3 dias', 'Lunes a Miercoles', 1),
+(2, 'Uñas Acrílicas', 1, 20, '2022-03-02', '09:32:00', '2 dias', 'Colocación de uñas acrilicas\r\nLunes y viernes', 1);
 
 -- --------------------------------------------------------
 
@@ -154,8 +155,56 @@ CREATE TABLE `pagos_citas` (
 
 INSERT INTO `pagos_citas` (`id`, `tipo`, `nro_comprobante`, `pago_total`, `fecha`, `hora`, `descripcion`, `estado`) VALUES
 (1, 'Punto de Venta', '1231343', 40, '2022-03-02', '09:00:00', '', 1),
-(2, 'Punto de Venta', '12312434', 12324, '2022-02-11', '10:30:00', 'Punto', 0),
-(3, 'Punto de Venta', '1324324', 3, '2022-02-05', '08:30:00', 'Pago con punto', 1);
+(2, 'Punto de Venta', '12312434', 12324, '2022-02-11', '10:30:00', 'Punto', 1),
+(3, 'Punto de Venta', '1324324', 3, '2022-02-05', '08:30:00', 'Pago con punto', 1),
+(4, 'Punto de Venta', '48535', 12121200000, '2022-01-01', '08:30:00', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pagos_cursos`
+--
+
+CREATE TABLE `pagos_cursos` (
+  `id` int(11) NOT NULL,
+  `tipo` varchar(30) NOT NULL,
+  `nro_comprobante` varchar(14) NOT NULL,
+  `pago_total` float NOT NULL,
+  `abono` float NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL,
+  `descripcion` varchar(250) DEFAULT NULL,
+  `estado` int(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `pagos_cursos`
+--
+
+INSERT INTO `pagos_cursos` (`id`, `tipo`, `nro_comprobante`, `pago_total`, `abono`, `fecha`, `hora`, `descripcion`, `estado`) VALUES
+(1, 'Punto de Venta', '1323343', 35, 35, '2022-01-01', '08:30:00', 'Pago completo', 1),
+(2, 'Pago Movil', '042612212344', 35, 35, '2022-02-05', '09:33:00', 'Pago completo.', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `participaciones`
+--
+
+CREATE TABLE `participaciones` (
+  `id` int(11) NOT NULL,
+  `participante_id` int(11) DEFAULT NULL,
+  `curso_id` int(11) DEFAULT NULL,
+  `pago_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `participaciones`
+--
+
+INSERT INTO `participaciones` (`id`, `participante_id`, `curso_id`, `pago_id`) VALUES
+(1, 1, 1, 1),
+(2, 2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -181,7 +230,8 @@ CREATE TABLE `participantes` (
 
 INSERT INTO `participantes` (`id`, `cedula`, `nombre`, `apellido`, `direccion`, `telefono`, `email`, `fecha_nacimiento`, `estado`) VALUES
 (1, '26588111', 'Gabriela Maria', 'Villas', 'Avenida San Vicente', '04245294700', 'gabriela@gmail.com', '1998-02-02', 1),
-(2, '24220011', 'Jessica', 'Montes', 'Av Lara', '04260001111', 'j24@gmail.com', '2003-01-01', 0);
+(2, '24220011', 'Jessica', 'Montes', 'Av Lara', '04260001111', 'j24@gmail.com', '2003-01-01', 1),
+(3, '24000222', 'Rebeca', 'Garcia', 'Centro', '04264444422', 'rebeca@gmail.com', '1997-04-01', 1);
 
 -- --------------------------------------------------------
 
@@ -280,6 +330,21 @@ ALTER TABLE `pagos_citas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `pagos_cursos`
+--
+ALTER TABLE `pagos_cursos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `participaciones`
+--
+ALTER TABLE `participaciones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `participante_id` (`participante_id`),
+  ADD KEY `curso_id` (`curso_id`),
+  ADD KEY `pago_id` (`pago_id`);
+
+--
 -- Indices de la tabla `participantes`
 --
 ALTER TABLE `participantes`
@@ -322,7 +387,7 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `empleados`
@@ -334,13 +399,25 @@ ALTER TABLE `empleados`
 -- AUTO_INCREMENT de la tabla `pagos_citas`
 --
 ALTER TABLE `pagos_citas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `pagos_cursos`
+--
+ALTER TABLE `pagos_cursos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `participaciones`
+--
+ALTER TABLE `participaciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `participantes`
 --
 ALTER TABLE `participantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios_esteticos`
@@ -371,6 +448,14 @@ ALTER TABLE `citas`
 --
 ALTER TABLE `cursos`
   ADD CONSTRAINT `cursos_ibfk_1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`);
+
+--
+-- Filtros para la tabla `participaciones`
+--
+ALTER TABLE `participaciones`
+  ADD CONSTRAINT `participaciones_ibfk_1` FOREIGN KEY (`participante_id`) REFERENCES `participantes` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `participaciones_ibfk_2` FOREIGN KEY (`curso_id`) REFERENCES `cursos` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `participaciones_ibfk_3` FOREIGN KEY (`pago_id`) REFERENCES `pagos_cursos` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
