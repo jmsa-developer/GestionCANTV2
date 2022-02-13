@@ -89,7 +89,42 @@
 
             <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Procesando...</p>
         </div>
+        <hr>
+        <hr class="d-none d-md-block">
     </form>
+    <div class="row mt-3 px-4">
+        <div class="nombre">
+            <center>
+                <h2>Participantes del Curso</h2>
+            </center>
+        </div>
+        <div class="card">
+            <table class="table table-inverse" id="datatable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Nombres y Apellidos</th>
+                        <th scope="col">Cédula</th>
+                        <th scope="col">Teléfono</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-cuerpo">
+                    <?php foreach ($participantes as $participante) : ?>
+                        <tr>
+                            <td><?= $participante->nombre ?></td>
+                            <td><?= $participante->cedula ?></td>
+                            <td><?= $participante->telefono ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    <?php if (count($participantes) == 0) { ?>
+                        <tr>
+                            <td colspan="3">No hay participantes en este curso</td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
 </div>
 <script>
     $(document).ready(function() {
@@ -97,6 +132,8 @@
         $('.select-especial').select2();
     });
 </script>
-<script>const id = <?= $curso->id ?>;</script>
+<script>
+    const id = <?= $curso->id ?>;
+</script>
 <script src="js/curso.js"></script>
 <?php require "vista/componentes/footer.php" ?>

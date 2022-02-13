@@ -37,6 +37,7 @@
 			$cur = new Curso;//Instanciar clase Curso
 			$cur->setId($_GET['id']);
 			$curso = $cur->consultar();
+			$participantes = $cur->listarParticipantes();
 			require_once("vista/".$pagina.".php");
 		}
 		else{

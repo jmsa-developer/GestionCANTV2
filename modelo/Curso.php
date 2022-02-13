@@ -85,6 +85,23 @@ class Curso extends BD
             return false;
         }
     }
+    public function listarParticipantes()
+    {
+        try {
+            parent::connect();
+            $consulta = $this->prepare('SELECT p.cedula, CONCAT(p.nombre, " ", p.apellido) as nombre, 
+                p.telefono FROM participaciones pa INNER JOIN participantes p
+                ON pa.participante_id = p.id INNER JOIN pagos_cursos pc ON pa.pago_id = pc.id
+                WHERE pa.curso_id = :curso_id AND p.estado = 1 AND pc.estado = 1 GROUP BY p.id');
+            $consulta->bindParam(":curso_id", $this->id);
+            $consulta->execute();
+            $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
+            return $respuesta;
+        } catch (Exception $e) {
+            $this->error = $e->errorInfo[2];
+            return false;
+        }
+    }
     public function listarActivos()
     {
         try {
