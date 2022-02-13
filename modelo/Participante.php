@@ -21,6 +21,20 @@ class Participante extends Persona
             return false;
         }
     }
+    public function listarActivos()
+    {
+        try {
+            parent::connect();
+            $consulta = $this->prepare('SELECT id, cedula, CONCAT(nombre," ",apellido) as nombre
+              FROM participantes WHERE estado = 1');
+            $consulta->execute();
+            $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
+            return $respuesta;
+        } catch (Exception $e) {
+            $this->error = $e->errorInfo[2];
+            return false;
+        }
+    }
     public function consultar()
     {
         try {

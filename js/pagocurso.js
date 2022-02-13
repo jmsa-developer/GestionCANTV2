@@ -6,6 +6,7 @@ const expresiones = {
 	hora: /^.{5,20}$/,
 	nro_comprobante: /^[0-9]{4,14}$/,
 	pago_total: /^[0-9]{1,11}$/,
+	abono: /^[0-9]{1,11}$/,
 }
 const expresionId = /^[0-9]{1,11}$/
 var campoInicial = false
@@ -13,11 +14,13 @@ if(typeof id != 'undefined'){
 	campoInicial = true;
 }
 const campos = {
-	cita_id: campoInicial,
+	curso_id: campoInicial,
+	participante_id: campoInicial,
 	fecha: campoInicial,
 	hora: campoInicial,
 	nro_comprobante: campoInicial,
 	pago_total: campoInicial,
+	abono: campoInicial,
 
 }
 
@@ -51,8 +54,9 @@ inputs.forEach((input) => {
 
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
-	validarCampo(expresionId, document.getElementById('cita_id'),'cita_id')
-	if(campos.cita_id && campos.fecha && campos.hora && campos.pago_total && campos.nro_comprobante){
+	validarCampo(expresionId, document.getElementById('curso_id'),'curso_id');
+	validarCampo(expresionId, document.getElementById('participante_id'),'participante_id');
+	if(campos.participante_id && campos.curso_id && campos.fecha && campos.hora && campos.pago_total && campos.nro_comprobante){
 		// formulario.reset();
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
@@ -88,7 +92,7 @@ const enviarDatos = (datos) => {
 					res.tipo
 				);
 				setTimeout(() => {
-					window.location = "?pagina=ver_pagoscitas";
+					window.location = "?pagina=ver_pagoscursos";
 				}, 900);
 			} else {
 				Swal.fire(

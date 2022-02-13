@@ -4,7 +4,7 @@
 
     <div class="nombre">
         <center>
-            <h2>Registro del Pago</h2>
+            <h2>Registro del Pago de Cita</h2>
         </center>
     </div>
     <br>

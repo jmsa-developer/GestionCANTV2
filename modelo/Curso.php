@@ -85,13 +85,12 @@ class Curso extends BD
             return false;
         }
     }
-    public function listarActivos($id = NULL)
+    public function listarActivos()
     {
         try {
             parent::connect();
-            $consulta = $this->prepare('SELECT *
-                FROM `cursos` 
-                WHERE c.estado = 1 ORDER BY c.fecha, c.horario');
+            $consulta = $this->prepare('SELECT id, nombre, DATE_FORMAT(fecha,"%d/%m/%Y") as fecha
+                FROM `cursos` WHERE estado = 1 ORDER BY fecha, horario');
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;
