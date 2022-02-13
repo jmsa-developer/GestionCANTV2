@@ -111,8 +111,12 @@ class PagoCurso extends BD
     {
         try {
             parent::connect();
-            $consulta = $this->prepare('SELECT c.id as cita_id, pc.*, DATE_FORMAT(pc.fecha, "%d/%m/%Y") as fecha 
-                FROM `citas` c INNER JOIN pagos_cursos pc ON c.pago_id = pc.id WHERE c.estado = 1 ORDER BY fecha DESC');
+            $consulta = $this->prepare('SELECT pc.*, DATE_FORMAT(pc.fecha, "%d/%m/%Y") as fecha,
+                c.nombre as curso, CONCAT(p.nombre, " ", p.apellido) as participante FROM 
+                pagos_cursos pc INNER JOIN participaciones pa ON pc.id = pa.pago_id 
+                INNER JOIN cursos c ON pa.curso_id = c.id INNER JOIN participantes p 
+                ON pa.participante_id = p.id
+                ORDER BY fecha DESC');
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;
