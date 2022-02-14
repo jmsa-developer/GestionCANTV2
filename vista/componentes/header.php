@@ -108,7 +108,12 @@
                     }
                 ?>
                 <li class="item">
-                    <a href="?pagina=usuario" class="menu-btn">
+                    <a href="?pagina=reportes" class="menu-btn">
+                        <i class="fas fa-poll-h"></i><span>Reportes</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="?pagina=inicio" class="menu-btn">
                         <i class="fas fa-info-circle"></i><span>Ayuda</span>
                     </a>
                 </li>

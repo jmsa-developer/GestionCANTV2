@@ -1,4 +1,5 @@
 <?php
+require_once "vendor/autoload.php"; //Autocarga de clases
 session_start();
 if(isset($_SESSION['ac_usuario']) && isset($_SESSION['ac_rol'])){
 	$pagina = "inicio";

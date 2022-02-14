@@ -9,7 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 		foreach ($pagos as $pago) {
 			$pago->cita = "<a href=?pagina=modificacion_cita&id=" . $pago->cita_id . " class='editar btn btn-sm btn-info mr-1 mb-1' title='Ver Cita'><i class='fas fa-search'></i></a>";
-			$pago->button = "<a href=?pagina=modificacion_pagocita&id=" . $pago->id . "&cita_id=" . $pago->cita_id . " class='editar btn btn-sm btn-warning mr-1 mb-1' title='Editar'><i class='fas fa-pencil-alt'></i></a>";
+			$pago->button = "<a href=?pagina=documento_pagocita&id=" . $pago->id . "&cita_id=" . $pago->cita_id . " class='pdf btn btn-sm btn-outline-info mr-1 mb-1' title='Factura' target='_blank'><i class='fas fa-file-contract'></i></a>";
+			$pago->button .= "<a href=?pagina=modificacion_pagocita&id=" . $pago->id . "&cita_id=" . $pago->cita_id . " class='editar btn btn-sm btn-warning mr-1 mb-1' title='Editar'><i class='fas fa-pencil-alt'></i></a>";
 			if ($pago->estado == "1") {
 				$pago->button .= "<button data-id=" . $pago->id . " class='inactivar btn btn-sm btn-danger mr-1 mb-1' title='Eliminar'><i class='fas fa-trash-alt'></i></a>";
 			} else {
