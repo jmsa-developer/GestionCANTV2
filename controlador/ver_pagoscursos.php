@@ -8,7 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		$pagos = $pag->listar(); //Función para obtener los pagos
 
 		foreach ($pagos as $pago) {
-			$pago->button = "<a href=?pagina=modificacion_pagocurso&id=" . $pago->id . " class='editar btn btn-sm btn-warning mr-1 mb-1' title='Editar'><i class='fas fa-pencil-alt'></i></a>";
+			$pago->button = "<a href=?pagina=documento_pagocurso&id=" . $pago->id . " class='pdf btn btn-sm btn-outline-info mr-1 mb-1' title='Factura' target='_blank'><i class='fas fa-file-contract'></i></a>";
+			$pago->button .= "<a href=?pagina=modificacion_pagocurso&id=" . $pago->id . " class='editar btn btn-sm btn-warning mr-1 mb-1' title='Editar'><i class='fas fa-pencil-alt'></i></a>";
 			if ($pago->estado == "1") {
 				$pago->button .= "<button data-id=" . $pago->id . " class='inactivar btn btn-sm btn-danger mr-1 mb-1' title='Eliminar'><i class='fas fa-trash-alt'></i></a>";
 			} else {
