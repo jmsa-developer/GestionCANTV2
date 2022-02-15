@@ -64,15 +64,15 @@ class Cita extends BD
         $this->estado = $estado;
     }
 
-    public function listar()
+    public function listar($condicion = "")
     {
         try {
             parent::connect();
             $consulta = $this->prepare('SELECT CONCAT(cl.nombre," ",cl.apellido) as cliente, s.nombre as servicio, 
-                c.id, DATE_FORMAT(c.fecha, "%d/%m/%Y") as fecha, c.cita_realizada, c.pago_id, c.estado, pc.estado as pago_estado FROM citas c 
+                c.id, DATE_FORMAT(c.fecha, "%d/%m/%Y") as fecha, c.cita_realizada, c.pago_id, c.hora, c.estado, pc.estado as pago_estado FROM citas c 
                 INNER JOIN clientes cl ON c.cliente_id = cl.id INNER JOIN servicios_esteticos s ON c.servicio_estetico_id = s.id 
-                LEFT JOIN pagos_citas pc ON c.pago_id = pc.id
-                ORDER BY c.fecha DESC, c.hora DESC');
+                LEFT JOIN pagos_citas pc ON c.pago_id = pc.id 
+                '.$condicion.' ORDER BY c.fecha DESC, c.hora DESC');
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;
