@@ -6,7 +6,7 @@
                 <h2>Reportes</h2>
             </center>
         </div>
-        <form class="row p-5 d-flex justify-content-center" id="formulario" method="POST" action="?pagina=reporte_">
+        <form class="row p-5 d-flex justify-content-center" id="formulario" method="POST" action="?pagina=reporte_" target="_blank">
             <div class="formulario__grupo col-md-8" id="grupo__tipo">
                 <label for="tipo" class="formulario__label">Tipo de Reporte: </label>
                 <div class="formulario__grupo-input">

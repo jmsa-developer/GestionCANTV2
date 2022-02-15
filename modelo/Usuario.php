@@ -30,11 +30,11 @@ class Usuario extends Persona{
         $this->rol = $rol;
     }
 
-    public function listar(){
+    public function listar($condicion = ""){
         try {
             parent::connect();
-            $consulta = $this->prepare('SELECT id, cedula, CONCAT(nombre," ",apellido) as nombre, usuario, rol, estado
-              FROM usuarios');
+            $consulta = $this->prepare('SELECT id, cedula, CONCAT(nombre," ",apellido) as nombre, usuario, rol, email, estado
+              FROM usuarios '.$condicion);
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;
