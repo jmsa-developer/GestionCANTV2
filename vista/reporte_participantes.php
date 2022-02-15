@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Reporte de Clientes</title>
+    <title>Reporte de Participantes</title>
 </head>
 
 <body>
@@ -12,7 +12,7 @@
             <tbody>
                 <tr>
                     <td colspan="4" style="width:80%;">
-                        <h1 style="text-align:center; margin-top:auto;">Reporte de Clientes</h1>
+                        <h1 style="text-align:center; margin-top:auto;">Reporte de Participantes</h1>
                     </td>
                     <td colspan="4" style="width:20%; text-align:right;">
                         <img src="img/academiacreativa.png" style="width:80%; height:auto;">
@@ -35,25 +35,25 @@
                 <b>Correo Electrónico</b>
             </div>
         </div>
-        <?php foreach ($clientes as $cliente) : ?>
+        <?php foreach ($participantes as $participante) : ?>
             <hr style="color: #E0E0E0;" />
             <div style="margin:3px 0px;">
                 <div style="display: inline; width:30%; padding-right:2px;">
-                    <?= $cliente->nombre ?>
+                    <?= $participante->nombre ?>
                 </div>
                 <div style="display: inline; width:16%; padding-right:2px;">
-                    <?= $cliente->cedula ?>
+                    <?= $participante->cedula ?>
                 </div>
                 <div style="display: inline; width:16%; padding-right:2px;">
-                    <?= $cliente->telefono ?>
+                    <?= $participante->telefono ?>
                 </div>
                 <div style="display: inline; width:37%; padding-right:2px;">
-                    <?= $cliente->email ?>
+                    <?= $participante->email ?>
                 </div>
             </div>
         <?php endforeach; ?>
         <hr style="color: #BDBDBD;" />
-        <p><b>Total de Clientes: </b><?= count($clientes) ?></p>
+        <p><b>Total de participantes: </b><?= count($participantes) ?></p>
     </div>
 </body>
 
