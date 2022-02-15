@@ -10,7 +10,7 @@
     <div class="" style="width: 98%; background-image: url(img/academiacreativa.png); 
         background-size:100%; background-repeat:no-repeat;">
 
-        <h1 style="text-align:center; width:60%;">Factura de Curso</h1>
+        <h1 style="text-align:center;">Factura de Curso</h1>
         <h3><b>Participante</b></h3>
         <table style="width:100%; margin: 0px 10px;">
             <tbody>

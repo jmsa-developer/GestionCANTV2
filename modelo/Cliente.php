@@ -7,12 +7,12 @@ class Cliente extends Persona
     {
     }
 
-    public function listar()
+    public function listar($condicion = "")
     {
         try {
             parent::connect();
-            $consulta = $this->prepare('SELECT id, cedula, CONCAT(nombre," ",apellido) as nombre, telefono, direccion, estado
-              FROM clientes');
+            $consulta = $this->prepare('SELECT id, cedula, CONCAT(nombre," ",apellido) as nombre, telefono, email, direccion, estado
+              FROM clientes '.$condicion);
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;
