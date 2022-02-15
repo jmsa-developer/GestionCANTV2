@@ -43,12 +43,12 @@ class ServicioEstetico extends BD
         $this->descripcion = $descripcion;
     }
 
-    public function listar()
+    public function listar($condicion = "")
     {
         try {
             parent::connect();
             $consulta = $this->prepare('SELECT id, nombre, tipo, descripcion, costo, estado
-              FROM servicios_esteticos');
+              FROM servicios_esteticos '.$condicion);
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;
