@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Reporte de Participantes</title>
+    <title>Reporte de Empleados</title>
 </head>
 
 <body>
@@ -12,7 +12,7 @@
             <tbody>
                 <tr>
                     <td colspan="4" style="width:80%;">
-                        <h1 style="text-align:center; margin-top:auto;">Reporte de Participantes</h1>
+                        <h1 style="text-align:center; margin-top:auto;">Reporte de Empleados</h1>
                     </td>
                     <td colspan="4" style="width:20%; text-align:right;">
                         <img src="img/academiacreativa.png" style="width:80%; height:auto;">
@@ -25,35 +25,41 @@
             <div style="display: inline; width:30%; padding-right:2px;">
                 <b>Nombres y Apellidos</b>
             </div>
-            <div style="display: inline; width:16%; padding-right:2px;">
+            <div style="display: inline; width:15%; padding-right:2px;">
                 <b>Cédula</b>
             </div>
-            <div style="display: inline; width:16%; padding-right:2px;">
+            <div style="display: inline; width:15%; padding-right:2px;">
                 <b>Teléfono</b>
             </div>
-            <div style="display: inline; width:37%; padding-right:2px;">
-                <b>Correo Electrónico</b>
+            <div style="display: inline; width:20%; padding-right:2px;">
+                <b>Horario</b>
+            </div>
+            <div style="display: inline; width:19.5%; padding-right:2px;">
+                <b>Rol</b>
             </div>
         </div>
-        <?php foreach ($participantes as $participante) : ?>
+        <?php foreach ($empleados as $empleado) : ?>
             <hr style="color: #E0E0E0;" />
             <div style="margin:3px 0px;">
                 <div style="display: inline; width:30%; padding-right:2px;">
-                    <?= $participante->nombre ?>
+                    <?= $empleado->nombre ?>
                 </div>
-                <div style="display: inline; width:16%; padding-right:2px;">
-                    <?= $participante->cedula ?>
+                <div style="display: inline; width:15%; padding-right:2px;">
+                    <?= $empleado->cedula ?>
                 </div>
-                <div style="display: inline; width:16%; padding-right:2px;">
-                    <?= $participante->telefono ?>
+                <div style="display: inline; width:15%; padding-right:2px;">
+                    <?= $empleado->telefono ?>
                 </div>
-                <div style="display: inline; width:37%; padding-right:2px;">
-                    <?= $participante->email ?>
+                <div style="display: inline; width:20%; padding-right:2px;">
+                    <?= $empleado->horario ?>
+                </div>
+                <div style="display: inline; width:19.5%; padding-right:2px;">
+                    <?= $empleado->rol ?>
                 </div>
             </div>
         <?php endforeach; ?>
         <hr style="color: #BDBDBD;" />
-        <p><b>Total de Participantes: </b><?= count($participantes) ?></p>
+        <p><b>Total de Empleados: </b><?= count($empleados) ?></p>
     </div>
 </body>
 
