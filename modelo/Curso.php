@@ -74,9 +74,9 @@ class Curso extends BD
     public function listar()
     {
         try {
-            parent::connect();
+            parent::connect($condicion = "");
             $consulta = $this->prepare('SELECT c.*, DATE_FORMAT(c.fecha,"%d/%m/%Y") as fecha, CONCAT(e.nombre, " ", e.apellido) as instructor 
-                FROM `cursos` c INNER JOIN empleados e ON c.empleado_id = e.id');
+                FROM `cursos` c INNER JOIN empleados e ON c.empleado_id = e.id '.$condicion);
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;
