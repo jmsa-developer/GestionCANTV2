@@ -116,7 +116,7 @@ class PagoCurso extends BD
         $this->participacion_id = $participacion_id;
     }
 
-    public function listar()
+    public function listar($condicion = "")
     {
         try {
             parent::connect();
@@ -124,7 +124,8 @@ class PagoCurso extends BD
                 c.nombre as curso, CONCAT(p.nombre, " ", p.apellido) as participante FROM 
                 pagos_cursos pc INNER JOIN participaciones pa ON pc.id = pa.pago_id 
                 INNER JOIN cursos c ON pa.curso_id = c.id INNER JOIN participantes p 
-                ON pa.participante_id = p.id
+                ON pa.participante_id = p.id 
+                '.$condicion.'
                 ORDER BY fecha DESC');
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
