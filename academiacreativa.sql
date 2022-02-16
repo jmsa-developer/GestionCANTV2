@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-02-2022 a las 15:49:34
+-- Tiempo de generación: 16-02-2022 a las 02:53:18
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -74,7 +74,7 @@ CREATE TABLE `clientes` (
 INSERT INTO `clientes` (`id`, `cedula`, `nombre`, `apellido`, `direccion`, `telefono`, `email`, `fecha_nacimiento`, `estado`) VALUES
 (1, '13515087', 'Pedro', 'Diaz', 'URBANIZACION DEL ESTE', '04260001133', 'pedro@gmail.com', '1998-01-01', 1),
 (3, '28397000', 'Lina Rin', 'Lee', 'Ruiz pineda', '04261235611', 'linalee@gmail.com', '2002-02-01', 1),
-(5, '13520800', 'Jose', 'Perez', 'Sur', '04162262266', 'jose@gmail.com', '1995-12-01', 0),
+(5, '13520800', 'Jose', 'Perez', 'Sur', '04162262266', 'jose@gmail.com', '1995-12-01', 1),
 (6, '25000111', 'Rosa', 'Jimenez', 'Villa Crepuscular', '04242112324', 'rosa@gmail.com', '1997-03-01', 1);
 
 -- --------------------------------------------------------
@@ -155,7 +155,7 @@ CREATE TABLE `pagos_citas` (
 
 INSERT INTO `pagos_citas` (`id`, `tipo`, `nro_comprobante`, `pago_total`, `fecha`, `hora`, `descripcion`, `estado`) VALUES
 (1, 'Punto de Venta', '1231343', 40, '2022-03-02', '09:00:00', '', 1),
-(2, 'Punto de Venta', '12312434', 12324, '2022-02-11', '10:30:00', 'Punto', 1),
+(2, 'Punto de Venta', '12312434', 2, '2022-02-11', '10:30:00', 'Pago completo', 1),
 (3, 'Punto de Venta', '1324324', 3, '2022-02-05', '08:30:00', 'Pago con punto', 1),
 (4, 'Punto de Venta', '48535', 12121200000, '2022-01-01', '08:30:00', '', 1);
 
@@ -204,7 +204,7 @@ CREATE TABLE `participaciones` (
 
 INSERT INTO `participaciones` (`id`, `participante_id`, `curso_id`, `pago_id`) VALUES
 (1, 1, 1, 1),
-(2, 2, 2, 2);
+(2, 2, 1, 2);
 
 -- --------------------------------------------------------
 
