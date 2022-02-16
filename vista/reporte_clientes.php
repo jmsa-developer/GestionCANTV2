@@ -22,33 +22,39 @@
         </table>
         <hr style="color: #BDBDBD;" />
         <div>
-            <div style="display: inline; width:30%; padding-right:2px;">
+            <div style="display: inline; width:20%; padding-right:2px;">
                 <b>Nombres y Apellidos</b>
             </div>
-            <div style="display: inline; width:16%; padding-right:2px;">
+            <div style="display: inline; width:10%; padding-right:2px;">
                 <b>Cédula</b>
             </div>
-            <div style="display: inline; width:16%; padding-right:2px;">
+            <div style="display: inline; width:10%; padding-right:2px;">
                 <b>Teléfono</b>
             </div>
-            <div style="display: inline; width:37%; padding-right:2px;">
+            <div style="display: inline; width:34%; padding-right:2px;">
                 <b>Correo Electrónico</b>
+            </div>
+            <div style="display: inline; width:25%; padding-right:2px;">
+                <b>Dirección</b>
             </div>
         </div>
         <?php foreach ($clientes as $cliente) : ?>
             <hr style="color: #E0E0E0;" />
             <div style="margin:3px 0px;">
-                <div style="display: inline; width:30%; padding-right:2px;">
+                <div style="display: inline; width:20%; padding-right:2px;">
                     <?= $cliente->nombre ?>
                 </div>
-                <div style="display: inline; width:16%; padding-right:2px;">
+                <div style="display: inline; width:10%; padding-right:2px;">
                     <?= $cliente->cedula ?>
                 </div>
-                <div style="display: inline; width:16%; padding-right:2px;">
+                <div style="display: inline; width:10%; padding-right:2px;">
                     <?= $cliente->telefono ?>
                 </div>
-                <div style="display: inline; width:37%; padding-right:2px;">
+                <div style="display: inline; width:34%; padding-right:2px; word-wrap:break-word;">
                     <?= $cliente->email ?>
+                </div>
+                <div style="display: inline; width:25%; padding-right:2px;">
+                    <?= $cliente->direccion ?>
                 </div>
             </div>
         <?php endforeach; ?>
