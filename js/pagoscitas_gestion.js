@@ -13,6 +13,8 @@ $(document).ready(function () {
 			{ data: 'pago_total' },
 			{ data: 'tipo' },
 			{ data: 'nro_comprobante' },
+			{ data: 'servicio' },
+			{ data: 'cliente' },
 			{ data: 'cita' },
 			{ data: 'button' }
 		],

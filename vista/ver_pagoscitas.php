@@ -14,7 +14,9 @@
                         <th scope="col">Pago Total</th>
                         <th scope="col">Tipo de Pago</th>
                         <th scope="col">Nro de Comprobante</th>
-                        <th scope="col">Cita del Servicio</th>
+                        <th scope="col">Servicio</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Cita</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
