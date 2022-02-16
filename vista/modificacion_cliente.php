@@ -9,19 +9,6 @@
         <br>
 
         <div class="formulario__grupo" id="grupo__socio">
-            <label for="socio" class="formulario__label">Buscar <i class="fas fa-search"></i></li></label>
-            <div class="formulario__grupo-input">
-
-                <input type="text" name="q" class="formulario__label" placeholder="Buscar">
-
-                <i class="formulario__validacion-estado fas fa-times-circle"></i>
-
-
-
-            </div>
-
-
-            </br></br>
             <form action="" class="formulario" id="formulario">
                 <div class="formulario__grupo" id="grupo__cedula">
                     <label for="cedula" class="formulario__label">Cedula</label>

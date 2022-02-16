@@ -9,24 +9,11 @@
         <br>
 
         <div class="formulario__grupo" id="grupo__socio">
-            <label for="socio" class="formulario__label">Buscar <i class="fas fa-search"></i></li></label>
-            <div class="formulario__grupo-input">
-
-                <input type="text" name="q" class="formulario__label" placeholder="Buscar">
-
-                <i class="formulario__validacion-estado fas fa-times-circle"></i>
-
-
-
-            </div>
-
-
-            </br></br>
             <form action="" class="formulario" id="formulario">
                 <div class="formulario__grupo" id="grupo__cedula">
-                    <label for="cedula" class="formulario__label">Cedula</label>
+                    <label for="cedula" class="formulario__label">Cédula</label>
                     <div class="formulario__grupo-input">
-                        <input type="tel" name="cedula" class="formulario__input" id="cedula" placeholder="28516382" pattern="[0-9]{7,8}">
+                        <input type="tel" name="cedula" class="formulario__input" id="cedula" placeholder="28516382" pattern="[0-9]{7,8}" required>
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
                     <p class="formulario__input-error">La cedula solo puede contener numeros y tiene que ser de 7 a 8 dígitos.</p>
@@ -107,9 +94,7 @@
 
             </form>
 
-            <button type="submit" class="formulario__btn" style="float: right;"><a href="?pagina=registro_servicioestetico">Siguiente </a> <i class="fas fa-arrow-right"></i></button>
-
-            <br>
+            
     </div>
     <script src="js/cliente.js"></script>
     <?php require "vista/componentes/footer.php" ?>
