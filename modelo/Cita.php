@@ -5,6 +5,7 @@ class Cita extends BD
     private $id;
     private $cliente_id;
     private $servicio_estetico_id;
+    private $empleado_id;
     private $pago_id;
     private $fecha;
     private $hora;
@@ -32,6 +33,12 @@ class Cita extends BD
     }
     public function setServicio_estetico_id($servicio_estetico_id){
         $this->servicio_estetico_id = $servicio_estetico_id;
+    }
+    public function getEmpleado_id(){
+        return $this->empleado_id;
+    }
+    public function setEmpleado_id($empleado_id){
+        $this->empleado_id = $empleado_id;
     }
     public function getPago_id(){
         return $this->pago_id;
@@ -117,12 +124,13 @@ class Cita extends BD
         try {
             parent::connect();
             $consulta = $this->prepare("INSERT INTO citas(cliente_id, servicio_estetico_id, 
-                fecha, hora, cita_realizada)"
+                empleado_id, fecha, hora, cita_realizada)"
                 . "VALUES (:cliente_id, :servicio_estetico_id, 
-                :fecha, :hora, :cita_realizada)");
+                :empleado_id, :fecha, :hora, :cita_realizada)");
 
             $consulta->bindParam(":cliente_id", $this->cliente_id);
             $consulta->bindParam(":servicio_estetico_id", $this->servicio_estetico_id);
+            $consulta->bindParam(":empleado_id", $this->empleado_id);
             $consulta->bindParam(":fecha", $this->fecha);
             $consulta->bindParam(":hora", $this->hora);
             $consulta->bindParam(":cita_realizada", $this->cita_realizada);
@@ -138,12 +146,13 @@ class Cita extends BD
         try {
             parent::connect();
             $consulta = $this->prepare("UPDATE citas SET cliente_id = :cliente_id, servicio_estetico_id = :servicio_estetico_id,
-                    fecha = :fecha, hora = :hora, cita_realizada = :cita_realizada
+                    empleado_id = :empleado_id, fecha = :fecha, hora = :hora, cita_realizada = :cita_realizada
                     WHERE id = :id");
 
             $consulta->bindParam(":id", $this->id);
             $consulta->bindParam(":cliente_id", $this->cliente_id);
             $consulta->bindParam(":servicio_estetico_id", $this->servicio_estetico_id);
+            $consulta->bindParam(":empleado_id", $this->empleado_id);
             $consulta->bindParam(":fecha", $this->fecha);
             $consulta->bindParam(":hora", $this->hora);
             $consulta->bindParam(":cita_realizada", $this->cita_realizada);

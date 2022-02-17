@@ -25,6 +25,9 @@
                 </div>
                 <p class="formulario__input-error">Seleccione un Cliente</p>
             </div>
+            <div class="formulario__grupo" id="grupo__">
+            </div>
+
             <div class="formulario__grupo" id="grupo__servicio_id">
                 <label for="servicio_id" class="formulario__label">Servicio</label>
                 <div class="formulario__grupo-input">
@@ -37,6 +40,20 @@
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
                 <p class="formulario__input-error">Seleccione un Servicio</p>
+            </div>
+
+            <div class="formulario__grupo" id="grupo__empleado_id">
+                <label for="empleado_id" class="formulario__label">Empleado</label>
+                <div class="formulario__grupo-input">
+                    <select class="formulario__input select-especial" id="empleado_id" name="empleado_id">
+                        <option value=""></option>
+                        <?php foreach ($empleados as $empleado) : ?>
+                            <option value="<?= $empleado->id ?>"><?= $empleado->cedula ?> // <?= $empleado->nombre ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">Seleccione el Empleado que realiza el Servicio</p>
             </div>
 
             <div class="formulario__grupo" id="grupo__fecha">
@@ -74,7 +91,7 @@
             </div>
 
             <div class="formulario__grupo formulario__grupo-btn-enviar">
-                <button type="submit" class="formulario__btn">Registrar</button>
+                <button type="submit" class="formulario__btn">Guardar</button>
                 <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Procesando...</p>
             </div>
         </form>
@@ -84,6 +101,7 @@
         $(document).ready(function() {
             $('#cliente_id').val(<?= $cita->cliente_id ?>)
             $('#servicio_id').val(<?= $cita->servicio_estetico_id ?>)
+            $('#empleado_id').val(<?= $cita->empleado_id ?>)
             $('.select-especial').select2();
             $('#cita_realizada').val(<?= $cita->cita_realizada ?>)
         });

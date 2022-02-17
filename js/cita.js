@@ -13,6 +13,7 @@ if(typeof id != 'undefined'){
 const campos = {
 	cliente_id: campoInicial,
 	servicio_id: campoInicial,
+	empleado_id: campoInicial,
 	fecha: campoInicial,
 	hora: campoInicial,
 	
@@ -55,8 +56,9 @@ formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
 	validarCampo(expresionId, document.getElementById('cliente_id'),'cliente_id')
 	validarCampo(expresionId, document.getElementById('servicio_id'),'servicio_id')
+	validarCampo(expresionId, document.getElementById('empleado_id'),'empleado_id')
 	console.log(campos)
-	if(campos.cliente_id && campos.servicio_id && campos.fecha && campos.hora){
+	if(campos.cliente_id && campos.servicio_id && campos.empleado_id && campos.fecha && campos.hora){
 		// formulario.reset();
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
