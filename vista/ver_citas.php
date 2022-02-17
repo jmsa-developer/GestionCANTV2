@@ -12,7 +12,9 @@
                     <tr>
                         <th scope="col">Servicio</th>
                         <th scope="col">Cliente</th>
+                        <th scope="col">Empleado</th>
                         <th scope="col">Fecha</th>
+                        <th scope="col">Hora</th>
                         <th scope="col">Realizada</th>
                         <th scope="col">Pago</th>
                         <th scope="col">Acciones</th>

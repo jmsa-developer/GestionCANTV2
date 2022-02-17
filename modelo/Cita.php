@@ -75,9 +75,11 @@ class Cita extends BD
     {
         try {
             parent::connect();
-            $consulta = $this->prepare('SELECT CONCAT(cl.nombre," ",cl.apellido) as cliente, s.nombre as servicio, 
-                c.id, DATE_FORMAT(c.fecha, "%d/%m/%Y") as fecha, c.cita_realizada, c.pago_id, c.hora, c.estado, pc.estado as pago_estado FROM citas c 
+            $consulta = $this->prepare('SELECT CONCAT(cl.nombre," ",cl.apellido) as cliente, CONCAT(em.nombre," ",em.apellido) as empleado, 
+                s.nombre as servicio, c.id, DATE_FORMAT(c.fecha, "%d/%m/%Y") as fecha, c.cita_realizada, c.pago_id, 
+                TIME_FORMAT(c.hora, "%h:%i %p") as hora, c.estado, pc.estado as pago_estado FROM citas c 
                 INNER JOIN clientes cl ON c.cliente_id = cl.id INNER JOIN servicios_esteticos s ON c.servicio_estetico_id = s.id 
+                INNER JOIN empleados em ON c.empleado_id = em.id
                 LEFT JOIN pagos_citas pc ON c.pago_id = pc.id 
                 '.$condicion.' ORDER BY c.fecha DESC, c.hora DESC');
             $consulta->execute();

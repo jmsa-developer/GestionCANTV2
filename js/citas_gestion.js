@@ -11,7 +11,9 @@ $(document).ready(function () {
 		columns: [
 			{ data: 'servicio' },
 			{ data: 'cliente' },
+			{ data: 'empleado' },
 			{ data: 'fecha' },
+			{ data: 'hora' },
 			{ data: 'realizada' },
 			{ data: 'pago' },
 			{ data: 'button' }

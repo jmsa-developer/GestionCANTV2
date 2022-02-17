@@ -27,38 +27,44 @@
         <br>
         <br>
         <div>
-            <div style="display: inline; width:25%; padding-right:2px;">
+            <div style="display: inline; width:20%; padding-right:2px;">
                 <b>Servicio</b>
             </div>
-            <div style="display: inline; width:27%; padding-right:2px;">
+            <div style="display: inline; width:21%; padding-right:2px;">
                 <b>Cliente</b>
             </div>
-            <div style="display: inline; width:17%; padding-right:2px;">
+            <div style="display: inline; width:20%; padding-right:2px;">
+                <b>Empleado</b>
+            </div>
+            <div style="display: inline; width:13%; padding-right:2px;">
                 <b>Fecha</b>
             </div>
-            <div style="display: inline; width:16%; padding-right:2px;">
+            <div style="display: inline; width:12%; padding-right:2px;">
                 <b>Hora</b>
             </div>
-            <div style="display: inline; width:8%; padding-right:2px;">
+            <div style="display: inline; width:6%; padding-right:2px;">
                 <b>Realizada</b>
             </div>
         </div>
         <?php foreach ($citas as $cita) : ?>
             <hr style="color: #E0E0E0;" />
             <div style="margin:3px 0px;">
-                <div style="display: inline; width:25%; padding-right:2px;">
+                <div style="display: inline; width:20%; padding-right:2px;">
                     <?= $cita->servicio ?>
                 </div>
-                <div style="display: inline; width:27%; padding-right:2px;">
+                <div style="display: inline; width:21%; padding-right:2px;">
                     <?= $cita->cliente ?>
                 </div>
-                <div style="display: inline; width:17%; padding-right:2px;">
+                <div style="display: inline; width:20%; padding-right:2px;">
+                    <?= $cita->empleado ?>
+                </div>
+                <div style="display: inline; width:13%; padding-right:2px;">
                     <?= $cita->fecha ?>
                 </div>
-                <div style="display: inline; width:16%; padding-right:2px;">
+                <div style="display: inline; width:12%; padding-right:2px;">
                     <?= $cita->hora ?>
                 </div>
-                <div style="display: inline; width:8%; padding-right:2px;">
+                <div style="display: inline; width:6%; padding-right:2px;">
                     <?php 
                         if($cita->cita_realizada){
                             echo "Sí";
