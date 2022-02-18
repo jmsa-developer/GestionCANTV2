@@ -120,7 +120,8 @@ class PagoCurso extends BD
     {
         try {
             parent::connect();
-            $consulta = $this->prepare('SELECT pc.*, DATE_FORMAT(pc.fecha, "%d/%m/%Y") as fecha,
+            $consulta = $this->prepare('SELECT pc.*, CONCAT("$",pc.pago_total) as pago_total, 
+                CONCAT("$",pc.abono) as abono, DATE_FORMAT(pc.fecha, "%d/%m/%Y") as fecha,
                 c.nombre as curso, CONCAT(p.nombre, " ", p.apellido) as participante FROM 
                 pagos_cursos pc INNER JOIN participaciones pa ON pc.id = pa.pago_id 
                 INNER JOIN cursos c ON pa.curso_id = c.id INNER JOIN participantes p 

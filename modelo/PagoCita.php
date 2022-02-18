@@ -68,7 +68,7 @@ class PagoCita extends BD
     {
         try {
             parent::connect();
-            $consulta = $this->prepare('SELECT c.id as cita_id, pc.*, DATE_FORMAT(pc.fecha, "%d/%m/%Y") as fecha,
+            $consulta = $this->prepare('SELECT c.id as cita_id, pc.*, CONCAT("$",pc.pago_total) as pago_total, DATE_FORMAT(pc.fecha, "%d/%m/%Y") as fecha,
                 CONCAT(cl.nombre, " ", cl.apellido) as cliente, se.nombre as servicio
                 FROM `citas` c INNER JOIN pagos_citas pc ON c.pago_id = pc.id
                 INNER JOIN clientes cl ON c.cliente_id = cl.id   

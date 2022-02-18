@@ -82,7 +82,7 @@ class Curso extends BD
     {
         try {
             parent::connect($condicion = "");
-            $consulta = $this->prepare('SELECT c.*, DATE_FORMAT(c.fecha,"%d/%m/%Y") as fecha,
+            $consulta = $this->prepare('SELECT c.*, CONCAT("$",c.costo) as costo, DATE_FORMAT(c.fecha,"%d/%m/%Y") as fecha,
             TIME_FORMAT(c.hora_inicio, "%h:%i %p") as hora_inicio, TIME_FORMAT(c.hora_culminacion, "%h:%i %p") as hora_culminacion, 
             CONCAT(e.nombre, " ", e.apellido) as instructor 
                 FROM `cursos` c INNER JOIN empleados e ON c.empleado_id = e.id '.$condicion);

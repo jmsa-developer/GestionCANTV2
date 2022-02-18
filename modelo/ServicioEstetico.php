@@ -47,7 +47,7 @@ class ServicioEstetico extends BD
     {
         try {
             parent::connect();
-            $consulta = $this->prepare('SELECT id, nombre, tipo, descripcion, costo, estado
+            $consulta = $this->prepare('SELECT id, nombre, tipo, descripcion, CONCAT("$",costo) as costo, estado
               FROM servicios_esteticos '.$condicion);
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
