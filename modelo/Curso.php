@@ -116,7 +116,7 @@ class Curso extends BD
         try {
             parent::connect();
             $consulta = $this->prepare('SELECT id, nombre, DATE_FORMAT(fecha,"%d/%m/%Y") as fecha
-                FROM `cursos` WHERE estado = 1 ORDER BY fecha, horario');
+                FROM `cursos` WHERE estado = 1 ORDER BY fecha, hora_inicio');
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;

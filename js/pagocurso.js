@@ -55,22 +55,21 @@ inputs.forEach((input) => {
 
 tipo.addEventListener('change', (e)=>{
 	let t = e.target.value;
+	let nro_comprobante = document.getElementById('nro_comprobante')
 	if(t == "Efectivo BSS" || t == "Efectivo USD"){
 		expresiones.nro_comprobante = /^[0-9]{0,14}$/
 	}
 	else{
 		expresiones.nro_comprobante = /^[0-9]{4,14}$/
 	}
-	if(typeof id != 'undefined'){
-		let nro_comprobante = document.getElementById('nro_comprobante')
-		validarCampo(expresiones.nro_comprobante, nro_comprobante, 'nro_comprobante');
-	}
+	validarCampo(expresiones.nro_comprobante, nro_comprobante, 'nro_comprobante');
 })
 
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
 	validarCampo(expresionId, document.getElementById('curso_id'),'curso_id');
 	validarCampo(expresionId, document.getElementById('participante_id'),'participante_id');
+	console.log(campos);
 	if(campos.participante_id && campos.curso_id && campos.fecha && campos.hora && campos.pago_total && campos.nro_comprobante){
 		// formulario.reset();
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
