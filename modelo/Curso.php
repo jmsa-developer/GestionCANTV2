@@ -7,7 +7,8 @@ class Curso extends BD
     private $empleado_id;
     private $costo;
     private $fecha;
-    private $horario;
+    private $hora_inicio;
+    private $hora_culminacion;
     private $duracion;
     private $descripcion;
     private $estado;
@@ -46,11 +47,17 @@ class Curso extends BD
     public function setFecha($fecha){
         $this->fecha = $fecha;
     }
-    public function getHorario(){
-        return $this->horario;
+    public function getHora_inicio(){
+        return $this->hora_inicio;
     }
-    public function setHorario($horario){
-        $this->horario = $horario;
+    public function setHora_inicio($hora_inicio){
+        $this->hora_inicio = $hora_inicio;
+    }
+    public function getHora_culminacion(){
+        return $this->hora_culminacion;
+    }
+    public function setHora_culminacion($hora_culminacion){
+        $this->hora_culminacion = $hora_culminacion;
     }
     public function getDuracion(){
         return $this->duracion;
@@ -134,15 +141,16 @@ class Curso extends BD
         try {
             parent::connect();
             $consulta = $this->prepare("INSERT INTO cursos(nombre, empleado_id, 
-                costo, fecha, horario, duracion, descripcion)"
+                costo, fecha, hora_inicio, hora_culminacion, duracion, descripcion)"
                 . "VALUES (:nombre, :empleado_id, 
-                :costo, :fecha, :horario, :duracion, :descripcion)");
+                :costo, :fecha, :hora_inicio, :hora_culminacion, :duracion, :descripcion)");
 
             $consulta->bindParam(":nombre", $this->nombre);
             $consulta->bindParam(":empleado_id", $this->empleado_id);
             $consulta->bindParam(":costo", $this->costo);
             $consulta->bindParam(":fecha", $this->fecha);
-            $consulta->bindParam(":horario", $this->horario);
+            $consulta->bindParam(":hora_inicio", $this->hora_inicio);
+            $consulta->bindParam(":hora_culminacion", $this->hora_culminacion);
             $consulta->bindParam(":duracion", $this->duracion);
             $consulta->bindParam(":descripcion", $this->descripcion);
             $consulta->execute();
@@ -157,7 +165,8 @@ class Curso extends BD
         try {
             parent::connect();
             $consulta = $this->prepare("UPDATE cursos SET nombre = :nombre, empleado_id = :empleado_id,
-                    costo = :costo, fecha = :fecha, horario = :horario, duracion = :duracion, descripcion = :descripcion
+                    costo = :costo, fecha = :fecha, hora_inicio = :hora_inicio, hora_culminacion = :hora_culminacion,
+                    duracion = :duracion, descripcion = :descripcion
                     WHERE id = :id");
 
             $consulta->bindParam(":id", $this->id);
@@ -165,7 +174,8 @@ class Curso extends BD
             $consulta->bindParam(":empleado_id", $this->empleado_id);
             $consulta->bindParam(":costo", $this->costo);
             $consulta->bindParam(":fecha", $this->fecha);
-            $consulta->bindParam(":horario", $this->horario);
+            $consulta->bindParam(":hora_inicio", $this->hora_inicio);
+            $consulta->bindParam(":hora_culminacion", $this->hora_culminacion);
             $consulta->bindParam(":duracion", $this->duracion);
             $consulta->bindParam(":descripcion", $this->descripcion);
             return $consulta->execute();

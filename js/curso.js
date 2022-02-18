@@ -5,7 +5,8 @@ const expresiones = {
 
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,50}$/, // Letras y espacios, pueden llevar acentos.
 	fecha: /^.{5,20}$/,
-	horario: /^.{5,20}$/,
+	hora_inicio: /^.{5,20}$/,
+	hora_culminacion: /^.{5,20}$/,
 	duracion: /^.{1,30}$/, // 7 a 14 Letras y espacios, pueden llevar acentos y numeros.
 	costo: /^[0-9]{1,11}$/, // solo numeros numeros, maximo 11 digitos.
 }
@@ -18,7 +19,8 @@ const campos = {
 	nombre: campoInicial,
 	empleado_id: campoInicial,
 	fecha: campoInicial,
-	horario: campoInicial,
+	hora_inicio: campoInicial,
+	hora_culminacion: campoInicial,
 	duracion: campoInicial,
 	costo: campoInicial,
 
@@ -55,7 +57,7 @@ inputs.forEach((input) => {
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
 	validarCampo(expresionId, document.getElementById('empleado_id'),'empleado_id')
-	if(campos.nombre && campos.empleado_id && campos.fecha && campos.horario &&  campos.duracion && campos.costo ){
+	if(campos.nombre && campos.empleado_id && campos.fecha && campos.hora_inicio && campos.hora_culminacion &&  campos.duracion && campos.costo ){
 		// formulario.reset();
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {

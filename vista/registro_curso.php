@@ -60,14 +60,24 @@
             <p class="formulario__input-error">El costo del curso solo puede contener numeros y caracteres especiales, tiene que ser de 1 a 10 dígitos.</p>
         </div>
 
-        <!-- Grupo: Apellido -->
-        <div class="formulario__grupo" id="grupo__horario">
-            <label for="horario" class="formulario__label">Horario del curso</label>
+        <!-- Grupo: Hora -->
+        <div class="formulario__grupo" id="grupo__">
+        </div>
+        <div class="formulario__grupo" id="grupo__hora_inicio">
+            <label for="hora_inicio" class="formulario__label">Hora de Inicio</label>
             <div class="formulario__grupo-input">
-                <input type="time" class="formulario__input" name="horario" id="horario" placeholder="09:00 am">
+                <input type="time" class="formulario__input" name="hora_inicio" id="hora_inicio" required>
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El horario del curso tiene que ser de 2 a 16 dígitos y solo puede contener letras, nuemros signos de puntuación.</p>
+            <p class="formulario__input-error">Indique la Hora de Inicio</p>
+        </div>
+        <div class="formulario__grupo" id="grupo__hora_culminacion">
+            <label for="hora_culminacion" class="formulario__label">Hora de Culminación</label>
+            <div class="formulario__grupo-input">
+                <input type="time" class="formulario__input" name="hora_culminacion" id="hora_culminacion" required>
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">Indique la Hora de Culminación</p>
         </div>
 
         <div class="formulario__grupo" id="grupo__descripcion">

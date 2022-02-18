@@ -5,7 +5,8 @@
 		$curso->setNombre($_POST['nombre']);
 		$curso->setEmpleado_id($_POST['empleado_id']);
 		$curso->setFecha($_POST['fecha']);
-		$curso->setHorario($_POST['horario']);
+		$curso->setHora_inicio($_POST['hora_inicio']);
+		$curso->setHora_culminacion($_POST['hora_culminacion']);
 		$curso->setCosto($_POST['costo']);
 		$curso->setDuracion($_POST['duracion']);
 		$curso->setDescripcion($_POST['descripcion']);
