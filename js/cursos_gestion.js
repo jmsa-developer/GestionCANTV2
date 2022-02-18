@@ -13,6 +13,8 @@ $(document).ready(function () {
 			{ data: 'instructor' },
 			{ data: 'fecha' },
 			{ data: 'duracion' },
+			{ data: 'hora_inicio' },
+			{ data: 'hora_culminacion' },
 			{ data: 'costo' },
 			{ data: 'button' }
 		],

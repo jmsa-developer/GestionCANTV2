@@ -14,6 +14,8 @@
                         <th scope="col">Instructor</th>
                         <th scope="col">Fecha</th>
                         <th scope="col">Duración</th>
+                        <th scope="col">Hora de Inicio</th>
+                        <th scope="col">Hora de Culminación</th>
                         <th scope="col">Costo</th>
                         <th scope="col">Acciones</th>
                     </tr>
