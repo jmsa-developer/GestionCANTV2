@@ -66,7 +66,7 @@
             <label for="nro_comprobante" class="formulario__label">Nro del comprobante</label>
 
             <div class="formulario__grupo-input">
-                <input type="number" name="nro_comprobante" class="formulario__input" id="nro_comprobante" placeholder="00001111" value="" min="1" step="1" required="" />
+                <input type="number" name="nro_comprobante" class="formulario__input" id="nro_comprobante" placeholder="00001111" value="" min="1" step="1" />
 
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>

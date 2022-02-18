@@ -1,5 +1,6 @@
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
+const tipo = document.getElementById('tipo');
 
 const expresiones = {
 	fecha: /^.{5,20}$/,
@@ -51,6 +52,20 @@ inputs.forEach((input) => {
 	input.addEventListener('keyup', validarFormulario);
 	input.addEventListener('blur', validarFormulario);
 });
+
+tipo.addEventListener('change', (e)=>{
+	let t = e.target.value;
+	if(t == "Efectivo BSS" || t == "Efectivo USD"){
+		expresiones.nro_comprobante = /^[0-9]{0,14}$/
+	}
+	else{
+		expresiones.nro_comprobante = /^[0-9]{4,14}$/
+	}
+	if(typeof id != 'undefined'){
+		let nro_comprobante = document.getElementById('nro_comprobante')
+		validarCampo(expresiones.nro_comprobante, nro_comprobante, 'nro_comprobante');
+	}
+})
 
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
