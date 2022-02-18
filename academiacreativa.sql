@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-02-2022 a las 02:53:18
+-- Tiempo de generación: 18-02-2022 a las 01:31:42
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -32,6 +32,7 @@ CREATE TABLE `citas` (
   `id` int(11) NOT NULL,
   `cliente_id` int(11) DEFAULT NULL,
   `servicio_estetico_id` int(11) DEFAULT NULL,
+  `empleado_id` int(11) DEFAULT NULL,
   `pago_id` int(11) DEFAULT NULL,
   `fecha` date NOT NULL,
   `hora` time NOT NULL,
@@ -43,11 +44,12 @@ CREATE TABLE `citas` (
 -- Volcado de datos para la tabla `citas`
 --
 
-INSERT INTO `citas` (`id`, `cliente_id`, `servicio_estetico_id`, `pago_id`, `fecha`, `hora`, `cita_realizada`, `estado`) VALUES
-(1, 3, 1, 1, '2022-02-08', '14:30:00', 1, 1),
-(2, 3, 1, 4, '2022-02-09', '13:00:00', 0, 1),
-(3, 6, 2, 3, '2022-02-08', '07:00:00', 0, 1),
-(4, 6, 2, 2, '2022-02-11', '11:55:00', 0, 1);
+INSERT INTO `citas` (`id`, `cliente_id`, `servicio_estetico_id`, `empleado_id`, `pago_id`, `fecha`, `hora`, `cita_realizada`, `estado`) VALUES
+(1, 3, 1, 1, 1, '2022-02-08', '15:30:00', 1, 1),
+(2, 3, 1, 1, 4, '2022-02-09', '13:00:00', 0, 1),
+(3, 6, 2, 2, 3, '2022-02-08', '07:00:00', 0, 1),
+(4, 6, 2, 2, 2, '2022-02-11', '11:55:00', 0, 1),
+(5, 6, 2, 1, NULL, '2022-01-01', '12:00:00', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -89,7 +91,8 @@ CREATE TABLE `cursos` (
   `empleado_id` int(11) NOT NULL,
   `costo` float DEFAULT NULL,
   `fecha` date NOT NULL,
-  `horario` time NOT NULL,
+  `hora_inicio` time NOT NULL,
+  `hora_culminacion` time NOT NULL,
   `duracion` varchar(30) DEFAULT NULL,
   `descripcion` varchar(250) DEFAULT NULL,
   `estado` int(1) DEFAULT '1'
@@ -99,9 +102,10 @@ CREATE TABLE `cursos` (
 -- Volcado de datos para la tabla `cursos`
 --
 
-INSERT INTO `cursos` (`id`, `nombre`, `empleado_id`, `costo`, `fecha`, `horario`, `duracion`, `descripcion`, `estado`) VALUES
-(1, 'Masajes', 1, 35, '2022-02-16', '08:00:00', '3 dias', 'Lunes a Miercoles', 1),
-(2, 'Uñas Acrílicas', 1, 20, '2022-03-02', '09:32:00', '2 dias', 'Colocación de uñas acrilicas\r\nLunes y viernes', 1);
+INSERT INTO `cursos` (`id`, `nombre`, `empleado_id`, `costo`, `fecha`, `hora_inicio`, `hora_culminacion`, `duracion`, `descripcion`, `estado`) VALUES
+(1, 'Masajes', 1, 35, '2022-02-16', '08:00:00', '12:00:00', '3 dias', 'Lunes a Miercoles', 1),
+(2, 'Uñas Acrílicas', 1, 20, '2022-03-02', '09:30:00', '12:00:00', '2 dias', 'Colocación de uñas acrilicas\r\nLunes y viernes', 1),
+(3, 'Higiene Facial Profunda', 1, 10, '2022-02-21', '14:00:00', '16:30:00', '2 dias', '', 1);
 
 -- --------------------------------------------------------
 
@@ -300,7 +304,8 @@ ALTER TABLE `citas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `cliente_id` (`cliente_id`),
   ADD KEY `servicio_estetico_id` (`servicio_estetico_id`),
-  ADD KEY `pago_id` (`pago_id`);
+  ADD KEY `pago_id` (`pago_id`),
+  ADD KEY `empleado_id` (`empleado_id`);
 
 --
 -- Indices de la tabla `clientes`
@@ -375,7 +380,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
@@ -387,7 +392,7 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `empleados`
@@ -441,7 +446,8 @@ ALTER TABLE `usuarios`
 ALTER TABLE `citas`
   ADD CONSTRAINT `citas_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `citas_ibfk_2` FOREIGN KEY (`servicio_estetico_id`) REFERENCES `servicios_esteticos` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `citas_ibfk_3` FOREIGN KEY (`pago_id`) REFERENCES `pagos_citas` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `citas_ibfk_3` FOREIGN KEY (`pago_id`) REFERENCES `pagos_citas` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `citas_ibfk_4` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `cursos`

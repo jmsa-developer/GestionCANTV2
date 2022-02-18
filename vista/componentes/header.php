@@ -65,7 +65,7 @@
                         <a href="?pagina=registro_cliente"><i class="fas fa-user-plus"></i><span>Nuevo Cliente</span></a>
                         <a href="?pagina=ver_clientes"><i class="far fa-file-alt"></i><span>Consultas Cliente</span></a>
                         <a href="?pagina=registro_pagocita"><i class="far fa-money-bill-alt"></i><span>Nuevo Pago de Cita</span></a>
-                        <a href="?pagina=ver_pagoscitas"><i class="far fa-calendar-check"></i><span>Consultas Pagos</span></a>
+                        <a href="?pagina=ver_pagoscitas"><i class="far fa-calendar-check"></i><span>Consultas Pagos de Citas</span></a>
 
                     </div>
                 </li>
@@ -79,7 +79,7 @@
                         <a href="?pagina=registro_participante"><i class="fas fa-user-plus"></i><span>Nuevo Participante</span></a>
                         <a href="?pagina=ver_participantes"><i class="far fa-file-alt"></i><span>Consultas Participante</span></a>
                         <a href="?pagina=registro_pagocurso"><i class="far fa-money-bill-alt"></i><span>Nuevo Pago de Curso</span></a>
-                        <a href="?pagina=ver_pagoscursos"><i class="far fa-calendar-check"></i><span>Consultas Pagos</span></a>
+                        <a href="?pagina=ver_pagoscursos"><i class="far fa-calendar-check"></i><span>Consultas Pagos de Cursos</span></a>
 
                     </div>
                 </li>
