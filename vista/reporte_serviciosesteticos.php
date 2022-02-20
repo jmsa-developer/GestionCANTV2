@@ -45,7 +45,7 @@
                     <?= $servicio->tipo ?>
                 </div>
                 <div style="display: inline; width:14%; padding-right:2px;">
-                    $<?= $servicio->costo ?>
+                    <?= $servicio->costo ?>
                 </div>
                 <div style="display: inline; width:39.5%; padding-right:2px;">
                     <?= $servicio->descripcion ?>

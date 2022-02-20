@@ -59,7 +59,7 @@
                     <?= $curso->duracion ?>
                 </div>
                 <div style="display: inline; width:17.5%; padding-right:2px;">
-                    $<?= $curso->costo ?>
+                    <?= $curso->costo ?>
                 </div>
             </div>
         <?php endforeach; ?>
