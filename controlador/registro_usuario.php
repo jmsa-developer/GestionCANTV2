@@ -1,4 +1,8 @@
 <?php  
+  	if($_SESSION['ac_rol'] != 'Administrador'){
+  		header('Location: ?pagina=inicio');
+  	}
+
 	if($_SERVER['REQUEST_METHOD'] == "POST"){
 		require_once "modelo/Usuario.php";
 		$usuario = new Usuario;//Instanciar Usuario

@@ -78,10 +78,10 @@ class Curso extends BD
         $this->estado = $estado;
     }
 
-    public function listar()
+    public function listar($condicion = "")
     {
         try {
-            parent::connect($condicion = "");
+            parent::connect();
             $consulta = $this->prepare('SELECT c.*, CONCAT("$",c.costo) as costo, DATE_FORMAT(c.fecha,"%d/%m/%Y") as fecha,
             TIME_FORMAT(c.hora_inicio, "%h:%i %p") as hora_inicio, TIME_FORMAT(c.hora_culminacion, "%h:%i %p") as hora_culminacion, 
             CONCAT(e.nombre, " ", e.apellido) as instructor 

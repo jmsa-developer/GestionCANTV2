@@ -35,9 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		$participantes = $part->listarActivos();
 		$cur = new Curso;
 		$cursos = $cur->listarActivos();
-		if($cur->getError()){
-			var_dump($cur->getError());
-		}
+	
 		require_once("vista/" . $pagina . ".php");
 	} else {
 		echo "pagina en construcion";

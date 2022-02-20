@@ -36,6 +36,4 @@ class BD extends PDO
     }
     public function setError($error)
     {
-        $this->error = $error;
-    }
-}
+        $this->error = $error;

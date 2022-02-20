@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <div class="" style="width: 98%; background-image: url(img/academiacreativa.png); 
+    <div class="" style="width: 98%;  
         background-size:100%; background-repeat:no-repeat;">
 
         <h1 style="text-align:center;">Factura de Curso</h1>
@@ -45,7 +45,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <b>Fecha del Curso:</b> <?= $curso->fecha ?> - <?= $curso->horario ?>
+                        <b>Fecha del Curso:</b> <?= $curso->fecha ?> - <?= $curso->hora_inicio ?>
                     </td>
                     <td>
                         <b>Costo: </b> $<?= $curso->costo ?>

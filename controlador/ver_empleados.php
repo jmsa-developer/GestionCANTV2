@@ -1,5 +1,7 @@
 <?php
-
+if($_SESSION['ac_rol'] != 'Administrador'){
+  		header('Location: ?pagina=inicio');
+}
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	$metodo = $_GET['metodo'];
 	if ($metodo == "listar") {//Proceso para registrar
