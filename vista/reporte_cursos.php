@@ -15,7 +15,7 @@
                         <h1 style="text-align:center; margin-top:auto;">Reporte de Cursos</h1>
                     </td>
                     <td colspan="4" style="width:20%; text-align:right;">
-                        <!-- <img src="img/academiacreativa.png" style="width:80%; height:auto;"> -->
+                        <img src="img/academiacreativa.png" style="width:80%; height:auto;">
                     </td>
                 </tr>
             </tbody>

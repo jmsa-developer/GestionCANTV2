@@ -7,8 +7,8 @@
 </head>
 
 <body>
-    <div class="" style="width: 98%;  
-        background-size:100%; background-repeat:no-repeat;">
+    <div class="" style="width: 98%; background-image: url(img/academiacreativa.png); 
+        background-size:100%; background-repeat:no-repeat;"">
 
         <h1 style="text-align:center;">Factura de Curso</h1>
         <h3><b>Participante</b></h3>

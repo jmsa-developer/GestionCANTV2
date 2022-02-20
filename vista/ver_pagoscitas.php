@@ -4,7 +4,7 @@
         <div class="card">
 
             <div class="row">
-                <h1 class="display-8 text-center p-2 text-white bg-secondary">Pagos de Servicios Estéticos</h1>
+                <h1 class="display-8 text-center p-2 text-white bg-secondary">Pagos de Citas</h1>
             </div>
 
             <table class="table table-inverse" id="datatable">
