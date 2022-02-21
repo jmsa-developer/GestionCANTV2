@@ -1,5 +1,5 @@
 	<form action="index.html" id="formulario">
-		<img src="img/Avatar.png">
+		<img src="img/avatar.png">
 
 		<h2 class="title">Bienvenidos</h2>
 		<div class="input-div one">
