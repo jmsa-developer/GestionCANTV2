@@ -7,8 +7,9 @@
 </head>
 
 <body>
-    <div class="" style="width: 98%; background-image: url(img/academiacreativa.png); 
-        background-size:100%; background-repeat:no-repeat;">
+    <!-- <div class="" style="width: 98%; background-image: url(img/academiacreativa.png); 
+        background-size:100%; background-repeat:no-repeat;"> -->
+    <div class="" style="width: 98%;">
 
         <h1 style="text-align:center;">Factura de Servicio</h1>
         <h3><b>Cliente</b></h3>

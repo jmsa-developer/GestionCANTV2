@@ -11,12 +11,12 @@
         <table style="width: 100%;">
             <tbody>
                 <tr>
-                    <td colspan="4" style="width:80%;">
+                    <td colspan="4" style="width:100%;">
                         <h1 style="text-align:center; margin-top:auto;">Reporte de Servicios</h1>
                     </td>
-                    <td colspan="4" style="width:20%; text-align:right;">
+                    <!-- <td colspan="4" style="width:20%; text-align:right;">
                         <img src="img/academiacreativa.png" style="width:80%; height:auto;">
-                    </td>
+                    </td> -->
                 </tr>
             </tbody>
         </table>
