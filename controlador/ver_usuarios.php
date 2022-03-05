@@ -10,11 +10,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		$usuarios = $usu->listar(); //Función para obtener los usuarios
 
 		foreach ($usuarios as $usuario) {
-			$usuario->button = "<a href=?pagina=modificacion_usuario&id=" . $usuario->id . " class='editar btn btn-sm btn-warning mr-1 mb-1' title='Editar'><i class='fas fa-pencil-alt'></i></a>";
-			if ($usuario->estado == "1") {
-				$usuario->button .= "<button data-id=" . $usuario->id . " class='inactivar btn btn-sm btn-danger mr-1 mb-1' title='Eliminar'><i class='fas fa-trash-alt'></i></a>";
-			} else {
-				$usuario->button .= "<button data-id=" . $usuario->id . " class='activar btn btn-sm btn-outline-success mr-1 mb-1' title='Activar'><i class='fas fa-trash-restore'></i></button>";
+			if($usuario->id != 1){
+				$usuario->button = "";
+				if ($usuario->estado == "1") {
+					$usuario->button .= "<a href=?pagina=modificacion_usuario&id=" . $usuario->id . " class='editar btn btn-sm btn-warning mr-1 mb-1' title='Editar'><i class='fas fa-pencil-alt'></i></a>";
+					$usuario->button .= "<button data-id=" . $usuario->id . " class='inactivar btn btn-sm btn-danger mr-1 mb-1' title='Eliminar'><i class='fas fa-trash-alt'></i></a>";
+				} else {
+					$usuario->button .= "<button data-id=" . $usuario->id . " class='activar btn btn-sm btn-outline-success mr-1 mb-1' title='Activar'><i class='fas fa-trash-restore'></i></button>";
+				}
+			}
+			else{
+				$usuario->button = "";
 			}
 		}
 		http_response_code(200);
