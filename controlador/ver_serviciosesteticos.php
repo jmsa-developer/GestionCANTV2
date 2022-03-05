@@ -6,13 +6,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		require_once "modelo/ServicioEstetico.php";
 		$serv = new ServicioEstetico; //Instanciar ServicioEstetico
 		$servicios = $serv->listar(); //Función para obtener los servicios
-
+		$element = "a";
+		$disabled = "";
+		if($_SESSION['ac_rol'] != 'Administrador'){
+			$disabled = "disabled";
+			$element = "button";
+		}
 		foreach ($servicios as $servicio) {
-			$servicio->button = "<a href=?pagina=modificacion_servicio&id=" . $servicio->id . " class='editar btn btn-sm btn-warning mr-1 mb-1' title='Editar'><i class='fas fa-pencil-alt'></i></a>";
+			$servicio->button = "<$element href=?pagina=modificacion_servicio&id=" . $servicio->id . " class='editar btn btn-sm btn-warning mr-1 mb-1' title='Editar' $disabled ><i class='fas fa-pencil-alt'></i></$element>";
 			if ($servicio->estado == "1") {
-				$servicio->button .= "<button data-id=" . $servicio->id . " class='inactivar btn btn-sm btn-danger mr-1 mb-1' title='Eliminar'><i class='fas fa-trash-alt'></i></a>";
+				$servicio->button .= "<button data-id=" . $servicio->id . " class='inactivar btn btn-sm btn-danger mr-1 mb-1' title='Eliminar' $disabled ><i class='fas fa-trash-alt'></i></a>";
 			} else {
-				$servicio->button .= "<button data-id=" . $servicio->id . " class='activar btn btn-sm btn-outline-success mr-1 mb-1' title='Activar'><i class='fas fa-trash-restore'></i></button>";
+				$servicio->button .= "<button data-id=" . $servicio->id . " class='activar btn btn-sm btn-outline-success mr-1 mb-1' title='Activar' $disabled ><i class='fas fa-trash-restore'></i></button>";
 			}
 		}
 		http_response_code(200);

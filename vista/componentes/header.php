@@ -58,7 +58,13 @@
                         <i class="fas fa-user-check"></i><span>Servicios Estéticos<i class="fas fa-chevron-down drop-down"></i></span>
                     </a>
                     <div class="sub-menu">
-                        <a href="?pagina=registro_servicio"><i class="far fa-newspaper"></i><span>Nuevo Servicio Estético</span></a>
+                        <?php
+                        if ($_SESSION['ac_rol'] == 'Administrador') {
+                        ?>
+                            <a href="?pagina=registro_servicio"><i class="far fa-newspaper"></i><span>Nuevo Servicio Estético</span></a>
+                        <?php
+                        }
+                        ?>
                         <a href="?pagina=ver_serviciosesteticos"><i class="far fa-calendar-check"></i><span>Consultas Servicio Estético</span></a>
                         <a href="?pagina=registro_cita"><i class="far fa-newspaper"></i><span>Nueva Cita</span></a>
                         <a href="?pagina=ver_citas"><i class="far fa-calendar-check"></i><span>Consultas Citas</span></a>
@@ -74,7 +80,13 @@
                         <i class="fas fa-book"></i><span>Cursos <i class="fas fa-chevron-down drop-down"></i></span>
                     </a>
                     <div class="sub-menu">
-                        <a href="?pagina=registro_curso"><i class="fas fa-book-open"></i><span>Nuevo cursos</span></a>
+                        <?php
+                        if ($_SESSION['ac_rol'] == 'Administrador') {
+                        ?>
+                            <a href="?pagina=registro_curso"><i class="fas fa-book-open"></i><span>Nuevo cursos</span></a>
+                        <?php
+                        }
+                        ?>
                         <a href="?pagina=ver_cursos"><i class="fas fa-book-reader"></i><span>Consultas Cursos</span></a>
                         <a href="?pagina=registro_participante"><i class="fas fa-user-plus"></i><span>Nuevo Participante</span></a>
                         <a href="?pagina=ver_participantes"><i class="far fa-file-alt"></i><span>Consultas Participante</span></a>
@@ -84,7 +96,7 @@
                     </div>
                 </li>
                 <?php
-                    if($_SESSION['ac_rol'] == 'Administrador'){
+                if ($_SESSION['ac_rol'] == 'Administrador') {
                 ?>
                     <li class="item" id="personal">
                         <a href="#personal" class="menu-btn">
@@ -105,7 +117,7 @@
                         </div>
                     </li>
                 <?php
-                    }
+                }
                 ?>
                 <li class="item">
                     <a href="?pagina=reportes" class="menu-btn">

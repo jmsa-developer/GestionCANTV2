@@ -6,14 +6,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		require_once "modelo/Curso.php";
 		$cur = new Curso; //Instanciar Curso
 		$cursos = $cur->listar(); //Función para obtener los cursos
-
+		$element = "a";
+		$disabled = "";
+		if($_SESSION['ac_rol'] != 'Administrador'){
+			$disabled = "disabled";
+			$element = "button";
+		}
 		foreach ($cursos as $curso) {
 			
-			$curso->button = "<a href=?pagina=modificacion_curso&id=" . $curso->id . " class='editar btn btn-sm btn-warning mr-1 mb-1' title='Editar'><i class='fas fa-pencil-alt'></i></a>";
+			$curso->button = "<$element href=?pagina=modificacion_curso&id=" . $curso->id . " class='editar btn btn-sm btn-warning mr-1 mb-1' title='Editar' $disabled><i class='fas fa-pencil-alt'></i></$element>";
 			if ($curso->estado == "1") {
-				$curso->button .= "<button data-id=" . $curso->id . " class='inactivar btn btn-sm btn-danger mr-1 mb-1' title='Eliminar'><i class='fas fa-trash-alt'></i></a>";
+				$curso->button .= "<button data-id=" . $curso->id . " class='inactivar btn btn-sm btn-danger mr-1 mb-1' title='Eliminar' $disabled><i class='fas fa-trash-alt'></i></a>";
 			} else {
-				$curso->button .= "<button data-id=" . $curso->id . " class='activar btn btn-sm btn-outline-success mr-1 mb-1' title='Activar'><i class='fas fa-trash-restore'></i></button>";
+				$curso->button .= "<button data-id=" . $curso->id . " class='activar btn btn-sm btn-outline-success mr-1 mb-1' title='Activar' $disabled><i class='fas fa-trash-restore'></i></button>";
 			}
 		}
 		http_response_code(200);
