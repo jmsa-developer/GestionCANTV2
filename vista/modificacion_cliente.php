@@ -99,8 +99,6 @@
 
             </form>
 
-            <button type="submit" class="formulario__btn" style="float: right;"><a href="?pagina=registro_servicioestetico">Siguiente </a> <i class="fas fa-arrow-right"></i></button>
-
             <br>
     </div>
     <script>const id = <?= $cliente->id ?>;</script>

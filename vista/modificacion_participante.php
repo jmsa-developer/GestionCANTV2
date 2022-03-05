@@ -88,10 +88,6 @@
         </div>
     </form>
 
-    <br><br>
-    <button type="submit" class="formulario__btn" style="float: right;"><a href="?pagina=registro_estudiantecurso">Siguiente </a> <i class="fas fa-arrow-right"></i></button>
-
-    <br><br>
 </div>
 <!--main container end-->
 <script>const id = <?= $participante->id ?>;</script>
