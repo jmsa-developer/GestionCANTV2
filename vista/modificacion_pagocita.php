@@ -95,9 +95,11 @@
             <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
         </div>
 
-        <div class="formulario__grupo formulario__grupo-btn-enviar">
-            <button type="submit" class="formulario__btn">Modificar</button>
-
+        <div class="formulario__grupo formulario__grupo-btn-enviar justify-content-center" style="flex-direction: row;">
+            <a href="?pagina=ver_pagoscitas" class="formulario__btn d-inline-block text-center mr-1">Regresar</a>
+            <button type="submit" class="formulario__btn d-inline-block ml-1">Modificar</button>
+        </div>
+        <div class="formulario__grupo formulario__grupo-btn-enviar justify-content-center" style="flex-direction: row;">
             <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Procesando...</p>
         </div>
 
