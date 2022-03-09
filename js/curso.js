@@ -3,12 +3,12 @@ const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
 
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,50}$/, // Letras y espacios, pueden llevar acentos.
+	nombre: /^[a-zA-ZÀ-ÿ\s]{2,50}$/, // Letras y espacios, pueden llevar acentos.
 	fecha: /^.{5,20}$/,
 	hora_inicio: /^.{5,20}$/,
 	hora_culminacion: /^.{5,20}$/,
-	duracion: /^.{1,30}$/, // 7 a 14 Letras y espacios, pueden llevar acentos y numeros.
-	costo: /^[0-9]{1,11}$/, // solo numeros numeros, maximo 11 digitos.
+	duracion: /^.{1,20}$/, // 7 a 14 Letras y espacios, pueden llevar acentos y numeros.
+	costo: /^[0-9]+([.][0-9]+)?$/, // solo numeros numeros, maximo 11 digitos.
 }
 const expresionId = /^[0-9]{1,11}$/
 var campoInicial = false

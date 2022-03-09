@@ -4,7 +4,7 @@
 
     <div class="nombre">
         <center>
-            <h2>Registro de Empleado</h2>
+            <h2>Modificacion de Empleado</h2>
         </center>
     </div>
     <br>
@@ -17,7 +17,7 @@
                 <input type="tel" name="cedula" class="formulario__input" id="cedula" placeholder="28516382" pattern="[0-9]{7,8}" value="<?= $empleado->cedula ?>">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">La cedula solo puede contener numeros y tiene que ser de 7 a 8 dígitos.</p>
+            <p class="formulario__input-error">La cedula solo puede contener numeros y tiene que ser de 7 a 9 dígitos.</p>
         </div>
         <!-- Grupo: Nombre -->
         <div class="formulario__grupo" id="grupo__nombre">
@@ -26,7 +26,7 @@
                 <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Luz Raquel" required="" value="<?= $empleado->nombre ?>">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El nombre tiene que ser de 2 a 16 dígitos y solo puede contener letras.</p>
+            <p class="formulario__input-error">El nombre tiene que ser de 2 a 30 caracteres y solo puede contener letras.</p>
         </div>
 
         <!-- Grupo: Apellido -->
@@ -36,7 +36,7 @@
                 <input type="text" class="formulario__input" name="apellido" id="apellido" placeholder="Fernández García" required="" value="<?= $empleado->apellido ?>">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El apellido tiene que ser de 2 a 16 dígitos y solo puede contener letras.</p>
+            <p class="formulario__input-error">El apellido tiene que ser de 2 a 30 caracteres y solo puede contener letras.</p>
         </div>
         <div class="formulario__grupo" id="grupo__telefono">
             <label for="telefono" class="formulario__label">Teléfono</label>
@@ -44,7 +44,7 @@
                 <input type="tel" name="telefono" class="formulario__input" id="telefono" placeholder="04245127665" pattern="[0-9]{11}" value="<?= $empleado->telefono ?>">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El Número de teléfono solo puede contener numeros y tiene que ser de 4 a 10 dígitos.</p>
+            <p class="formulario__input-error">El Número de teléfono solo puede contener numeros y tiene que ser de 4 a 14 dígitos.</p>
         </div>
 
         <!-- Grupo: cédula -->
@@ -65,7 +65,7 @@
                 <input type="text" class="formulario__input" name="direccion" id="direccion" placeholder="Urbanizacion Rafael Caldera" required value="<?= $empleado->direccion ?>">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">La dirección tiene que ser de 2 a 30 dígitos y solo puede contener letras y números.</p>
+            <p class="formulario__input-error">La dirección del participante tiene que ser de 1 a 60 dígitos y puede contener letras, números, caracteres especiales y espacios.</p>
         </div>
         <!-- Grupo: Día de Visita-->
         <div class="formulario__grupo" id="grupo__fecha_nacimiento">
@@ -90,7 +90,7 @@
                 <input type="text" class="formulario__input" name="horario" id="horario" placeholder="Mañana" required="" value="<?= $empleado->horario ?>">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El Horario del Turno tiene que ser de 2 a 16 dígitos y solo puede contener letras.</p>
+            <p class="formulario__input-error">El horario del turno tiene que ser de 2 a 16 dígitos y solo puede contener letras.</p>
         </div>
         <div class="formulario__grupo" id="grupo__rol">
             <label for="rol" class="formulario__label">Rol que cumple en la Empresa</label>
@@ -98,7 +98,7 @@
                 <input type="text" class="formulario__input" name="rol" id="rol" placeholder="" required="" value="<?= $empleado->rol ?>">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El rol tiene que ser de 2 a 16 dígitos y solo puede contener letras.</p>
+            <p class="formulario__input-error">El rol tiene que ser de 2 a 25 dígitos y solo puede contener letras.</p>
         </div>
 
         <div class="formulario__mensaje" id="formulario__mensaje">

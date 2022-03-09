@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	} else {
 		echo json_encode([
 			'titulo' => 'Error',
-			'mensaje' => 'El Usuario o Correo Electrónico no se encuentra registrado',
+			'mensaje' => 'El Usuario no se encuentra registrado',
 			'tipo' => 'error'
 		]);
 	}

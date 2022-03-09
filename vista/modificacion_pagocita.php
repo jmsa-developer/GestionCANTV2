@@ -70,7 +70,7 @@
 
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El nro de comprobante tiene que ser de 2 a 14 dígitos y solo puede contener números</p>
+            <p class="formulario__input-error">El nro de comprobante tiene que ser de 4 a 14 dígitos y solo puede contener números</p>
         </div>
 
         <div class="formulario__grupo" id="grupo__pago_total">
@@ -88,7 +88,7 @@
                 <textarea name="descripcion" class="formulario__input" id="descripcion" placeholder="Descripcion del pago" rows="2" maxlength="250"><?= $pago->descripcion ?></textarea>
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El día de visita solo puede contener numeros.</p>
+            <p class="formulario__input-error">La descripcion puede ser de maximo 200 caracteres.</p>
         </div>
 
         <div class="formulario__mensaje" id="formulario__mensaje">
@@ -96,7 +96,7 @@
         </div>
 
         <div class="formulario__grupo formulario__grupo-btn-enviar justify-content-center" style="flex-direction: row;">
-            <a href="?pagina=ver_pagoscitas" class="formulario__btn d-inline-block text-center mr-1">Regresar</a>
+            
             <button type="submit" class="formulario__btn d-inline-block ml-1">Modificar</button>
         </div>
         <div class="formulario__grupo formulario__grupo-btn-enviar justify-content-center" style="flex-direction: row;">

@@ -6,7 +6,7 @@ const expresiones = {
 	fecha: /^.{5,20}$/,
 	hora: /^.{5,20}$/,
 	nro_comprobante: /^[0-9]{4,14}$/,
-	pago_total: /^[0-9]{1,11}$/,
+	pago_total: /^[0-9]+([.][0-9]+)?$/,
 }
 const expresionId = /^[0-9]{1,11}$/
 var campoInicial = false
@@ -16,7 +16,7 @@ if(typeof id != 'undefined'){
 const campos = {
 	cita_id: campoInicial,
 	fecha: campoInicial,
-	hora: campoInicial,
+	hora: true,
 	nro_comprobante: campoInicial,
 	pago_total: campoInicial,
 }

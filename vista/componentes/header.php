@@ -125,7 +125,7 @@
                     </a>
                 </li>
                 <li class="item">
-                    <a href="?pagina=inicio" class="menu-btn">
+                    <a href="documentos/Manual.pdf" target="_blank" class="menu-btn">
                         <i class="fas fa-info-circle"></i><span>Ayuda</span>
                     </a>
                 </li>

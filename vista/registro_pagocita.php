@@ -53,7 +53,7 @@
                     <option value="Transferencia">Transferencia</option>
                     <option value="Pago Movil">Pago Movil</option>
                     <option value="Efectivo BSS">Efectivo BSS</option>
-                    <option value="Efectivo USD">Efectivo USD</option>>
+                    <option value="Efectivo USD">Efectivo USD</option>
                     <option value="Otro">Otro</option>>
                 </select>
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -70,14 +70,15 @@
 
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El nro de comprobante tiene que ser de 2 a 14 dígitos y solo puede contener números</p>
+            <p class="formulario__input-error">El nro de comprobante tiene que ser de 4 a 14 dígitos y solo puede contener números</p>
         </div>
 
         <div class="formulario__grupo" id="grupo__pago_total">
             <label for="pago_total" class="formulario__label">Pago Total del Servicio</label>
             <div class="formulario__grupo-input">
-                <input type="number" name="pago_total" class="formulario__input" id="pago_total" placeholder="Monto del pago" value="" min="1" step="any" required="" />
-                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                <input type="number" class="formulario__input" name="pago_total" id="pago_total" step="any" placeholder="10 $"  required="">
+
+			   <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">El pago es obligatorio</p>
         </div>
@@ -88,7 +89,7 @@
                 <textarea name="descripcion" class="formulario__input" id="descripcion" placeholder="Descripcion del pago" rows="2" maxlength="250"></textarea>
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El día de visita solo puede contener numeros.</p>
+            <p class="formulario__input-error">La descripcion puede ser de maximo 200 digitos.</p>
         </div>
 
         <div class="formulario__mensaje" id="formulario__mensaje">

@@ -17,7 +17,7 @@
                 <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Nombre del curso" value="<?= $curso->nombre ?>">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El nombre del curso tiene que ser de 2 a 16 dígitos y solo puede contener letras.</p>
+            <p class="formulario__input-error">El nombre del curso tiene que ser de 2 a 50 caracteres y solo puede contener letras.</p>
         </div>
         <div class="formulario__grupo" id="grupo__empleado_id">
             <label for="empleado_id" class="formulario__label">Instructor del Curso</label>
@@ -48,16 +48,16 @@
                 <input type="text" class="formulario__input" name="duracion" id="duracion" placeholder="3 días" value="<?= $curso->duracion ?>">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">La duración del Curso tiene que ser de 2 a 16 dígitos y solo puede contener letras y números.</p>
+            <p class="formulario__input-error">La duración del Curso tiene que ser de 1 a 20 caracteres,puede contener numeros, letras y caracteres especiales.</p>
         </div>
 
         <div class="formulario__grupo" id="grupo__costo">
             <label for="costo" class="formulario__label">Costo del curso</label>
             <div class="formulario__grupo-input">
-                <input type="number" class="formulario__input" name="costo" id="costo" min="0" step="any" placeholder="10 $" value="<?= $curso->costo ?>">
+                <input type="number" class="formulario__input" name="costo" id="costo" min="0" step="any" placeholder="10$" value="<?= $curso->costo ?>">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El costo del curso solo puede contener numeros y caracteres especiales, tiene que ser de 1 a 10 dígitos.</p>
+            <p class="formulario__input-error">El costo del curso solo puede contener numeros, es obligatorio.</p>
         </div>
 
         <!-- Grupo: Hora -->

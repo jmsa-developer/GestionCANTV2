@@ -4,7 +4,7 @@ const inputs = document.querySelectorAll('#formulario input');
 const expresiones = {
 	nombre: /^[a-zA-ZÀ-ÿ\s]{2,50}$/, // Letras y espacios, pueden llevar acentos.
 	tipo: /^[a-zA-ZÀ-ÿ\s]{2,30}$/, // Letras y espacios, pueden llevar acentos.
-	costo: /^[0-9]{1,11}$/, // solo numeros numeros, maximo 11 digitos.
+	costo: /^[0-9]+([,][0-9]+)?$/, // solo numeros numeros, maximo 11 digitos.
 	
 }
 var campoInicial = false

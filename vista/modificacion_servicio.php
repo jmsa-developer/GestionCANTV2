@@ -4,7 +4,7 @@
 
     <div class="nombre">
         <center>
-            <h2>Registro de Servicio Estético</h2>
+            <h2>Modificacion de Servicio Estético</h2>
         </center>
     </div>
     <br>
@@ -17,7 +17,7 @@
                 <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Nombre del Servicio Estético" value="<?= $servicio->nombre ?>">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El nombre del Servicio Estético tiene que ser de 2 a 16 dígitos y solo puede contener letras.</p>
+            <p class="formulario__input-error">El nombre del Servicio Estético tiene que ser de 2 a 50 caracteres y solo puede contener letras.</p>
         </div>
 
         <div class="formulario__grupo" id="grupo__costo">
@@ -26,7 +26,7 @@
                 <input type="text" class="formulario__input" name="costo" id="costo" placeholder="10 $" value="<?= $servicio->costo ?>">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El costo del Servicio Estético solo puede contener numeros y caracteres especiales, tiene que ser de 1 a 10 dígitos.</p>
+            <p class="formulario__input-error">El costo del Servicio Estético solo puede contener numeros, decimales o enteros</p>
         </div>
 
         <div class="formulario__grupo" id="grupo__tipo">
@@ -35,7 +35,7 @@
                 <input type="text" class="formulario__input" name="tipo" id="tipo" placeholder="Tipo de servicio Estético" value="<?= $servicio->tipo ?>">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El Tipo de servicio tiene que ser de 2 a 16 dígitos y solo puede contener letras.</p>
+            <p class="formulario__input-error">El Tipo de servicio tiene que ser de 2 a 30 caracteres y solo puede contener letras.</p>
         </div>
 
         <div class="formulario__grupo" id="grupo__descripcion">
@@ -44,7 +44,7 @@
                 <textarea name="descripcion" class="formulario__input" id="descripcion" placeholder="Colocar la descripcion del Servicio Estético" required=""><?= $servicio->descripcion ?></textarea>
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">La Descripcion del curso solo puede contener letras.</p>
+            <p class="formulario__input-error">La Descripcion del curso solo puede contener maximo 200 digitos.</p>
         </div>
 
 

@@ -3,11 +3,11 @@ const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
 	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	nombre: /^[a-zA-ZÀ-ÿ\s]{2,30}$/, // Letras y espacios, pueden llevar acentos.
+	apellido: /^[a-zA-ZÀ-ÿ\s]{2,30}$/, // Letras y espacios, pueden llevar acentos.
 	password: /^.{4,16}$/, // 4 a 16 digitos.
-	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	cedula: /^\d{7,10}$/ // 7 a 14 numeros.
+	correo: /^[a-zA-Z0-9_.+*$%-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+	cedula: /^\d{7,9}$/ // 7 a 14 numeros.
 }
 var campoInicial = false
 if(typeof id != 'undefined'){

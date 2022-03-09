@@ -20,7 +20,7 @@
 
 
                     </div>
-                    <p class="formulario__input-error">La cedula solo puede contener numeros y tiene que ser de 7 a 14 dígitos.</p>
+                    <p class="formulario__input-error">La cedula solo puede contener numeros y tiene que ser de 7 a 9 dígitos.</p>
                 </div>
                 
 
@@ -31,7 +31,7 @@
                         <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Luz Raquel" value="<?= $cliente->nombre ?>">
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
-                    <p class="formulario__input-error">El nombre tiene que ser de 1 a 25 dígitos y solo puede contener letras.</p>
+                    <p class="formulario__input-error">El nombre tiene que ser de 2 a 30 caracteres y solo puede contener letras.</p>
                 </div>
 
                 <!-- Grupo: Apellido -->
@@ -41,7 +41,7 @@
                         <input type="text" class="formulario__input" name="apellido" id="apellido" placeholder="Fernández García" value="<?= $cliente->apellido ?>">
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
-                    <p class="formulario__input-error">El apellido tiene que ser de 1 a 25 dígitos y solo puede contener letras.</p>
+                    <p class="formulario__input-error">El apellido tiene que ser de 2 a 30 caracteres y solo puede contener letras.</p>
                 </div>
                 <div class="formulario__grupo" id="grupo__telefono">
                     <label for="telefono" class="formulario__label">Teléfono</label>
@@ -63,7 +63,7 @@
                         <input type="email" class="formulario__input" name="correo" id="correo" placeholder="Jose@gmail.com" multiple required="" value="<?= $cliente->email ?>">
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
-                    <p class="formulario__input-error">El correo solo puede contener letras.</p>
+                    <p class="formulario__input-error">El correo puede contener letras, números, y caracteres especiales.</p>
                 </div>
 
 
@@ -74,7 +74,7 @@
                         <input type="text" class="formulario__input" name="direccion" id="direccion" placeholder="Urbanizacion Rafael Caldera" required value="<?= $cliente->direccion ?>">
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
-                    <p class="formulario__input-error">La dirección tiene que ser de 1 a 60 dígitos y solo puede contener letras.</p>
+                    <p class="formulario__input-error">La dirección del participante tiene que ser de 1 a 60 dígitos y puede contener letras, números, caracteres especiales y espacios.</p>
                 </div>
                 <!-- Grupo: Día de Visita-->
                 <div class="formulario__grupo" id="grupo__fecha">

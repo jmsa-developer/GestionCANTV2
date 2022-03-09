@@ -37,6 +37,7 @@
             <div style="display: inline; width:25%; padding-right:2px;">
                 <b>Dirección</b>
             </div>
+
         </div>
         <?php foreach ($participantes as $participante) : ?>
             <hr style="color: #E0E0E0;" />

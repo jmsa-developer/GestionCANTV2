@@ -62,7 +62,7 @@
                     <input type="date" class="formulario__input" name="fecha" id="fecha" required>
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <p class="formulario__input-error">El día de visita solo puede contener numeros.</p>
+                <p class="formulario__input-error">El la fecha solo puede contener numeros.</p>
             </div>
 
             <div class="formulario__grupo" id="grupo__hora">
@@ -72,7 +72,7 @@
 
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <p class="formulario__input-error">La Hora de la cita tiene que ser de 4 a 10 dígitos y solo puede contener numeros.</p>
+                <p class="formulario__input-error">La Hora de la cita solo puede contener numeros.</p>
             </div>
 
             <div class="formulario__grupo" id="grupo__cita_realizada">
@@ -84,7 +84,7 @@
                     </select>
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <p class="formulario__input-error">La Cita realizada tiene que ser de 4 a 10 dígitos y solo puede contener letras.</p>
+                <p class="formulario__input-error">Seleccione una opcion.</p>
             </div>
             <div class="formulario__mensaje" id="formulario__mensaje">
                 <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>

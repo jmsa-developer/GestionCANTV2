@@ -15,10 +15,10 @@
             <div class="formulario__grupo" id="grupo__cedula">
                 <label for="cedula" class="formulario__label">Cedula</label>
                 <div class="formulario__grupo-input">
-                    <input type="tel" name="cedula" class="formulario__input" id="cedula" placeholder="Cédula" pattern="[0-9]{7,8}" required value="<?= $usuario->cedula ?>">
+                    <input type="tel" name="cedula" class="formulario__input" id="cedula" placeholder="Cédula" pattern="[0-9]{7,9}" required value="<?= $usuario->cedula ?>">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <p class="formulario__input-error">El Número de socio solo puede contener numeros y tiene que ser de 4 a 10 dígitos.</p>
+                <p class="formulario__input-error">El Número de cedula solo puede contener numeros y tiene que ser de 7 a 9 dígitos.</p>
             </div>
             <div class="formulario__grupo">
             </div>
@@ -29,7 +29,7 @@
                     <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Nombre" pattern="[a-zA-ZÀ-ÿ\s]{1,40}" required value="<?= $usuario->nombre ?>">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <p class="formulario__input-error">El nombre tiene que ser de 1 a 40 caracteres y solo puede contener letras.</p>
+                <p class="formulario__input-error">El nombre tiene que ser de 2 a 30 caracteres y solo puede contener letras.</p>
             </div>
             <!-- Grupo: Apellido -->
             <div class="formulario__grupo" id="grupo__apellido">
@@ -38,7 +38,7 @@
                     <input type="text" class="formulario__input" name="apellido" id="apellido" placeholder="Apellido" pattern="[a-zA-ZÀ-ÿ\s]{1,40}" required value="<?= $usuario->apellido ?>">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <p class="formulario__input-error">El apellido tiene que ser de 1 a 40 caracteres y solo puede contener letras.</p>
+                <p class="formulario__input-error">El apellido tiene que ser de 2 a 30 caracteres y solo puede contener letras.</p>
             </div>
             <!-- Grupo: Correo -->
             <div class="formulario__grupo" id="grupo__correo">
@@ -47,7 +47,7 @@
                         <input type="email" class="formulario__input" name="correo" id="correo" placeholder="Correo Electrónico" maxlength="100"  required value="<?= $usuario->email ?>">
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
-                    <p class="formulario__input-error">El Correo Electrónico no es válido.</p>
+                    <p class="formulario__input-error">El correo solo puede contener letras, números y caracteres especiales.</p>
             </div>
             <div class="formulario__grupo" id="grupo__usuario">
                 <label for="usuario" class="formulario__label">Nombre de Usuario</label>
@@ -55,7 +55,7 @@
                     <input type="text" class="formulario__input" name="usuario" id="usuario" placeholder="Usuario" required value="<?= $usuario->usuario ?>">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <p class="formulario__input-error">El Nombre de Usuario tiene que ser de 2 a 16 caracteres</p>
+                <p class="formulario__input-error">El Nombre de Usuario tiene que ser de 4 a 16 caracteres</p>
             </div>
 
             <div class="formulario__grupo" id="grupo__password">

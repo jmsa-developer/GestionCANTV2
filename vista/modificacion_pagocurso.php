@@ -83,13 +83,13 @@
 
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El nro de comprobante tiene que ser de 2 a 14 dígitos y solo puede contener números</p>
+            <p class="formulario__input-error">El nro de comprobante tiene que ser de 4 a 14 dígitos y solo puede contener números</p>
         </div>
 
         <div class="formulario__grupo" id="grupo__pago_total">
             <label for="pago_total" class="formulario__label">Pago Total del Curso</label>
             <div class="formulario__grupo-input">
-                <input type="number" name="pago_total" class="formulario__input" id="pago_total" placeholder="Monto del pago" min="1" step="any" required="" value="<?= $pago->pago_total ?>"/>
+                <input type="number" name="pago_total" class="formulario__input" id="pago_total" placeholder="Monto del pago" step="any" required="" value="<?= $pago->pago_total ?>"/>
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">El pago es obligatorio</p>
@@ -97,7 +97,7 @@
         <div class="formulario__grupo" id="grupo__abono">
             <label for="abono" class="formulario__label">Abono</label>
             <div class="formulario__grupo-input">
-                <input type="number" name="abono" class="formulario__input" id="abono" placeholder="Abono" min="1" step="any" required="" value="<?= $pago->abono ?>"/>
+                <input type="number" name="abono" class="formulario__input" id="abono" placeholder="Abono"  step="any" required="" value="<?= $pago->abono ?>"/>
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">El abono es obligatorio</p>
@@ -117,7 +117,7 @@
         </div>
 
         <div class="formulario__grupo formulario__grupo-btn-enviar justify-content-center" style="flex-direction: row;">
-            <a href="?pagina=ver_pagoscursos" class="formulario__btn d-inline-block text-center mr-1">Regresar</a>
+          
             <button type="submit" class="formulario__btn d-inline-block ml-1">Modificar</button>
         </div>
         <div class="formulario__grupo formulario__grupo-btn-enviar justify-content-center" style="flex-direction: row;">

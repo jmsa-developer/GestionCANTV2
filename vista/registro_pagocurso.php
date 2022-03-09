@@ -83,13 +83,13 @@
 
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El nro de comprobante tiene que ser de 2 a 14 dígitos y solo puede contener números</p>
+            <p class="formulario__input-error">El nro de comprobante tiene que ser de 4 a 14 dígitos y solo puede contener números</p>
         </div>
 
         <div class="formulario__grupo" id="grupo__pago_total">
             <label for="pago_total" class="formulario__label">Pago Total del Curso</label>
             <div class="formulario__grupo-input">
-                <input type="number" name="pago_total" class="formulario__input" id="pago_total" placeholder="Monto del pago" value="" min="1" step="any" required="" />
+               <input type="number" class="formulario__input" name="pago_total" id="pago_total" step="any" placeholder="10 $"  required="">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">El pago es obligatorio</p>
@@ -97,7 +97,7 @@
         <div class="formulario__grupo" id="grupo__abono">
             <label for="abono" class="formulario__label">Abono</label>
             <div class="formulario__grupo-input">
-                <input type="number" name="abono" class="formulario__input" id="abono" placeholder="Abono" value="" min="1" step="any" required="" />
+                <input type="number" name="abono" class="formulario__input" id="abono" placeholder="Abono"  step="any" required="" />
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">El abono es obligatorio</p>

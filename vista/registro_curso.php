@@ -17,7 +17,7 @@
                 <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Nombre del curso">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El nombre del curso tiene que ser de 2 a 16 dígitos y solo puede contener letras.</p>
+            <p class="formulario__input-error">El nombre del curso tiene que ser de 2 a 50 caracteres y solo puede contener letras.</p>
         </div>
         <div class="formulario__grupo" id="grupo__empleado_id">
             <label for="empleado_id" class="formulario__label">Instructor del Curso</label>
@@ -48,7 +48,7 @@
                 <input type="text" class="formulario__input" name="duracion" id="duracion" placeholder="3 días">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">La duración del Curso tiene que ser de 2 a 16 dígitos y solo puede contener letras y números.</p>
+            <p class="formulario__input-error">La duración del Curso tiene que ser de 1 a 20 caracteres,puede contener numeros, letras y caracteres especiales</p>
         </div>
 
         <div class="formulario__grupo" id="grupo__costo">
@@ -57,7 +57,7 @@
                 <input type="number" class="formulario__input" name="costo" id="costo" min="0" step="any" placeholder="10 $">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">El costo del curso solo puede contener numeros y caracteres especiales, tiene que ser de 1 a 10 dígitos.</p>
+            <p class="formulario__input-error">El costo del curso solo puede contener numeros, es obligatorio.</p>
         </div>
 
         <!-- Grupo: Hora -->
@@ -69,7 +69,7 @@
                 <input type="time" class="formulario__input" name="hora_inicio" id="hora_inicio" required>
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">Indique la Hora de Inicio</p>
+            <p class="formulario__input-error">Indique la hora de inicio</p>
         </div>
         <div class="formulario__grupo" id="grupo__hora_culminacion">
             <label for="hora_culminacion" class="formulario__label">Hora de Culminación</label>
@@ -77,16 +77,16 @@
                 <input type="time" class="formulario__input" name="hora_culminacion" id="hora_culminacion" required>
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">Indique la Hora de Culminación</p>
+            <p class="formulario__input-error">Indique la hora de culminación</p>
         </div>
 
         <div class="formulario__grupo" id="grupo__descripcion">
             <label for="descripcion" class="formulario__label">Descripcion del curso</label>
             <div class="formulario__grupo-input">
-                <textarea name="descripcion" class="formulario__input" id="descripcion" placeholder="Colocar la descripcion del curso" maxlength="250"></textarea>
+                <textarea name="descripcion" class="formulario__input" id="descripcion" placeholder="Colocar la descripcion del curso" maxlength="250" required=""></textarea>
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <p class="formulario__input-error">La Descripcion del curso solo puede contener letras.</p>
+            <p class="formulario__input-error">La Descripcion del curso  no puede ser mayor a 250 caracteres.</p>
         </div>
 
 

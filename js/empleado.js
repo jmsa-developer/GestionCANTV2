@@ -4,13 +4,13 @@ const inputs = document.querySelectorAll('#formulario input');
 const expresiones = {
 
 	cedula: /^\d{7,9}$/,  // 7 a 14 numeros.
-	nombre: /^[a-zA-ZÀ-ÿ\s]{2,40}$/, // Letras y espacios, pueden llevar acentos.
-	apellido: /^[a-zA-ZÀ-ÿ\s]{2,40}$/, // Letras y espacios, pueden llevar acentos.
-	telefono: /^\d{7,14}$/, // 7 a 14 numeros.
-	direccion: /^.{1,200}$/, // 7 a 14 Letras y espacios, pueden llevar acentos y numeros.
-	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, //correo
+	nombre: /^[a-zA-ZÀ-ÿ\s]{2,30}$/, // Letras y espacios, pueden llevar acentos.
+	apellido: /^[a-zA-ZÀ-ÿ\s]{2,30}$/, // Letras y espacios, pueden llevar acentos.
+	telefono:/^\d{7,14}$/, // 7 a 14 numeros.
+	direccion: /^.{3,200}$/, // 7 a 14 Letras y espacios, pueden llevar acentos y numeros.
+	correo: /^[a-zA-Z0-9_.+*$%-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	horario: /^[a-zA-ZÀ-ÿ\s]{2,16}$/, // Letras y espacios, pueden llevar acentos.
-	rol: /^[a-zA-ZÀ-ÿ\s]{2,16}$/, // Letras y espacios, pueden llevar acentos.
+	rol: /^[a-zA-ZÀ-ÿ\s]{2,25}$/, // Letras y espacios, pueden llevar acentos.
 }
 var campoInicial = false
 if(typeof id != 'undefined'){
