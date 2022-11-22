@@ -47,7 +47,7 @@ function validarFormulario(evento) {
       console.log(response)
 			var res = JSON.parse(response);
 			if (res.tipo == "success") {
-				window.location = "?pagina=inicio";        
+				window.location = "?controlador=app&accion=index";
 			}
 			else {
 				Swal.fire(

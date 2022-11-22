@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-02-2022 a las 01:31:42
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.2
+-- Tiempo de generación: 23-03-2022 a las 05:30:04
+-- Versión del servidor: 10.1.33-MariaDB
+-- Versión de PHP: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -40,17 +40,6 @@ CREATE TABLE `citas` (
   `estado` int(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `citas`
---
-
-INSERT INTO `citas` (`id`, `cliente_id`, `servicio_estetico_id`, `empleado_id`, `pago_id`, `fecha`, `hora`, `cita_realizada`, `estado`) VALUES
-(1, 3, 1, 1, 1, '2022-02-08', '15:30:00', 1, 1),
-(2, 3, 1, 1, 4, '2022-02-09', '13:00:00', 0, 1),
-(3, 6, 2, 2, 3, '2022-02-08', '07:00:00', 0, 1),
-(4, 6, 2, 2, 2, '2022-02-11', '11:55:00', 0, 1),
-(5, 6, 2, 1, NULL, '2022-01-01', '12:00:00', 0, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -68,16 +57,6 @@ CREATE TABLE `clientes` (
   `fecha_nacimiento` date DEFAULT NULL,
   `estado` int(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `clientes`
---
-
-INSERT INTO `clientes` (`id`, `cedula`, `nombre`, `apellido`, `direccion`, `telefono`, `email`, `fecha_nacimiento`, `estado`) VALUES
-(1, '13515087', 'Pedro', 'Diaz', 'URBANIZACION DEL ESTE', '04260001133', 'pedro@gmail.com', '1998-01-01', 1),
-(3, '28397000', 'Lina Rin', 'Lee', 'Ruiz pineda', '04261235611', 'linalee@gmail.com', '2002-02-01', 1),
-(5, '13520800', 'Jose', 'Perez', 'Sur', '04162262266', 'jose@gmail.com', '1995-12-01', 1),
-(6, '25000111', 'Rosa', 'Jimenez', 'Villa Crepuscular', '04242112324', 'rosa@gmail.com', '1997-03-01', 1);
 
 -- --------------------------------------------------------
 
@@ -97,15 +76,6 @@ CREATE TABLE `cursos` (
   `descripcion` varchar(250) DEFAULT NULL,
   `estado` int(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `cursos`
---
-
-INSERT INTO `cursos` (`id`, `nombre`, `empleado_id`, `costo`, `fecha`, `hora_inicio`, `hora_culminacion`, `duracion`, `descripcion`, `estado`) VALUES
-(1, 'Masajes', 1, 35, '2022-02-16', '08:00:00', '12:00:00', '3 dias', 'Lunes a Miercoles', 1),
-(2, 'Uñas Acrílicas', 1, 20, '2022-03-02', '09:30:00', '12:00:00', '2 dias', 'Colocación de uñas acrilicas\r\nLunes y viernes', 1),
-(3, 'Higiene Facial Profunda', 1, 10, '2022-02-21', '14:00:00', '16:30:00', '2 dias', '', 1);
 
 -- --------------------------------------------------------
 
@@ -128,14 +98,6 @@ CREATE TABLE `empleados` (
   `estado` int(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `empleados`
---
-
-INSERT INTO `empleados` (`id`, `cedula`, `nombre`, `apellido`, `direccion`, `telefono`, `email`, `fecha_nacimiento`, `fecha_contrato`, `horario`, `rol`, `estado`) VALUES
-(1, '23121212', 'Luz Maria', 'Fernandez', 'Cabudare', '04260301112', 'luz@gmail.com', '1990-11-03', '2010-01-01', 'Tarde', 'Dueña', 1),
-(2, '1440211', 'Angel', 'Timaure', 'Quibor', '04262221111', 'angel@hotmail.com', '1992-01-01', '2021-11-01', 'Mañana', 'Asistente', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -152,16 +114,6 @@ CREATE TABLE `pagos_citas` (
   `descripcion` varchar(250) DEFAULT NULL,
   `estado` int(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `pagos_citas`
---
-
-INSERT INTO `pagos_citas` (`id`, `tipo`, `nro_comprobante`, `pago_total`, `fecha`, `hora`, `descripcion`, `estado`) VALUES
-(1, 'Punto de Venta', '1231343', 40, '2022-03-02', '09:00:00', '', 1),
-(2, 'Punto de Venta', '12312434', 2, '2022-02-11', '10:30:00', 'Pago completo', 1),
-(3, 'Punto de Venta', '1324324', 3, '2022-02-05', '08:30:00', 'Pago con punto', 1),
-(4, 'Punto de Venta', '48535', 12121200000, '2022-01-01', '08:30:00', '', 1);
 
 -- --------------------------------------------------------
 
@@ -181,14 +133,6 @@ CREATE TABLE `pagos_cursos` (
   `estado` int(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `pagos_cursos`
---
-
-INSERT INTO `pagos_cursos` (`id`, `tipo`, `nro_comprobante`, `pago_total`, `abono`, `fecha`, `hora`, `descripcion`, `estado`) VALUES
-(1, 'Punto de Venta', '1323343', 35, 35, '2022-01-01', '08:30:00', 'Pago completo', 1),
-(2, 'Pago Movil', '042612212344', 35, 35, '2022-02-05', '09:33:00', 'Pago completo.', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -201,14 +145,6 @@ CREATE TABLE `participaciones` (
   `curso_id` int(11) DEFAULT NULL,
   `pago_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `participaciones`
---
-
-INSERT INTO `participaciones` (`id`, `participante_id`, `curso_id`, `pago_id`) VALUES
-(1, 1, 1, 1),
-(2, 2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -228,15 +164,6 @@ CREATE TABLE `participantes` (
   `estado` int(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `participantes`
---
-
-INSERT INTO `participantes` (`id`, `cedula`, `nombre`, `apellido`, `direccion`, `telefono`, `email`, `fecha_nacimiento`, `estado`) VALUES
-(1, '26588111', 'Gabriela Maria', 'Villas', 'Avenida San Vicente', '04245294700', 'gabriela@gmail.com', '1998-02-02', 1),
-(2, '24220011', 'Jessica', 'Montes', 'Av Lara', '04260001111', 'j24@gmail.com', '2003-01-01', 1),
-(3, '24000222', 'Rebeca', 'Garcia', 'Centro', '04264444422', 'rebeca@gmail.com', '1997-04-01', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -251,14 +178,6 @@ CREATE TABLE `servicios_esteticos` (
   `costo` float DEFAULT '0',
   `estado` int(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `servicios_esteticos`
---
-
-INSERT INTO `servicios_esteticos` (`id`, `nombre`, `tipo`, `descripcion`, `costo`, `estado`) VALUES
-(1, 'Pintado de Uñas', 'Manicuras', 'Pintado sencillo de uñas', 4, 1),
-(2, 'Mascarilla Negra', 'Facial', 'Mascarilla completa', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -284,14 +203,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `cedula`, `usuario`, `email`, `clave`, `rol`, `nombre`, `apellido`, `estado`) VALUES
 (1, '1000001', 'Administrador', 'admin@gmail.com', '12345678', 'Administrador', 'Admin', 'Admin', 1),
-(2, '20000001', 'Maria', 'maria@gmail.com', '12345678', 'Usuario', 'Maria', 'Valles', 1),
-(3, '28397627', 'Lina00', 'linalee@gmail.com', '12345678', 'Administrador', 'Lina', 'Lee', 1),
-(7, '3000001', 'luisa00', 'luisa00@gmail.com', '12345678', 'Administrador', 'Luisa', 'García Perez', 1),
-(8, '00000000', 'cristian', 'cristian@gmail.com', '12345678', 'Administrador', 'Cristian', 'Noguera', 1),
-(10, '22200333', 'maria01', 'maria000@gmail.com', '33333333', 'Administrador', 'Maria', 'Perez', 1),
-(11, '4000000', 'Lina', 'lina@gmail.com', '12345678', 'Administrador', 'Lina', 'Linarez', 1),
-(12, '33333221', 'ramon', 'ramon@gmail.com', '12345678', 'Usuario', 'Ramon', 'Baes', 1),
-(13, '2020202', 'Raul', 'raul@gmail.com', '12345678', 'Usuario', 'Raul', 'Jimenez', 1);
+(2, '20000001', 'Maria', 'maria@gmail.com', '12345678', 'Usuario', 'Maria', 'Valles', 1);
 
 --
 -- Índices para tablas volcadas
@@ -380,19 +292,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `empleados`
@@ -404,19 +316,19 @@ ALTER TABLE `empleados`
 -- AUTO_INCREMENT de la tabla `pagos_citas`
 --
 ALTER TABLE `pagos_citas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `pagos_cursos`
 --
 ALTER TABLE `pagos_cursos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `participaciones`
 --
 ALTER TABLE `participaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `participantes`
@@ -428,13 +340,13 @@ ALTER TABLE `participantes`
 -- AUTO_INCREMENT de la tabla `servicios_esteticos`
 --
 ALTER TABLE `servicios_esteticos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
