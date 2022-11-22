@@ -10,7 +10,8 @@ class BaseControlador
 
     }
 
-    public function render($vista){
+    public function render($vista, $parametros = []){
+        extract($parametros);
         $root = dirname(__FILE__,2);
         include_once "$root/vista/$vista";
         exit;
