@@ -84,7 +84,7 @@
                         <?php
                         if ($_SESSION['ac_rol'] == 'Administrador') {
                         ?>
-                            <a href="?controlador=equipos&accion=consultar"><i class="fas fa-book-open"></i><span>Nuevo Equipo</span></a>
+                            <a href="?controlador=equipos+36&accion=consultar"><i class="fas fa-book-open"></i><span>Nuevo Equipo</span></a>
                         <?php
                         }
                         ?>
