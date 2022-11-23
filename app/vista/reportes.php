@@ -1,4 +1,4 @@
-    <?php require "vista/componentes/header.php" ?>
+<?php require "componentes/header.php" ?>
     <!--main container start-->
     <div class="main-container">
         <div class="nombre">
