@@ -1,4 +1,4 @@
-    <?php require "componentes/header.php" ?>
+<?php require "vista/componentes/header.php" ?>
     <!--main container start-->
     <div class="main-container">
         <div class="card">
@@ -9,59 +9,42 @@
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </div>
-            <p>
-            <h2 class="text-white">Funciones de la Empresa: </h2><br>ofrecer soluciones integrales de telecomunicaciones para satisfacer las necesidades de sus clientes de servicios de telefonía fija, telefonía móvil y acceso a Internet.</p>
+            <center>
+            <h1 class="text-white">Bienvenidos</h1><br>
+            </center>
         </div>
-        <html>
-<head>
-  <center> 
-<title>Superslider</title>
-
-  <ul class="superslider">
-    <li><img clas="imagen_carrusel" src="img/slider2.jpg"/></li>
-    <li><img src="img/fondo2.png"/></li>
-    
-  </ul>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2"></script>
-<script type="text/javascript">
-jQuery(function(){
-    var fotitoActual = 0,
-      elementos = jQuery('.superslider li'),
-      cantidadElementos = elementos.length;
-    function rularSlides() {
-      var cogerActual = jQuery('.superslider li').eq(fotitoActual);
-      elementos.hide();
-      cogerActual.css('display','inline-block');
-    }
-    var autoSlide = setInterval(function() {
-      fotitoActual += 1;
-      if (fotitoActual > cantidadElementos - 1) {
-        fotitoActual = 0;
-      }
-      rularSlides();
-    }, 3000);
-});
-</script>
-</center>
-        <div class="card">
-            <p>
-            <h2 class="text-white">Ventajas del sistema: </h2>
-            <br><b>Aumento de productividad laboral</b> 
-            <br><b>optimizacion del proceso de entradas y salidas </b> 
-            <br><b>Facilidad para los usuarios </b> 
-            <br><b>Ahorro de recursos</b> 
+        <div>
+            <ul class="container_cards">
+                <li><img src="img/fondo2.png" alt=""></li>
+                <li><img src="img/slider2.jpg" alt="100 px"></li>
+                <li><img src="img/fondo2.png" alt=""></li>
+                <li><img src="img/slider2.jpg" alt="100 px"></li>
+                <li><img src="img/fondo2.png" alt=""></li>
+                <li><img src="img/slider2.jpg" alt="100 px"></li>
+            </ul>
         </div>
-
-        <div class="card">
-            <p>
-            <h2 class="text-white"> Servicios  prestados por la Empresa:</h2><br>
-            <b>Entre nuestros Servicios estan</b>
-           registro de usuarios cantv<br>
-            servicios de telefonia movil. <br>
-            planes de internet <br>
-        Television <br>
-            </p>
-        </div>
+        <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="contain-fluid py-5">
+      <center>
+        <h2 class="display-5 fw-bold">Registra facil y rapido</h2>
+        </center>
+        <p class="col-md-8 fs-4; style:">A traves de este sistema registra de forma rapida equipos que entren y salgan de la sucursal , sin perder tiempo y solo a un click de distancia  pudiendo realizar esta labor de forma mas efectiva y rapida </p>
+      </div>
     </div>
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h1-100 p-5 text-bg-light border rounded-3">
+          <h2 >Genera planillas y reportes</h2>
+          <p>Gracias a nuestro sistema puedes generar un listado de los equipos que han entrado en la torre en un dia , una semana o incluso un mes de forma rapida y eficiente . Ademas de que puedes generar la planilla de salida.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h1-100 p-5 bg-light border rounded-3">
+          <h2>registra empleados y usuarios</h2>
+          <p>El administrador del sistema puede registrar de forma rapida a los empleados y usuarios encargados del monitoreo y traslado de los equipos de forma que se tenga mas control de esto</p>
+        </div>
+      </div>
+    </div>
+
     <!--main container end-->
-    <?php require "componentes/footer.php" ?>
+    <?php require "vista/componentes/footer.php" ?>
