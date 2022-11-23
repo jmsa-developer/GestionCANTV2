@@ -16,7 +16,7 @@
         <div class="formulario__grupo" id="grupo__nombre">
             <label for="nombre" class="formulario__label">Nombre</label>
             <div class="formulario__grupo-input">
-                <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Nombre del curso">
+                <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Nombre del curso" pattern="[a-zA-ZÀ-ÿ\s]{15,50}">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error"> El Nombre tiene que ser de 2 a 50 caracteres y solo puede contener letras.</p>
@@ -24,7 +24,7 @@
         <div class="formulario__grupo" id="grupo__nombre">
             <label for="nombre" class="formulario__label">Ciudad</label>
             <div class="formulario__grupo-input">
-                <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Nombre del curso">
+                <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Nombre del curso" pattern="[a-zA-ZÀ-ÿ\s]{15,50}">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">La Ciudad tiene que ser de 2 a 50 caracteres y solo puede contener letras.</p>
@@ -33,7 +33,7 @@
         <div class="formulario__grupo" id="grupo__nombre">
             <label for="nombre" class="formulario__label">Direccion</label>
             <div class="formulario__grupo-input">
-                <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Nombre del curso">
+                <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Nombre del curso" pattern="[a-zA-ZÀ-ÿ\s]{15,50}">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error"> La Direccion tiene que ser de 2 a 50 caracteres y solo puede contener letras.</p>
@@ -43,7 +43,7 @@
         <div class="formulario__grupo" id="grupo__nombre">
             <label for="nombre" class="formulario__label">Numero de Pisos</label>
             <div class="formulario__grupo-input">
-                <input type="Number" class="formulario__input" name="nombre" id="nombre" placeholder="Nombre del curso">
+                <input type="Number" class="formulario__input" name="nombre" id="nombre" placeholder="Nombre del curso" pattern="[a-zA-ZÀ-ÿ\s]{15,50}">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">el Numero de Pisos  tiene que ser de 2 a 8 caracteres y solo puede contener numeros.</p>
