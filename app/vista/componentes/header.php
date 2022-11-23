@@ -116,6 +116,11 @@
                 <?php
                 }
                 ?>
+                     <li class="item" id="Bitacora">
+                 <a href="?pagina=BITACORA" class="menu-btn">
+                        <i class="fas fa-poll-h"></i><span>Bitacora</span>
+                    </a>
+            </li>
                 <li class="item">
                     <a href="?pagina=reportes" class="menu-btn">
                         <i class="fas fa-poll-h"></i><span>Reportes</span>

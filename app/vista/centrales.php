@@ -8,7 +8,9 @@
         </center>
     </div>
     <br>
-
+    <center>
+<img src="img/report.png">
+</center>
     <form action="" class="formulario" id="formulario">
         <!-- Grupo: Nombre -->
         <div class="formulario__grupo" id="grupo__nombre">
