@@ -69,9 +69,9 @@
                        
                         <a href="?entrada"><i class="far fa-newspaper"></i><span>Entradas</span></a>
                         <a href="?controlador=entrada&accion=consultar"><i class="far fa-calendar-check"></i><span>Consultar Entradas</span></a>
-                        <a href="?pagina=salida"><i class="fas fa-user-plus"></i><span>Salidas</span></a>
+                        <a href="=?controlador=salidas&accion=consultar"><i class="fas fa-user-plus"></i><span>Salidas</span></a>
                         <a href="?pagina=consultar_salida"><i class="far fa-file-alt"></i><span>Consultar Salidas</span></a>
-                        <a href="?pagina=centrales"><i class="far fa-money-bill-alt"></i><span>Centrales</span></a>
+                        <a href="=?controlador=centrales&accion=consultar"><i class="far fa-money-bill-alt"></i><span>Centrales</span></a>
                         <a href="?pagina=consultar_centrales"><i class="far fa-calendar-check"></i><span>Consultar Centrales </span></a>
                         
                     </div>
@@ -100,7 +100,7 @@
                             <i class="fas fa-address-card"></i><span>Empleados <i class="fas fa-chevron-down drop-down"></i></span>
                         </a>
                         <div class="sub-menu">
-                            <a href="?pagina=registro_empleado"><i class="fas fa-user-plus"></i><span>Nuevo Empleado</span></a>
+                            <a href="=?controlador=cempleados&accion=consultar"><i class="fas fa-user-plus"></i><span>Nuevo Empleado</span></a>
                             <a href="?pagina=ver_empleados"><i class="fas fa-copy"></i><span>Consultar Empleados</span></a>
                         </div>
                     </li>
@@ -117,7 +117,7 @@
                 }
                 ?>
                      <li class="item" id="Bitacora">
-                 <a href="?pagina=BITACORA" class="menu-btn">
+                 <a href="=?controlador=bitacora&accion=consultar" class="menu-btn">
                         <i class="fas fa-poll-h"></i><span>Bitacora</span>
                     </a>
             </li>
