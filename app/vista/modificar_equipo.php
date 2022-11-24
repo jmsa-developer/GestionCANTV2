@@ -1,4 +1,4 @@
-<?php require "vista/componentes/header.php" ?>
+<?php require "componentes/header.php" ?>
 <!--main container start-->
 <div class="main-container">
 
@@ -81,4 +81,4 @@
     const id = <?= $curso->id ?>;
 </script>
 <script src="js/curso.js"></script>
-<?php require "vista/componentes/footer.php" ?>
+<?php require "componentes/footer.php" ?>

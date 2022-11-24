@@ -1,4 +1,4 @@
-<?php require "vista/componentes/header.php" ?>
+<?php require "componentes/header.php" ?>
     <!--main container start-->
     <div class="main-container">
         <div class="nombre">
@@ -7,7 +7,7 @@
             </center>
         </div>
         <br>
-<?php require "vista/componentes/header.php" ?>
+<?php require "componentes/header.php" ?>
     <!--main container start-->
     <div class="main-container">
         <div class="nombre">
@@ -17,7 +17,7 @@
         </div>
         <br>
 
-        <?php require "vista/componentes/header.php" ?>
+        <?php require "componentes/header.php" ?>
     <!--main container start-->
     <div class="main-container">
         <div class="nombre">
@@ -132,18 +132,18 @@
     </div>
     <script>const id = <?= $cliente->id ?>;</script>
     <script src="js/cliente.js"></script>
-    <?php require "vista/componentes/footer.php" ?>
+    <?php require "componentes/footer.php" ?>
     
 
             <br>
     </div>
     <script>const id = <?= $cliente->id ?>;</script>
     <script src="js/cliente.js"></script>
-    <?php require "vista/componentes/footer.php" ?>
+    <?php require "componentes/footer.php" ?>
     
             <br>
     </div>
     <script>const id = <?= $cliente->id ?>;</script>
     <script src="js/cliente.js"></script>
-    <?php require "vista/componentes/footer.php" ?>
+    <?php require "componentes/footer.php" ?>
     

@@ -1,4 +1,4 @@
-    <?php require "vista/componentes/header.php" ?>
+    <?php require "componentes/header.php" ?>
     <!--Formulario-->
     <div class="main-container">
 
@@ -104,4 +104,4 @@
         const usuario_rol = "<?= $usuario->rol ?>";
     </script>
     <script src="js/usuario.js"></script>
-    <?php require "vista/componentes/footer.php" ?>
+    <?php require "componentes/footer.php" ?>
