@@ -47,4 +47,4 @@
         </form>
     </div>
     <script src="js/reportes.js"></script>
-    <?php require "vista/componentes/footer.php" ?>
+    <?php require "componentes/footer.php" ?>

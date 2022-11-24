@@ -47,5 +47,5 @@
     </div>
 
     <!--main container end-->
-    <?php require "vista/componentes/footer.php" ?>
+    <?php require "componentes/footer.php" ?>
    

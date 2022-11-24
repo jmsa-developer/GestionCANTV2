@@ -25,4 +25,4 @@
     </div>
     <!--main container end-->
     <script src="js/usuarios_gestion.js"></script>
-    <?php require "vista/componentes/footer.php" ?>
+    <?php require "componentes/footer.php" ?>
