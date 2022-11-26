@@ -19,7 +19,7 @@ class UsuarioControlador extends BaseControlador
                 if ($_POST['clave'] == $res->clave) {
                     $_SESSION['ac_id'] = $res->id;
                     $_SESSION['ac_usuario'] = $res->usuario;
-                    $_SESSION['ac_rol'] = $res->rol;
+                    $_SESSION['ac_rol'] = $res->getRol()->nombre;
                     echo json_encode([
                         'titulo' => '', 'mensaje' => '',
                         'tipo' => 'success'

@@ -41,6 +41,12 @@ class Usuario extends Persona{
               FROM usuario '.$condicion);
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
+
+            $consultaRol = $this->prepare('SELECT id, nombre FROM roles '.$respuesta->rol_id);
+            $consultaRol->execute();
+            $respuestaRol = $consultaRol->fetch(PDO::FETCH_OBJ);
+            $respuesta->setRol($respuestaRol);
+
             return $respuesta;
         } catch(Exception $ex){
             $this->error = $ex->errorInfo[2];
