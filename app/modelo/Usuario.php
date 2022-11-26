@@ -38,7 +38,7 @@ class Usuario extends Persona{
         try {
             parent::connect();
             $consulta = $this->prepare('SELECT id, cedula, CONCAT(nombre," ",apellido) as nombre, usuario, rol, email, estado
-              FROM usuarios '.$condicion);
+              FROM usuario '.$condicion);
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;
@@ -50,7 +50,7 @@ class Usuario extends Persona{
     public function consultar(){
         try {
             parent::connect();
-            $consulta = $this->prepare("SELECT * FROM usuarios WHERE id = $this->id");
+            $consulta = $this->prepare("SELECT * FROM usuario WHERE id = $this->id");
             $consulta->execute();
             $respuesta = $consulta->fetch(PDO::FETCH_OBJ);
             return $respuesta;
@@ -62,7 +62,7 @@ class Usuario extends Persona{
     public function registrar(){
         try{
             parent::connect();
-            $consulta = $this->prepare("INSERT INTO usuarios(cedula, nombre, apellido, usuario, email, clave, rol)" 
+            $consulta = $this->prepare("INSERT INTO usuario(cedula, nombre, apellido, usuario, email, clave, rol)" 
                 . "VALUES (:cedula, :nombre, :apellido, :usuario, :email, :clave, :rol)");
 
             $consulta->bindParam(":cedula", $this->cedula);
@@ -84,7 +84,7 @@ class Usuario extends Persona{
         try{
             parent::connect();
             if($this->clave == ""){
-                $consulta = $this->prepare("UPDATE usuarios SET cedula = :cedula, nombre=:nombre, apellido = :apellido, 
+                $consulta = $this->prepare("UPDATE usuario SET cedula = :cedula, nombre=:nombre, apellido = :apellido, 
                     usuario = :usuario, email = :email, rol = :rol WHERE id = :id");
             }
             else{
@@ -110,7 +110,7 @@ class Usuario extends Persona{
     public function inactivar(){
         try {
             parent::connect();
-            $consulta = $this->prepare("UPDATE usuarios SET estado = 0 WHERE id = $this->id");
+            $consulta = $this->prepare("UPDATE usuario SET estado = 0 WHERE id = $this->id");
             $respuesta = $consulta->execute();
             return $respuesta;
         } catch(Exception $e){
@@ -122,7 +122,7 @@ class Usuario extends Persona{
     public function activar(){
         try {
             parent::connect();
-            $consulta = $this->prepare("UPDATE usuarios SET estado = 1 WHERE id = $this->id");
+            $consulta = $this->prepare("UPDATE usuario SET estado = 1 WHERE id = $this->id");
             $respuesta = $consulta->execute();
             return $respuesta;
         } catch(Exception $e){

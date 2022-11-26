@@ -69,8 +69,8 @@
                        
                         <a href="?entrada"><i class="far fa-newspaper"></i><span>Entradas</span></a>
                         <a href="?controlador=entrada&accion=consultar"><i class="far fa-calendar-check"></i><span>Consultar Entradas</span></a>
-                        <a href="?controlador=salida&accion=consultar"><i class="fas fa-user-plus"></i><span>Salidas</span></a>
-                        <a href="?pagina=consultar_salida"><i class="far fa-file-alt"></i><span>Consultar Salidas</span></a>
+                        <a href="?controlador=salida&accion=registrar"><i class="fas fa-user-plus"></i><span>Salidas</span></a>
+                        <a href="?controlador=salida&accion=consultar"><i class="far fa-file-alt"></i><span>Consultar Salidas</span></a>
                         <a href="?controlador=centrales&accion=consultar"><i class="far fa-money-bill-alt"></i><span>Centrales</span></a>
                         <a href="?pagina=consultar_centrales"><i class="far fa-calendar-check"></i><span>Consultar Centrales </span></a>
                         
