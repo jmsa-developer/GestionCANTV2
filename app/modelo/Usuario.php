@@ -41,12 +41,6 @@ class Usuario extends Persona{
               FROM usuario '.$condicion);
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
-
-            $consultaRol = $this->prepare('SELECT id, nombre FROM roles '.$respuesta->rol_id);
-            $consultaRol->execute();
-            $respuestaRol = $consultaRol->fetch(PDO::FETCH_OBJ);
-            $respuesta->setRol($respuestaRol->nombre);
-
             return $respuesta;
         } catch(Exception $ex){
             $this->error = $ex->errorInfo[2];
@@ -94,7 +88,7 @@ class Usuario extends Persona{
                     usuario = :usuario, email = :email, rol = :rol WHERE id = :id");
             }
             else{
-                $consulta = $this->prepare("UPDATE usuarios SET cedula = :cedula, nombre=:nombre, apellido = :apellido, 
+                $consulta = $this->prepare("UPDATE usuario SET cedula = :cedula, nombre=:nombre, apellido = :apellido, 
                     usuario = :usuario, email = :email, rol = :rol, clave = :clave WHERE id = :id");
                 $consulta->bindParam(":clave", $this->clave);
             }
@@ -140,10 +134,17 @@ class Usuario extends Persona{
     public function buscarUsuario($usuario){
         try {
             parent::connect();
-            $consulta = $this->prepare("SELECT * FROM usuarios WHERE (usuario = :usuario OR email = :usuario) AND estado = 1");
+            $consulta = $this->prepare("SELECT * FROM usuario WHERE (usuario = :usuario OR email = :usuario) AND estado = 1");
             $consulta->bindParam(":usuario", $usuario);
             $consulta->execute();
             $respuesta = $consulta->fetch(PDO::FETCH_OBJ);
+
+            $consultaRol = $this->prepare('SELECT id, nombre FROM roles WHERE id = :id');
+            $consultaRol->bindParam(":id", $respuesta->rol_id);
+            $consultaRol->execute();
+            $respuestaRol = $consultaRol->fetch(PDO::FETCH_OBJ);
+            $respuesta->rol = $respuestaRol->nombre;
+
             return $respuesta;
         } catch(Exception $e){
             $this->error = $e->errorInfo[2];
