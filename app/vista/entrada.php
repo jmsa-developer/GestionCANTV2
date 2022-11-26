@@ -118,4 +118,4 @@
         });
     </script>
     <script src="js/cita.js"></script>
-    <?php require "componentes/footer.php" ?>
+    <?php require "vista/componentes/footer.php" ?>

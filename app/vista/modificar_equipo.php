@@ -81,4 +81,4 @@
     const id = <?= $curso->id ?>;
 </script>
 <script src="js/curso.js"></script>
-<?php require "componentes/footer.php" ?>
+<?php require "vista/componentes/footer.php" ?>

@@ -26,4 +26,4 @@
     </div>
     <!--main container end-->
     <script src="js/empleados_gestion.js"></script>
-    <?php require "componentes/footer.php" ?>
+    <?php require "vista/componentes/footer.php" ?>

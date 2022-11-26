@@ -112,5 +112,5 @@
             
     </div>
     <script src="js/cliente.js"></script>
-    <?php require "componentes/footer.php" ?>
+    <?php require "vista/componentes/footer.php" ?>
     

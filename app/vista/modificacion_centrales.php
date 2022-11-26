@@ -59,4 +59,4 @@
 </script>
 <script>const id = <?= $pago->id ?>;</script>
 <script src="js/pagocita.js"></script>
-<?php require "componentes/footer.php" ?>
+<?php require "vista/componentes/footer.php" ?>

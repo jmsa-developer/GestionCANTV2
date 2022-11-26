@@ -104,4 +104,4 @@
         const usuario_rol = "<?= $usuario->rol ?>";
     </script>
     <script src="js/usuario.js"></script>
-    <?php require "componentes/footer.php" ?>
+    <?php require "vista/componentes/footer.php" ?>

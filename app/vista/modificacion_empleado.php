@@ -114,4 +114,4 @@
 </div>
 <script> const id = <?= $empleado->id ?> </script>
 <script src="js/empleado.js"></script>
-<?php require "componentes/footer.php" ?>
+<?php require "vista/componentes/footer.php" ?>
