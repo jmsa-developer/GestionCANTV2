@@ -8,7 +8,7 @@ class BD extends PDO
 {
     private $driver = 'mysql';
     private $host = 'localhost';
-    private $dbname = 'academiacreativa';
+    private $dbname = 'cantv';
     private $user = 'root';
     private $password = 'root';
     private $charset = 'utf8';

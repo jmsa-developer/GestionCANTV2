@@ -11,6 +11,11 @@ class SalidaControlador extends BaseControlador
         $this->render('salida.php');
 
     }
+    public function registrar(){
+
+        $this->render('salida.php');
+
+    }
 }
 
 
