@@ -67,12 +67,12 @@
                         }
                         ?>
                        
-                        <a href="?entrada"><i class="far fa-newspaper"></i><span>Entradas</span></a>
+                        <a href="?controlador=entrada&accion=registrar"><i class="far fa-newspaper"></i><span>Entradas</span></a>
                         <a href="?controlador=entrada&accion=consultar"><i class="far fa-calendar-check"></i><span>Consultar Entradas</span></a>
                         <a href="?controlador=salida&accion=registrar"><i class="fas fa-user-plus"></i><span>Salidas</span></a>
                         <a href="?controlador=salida&accion=consultar"><i class="far fa-file-alt"></i><span>Consultar Salidas</span></a>
-                        <a href="?controlador=centrales&accion=consultar"><i class="far fa-money-bill-alt"></i><span>Centrales</span></a>
-                        <a href="?pagina=consultar_centrales"><i class="far fa-calendar-check"></i><span>Consultar Centrales </span></a>
+                        <a href="?controlador=centrales&accion=registrar"><i class="far fa-money-bill-alt"></i><span>Centrales</span></a>
+                        <a href="?controlador=centrales&accion=consultar"><i class="far fa-calendar-check"></i><span>Consultar Centrales </span></a>
                         
                     </div>
                 </li>
@@ -100,8 +100,8 @@
                             <i class="fas fa-address-card"></i><span>Empleados <i class="fas fa-chevron-down drop-down"></i></span>
                         </a>
                         <div class="sub-menu">
-                            <a href="?controlador=empleados&accion=consultar"><i class="fas fa-user-plus"></i><span>Nuevo Empleado</span></a>
-                            <a href="?pagina=ver_empleados"><i class="fas fa-copy"></i><span>Consultar Empleados</span></a>
+                            <a href="?controlador=empleado&accion=registrar"><i class="fas fa-user-plus"></i><span>Nuevo Empleado</span></a>
+                            <a href="?controlador=empleado&accion=consultar"><i class="fas fa-copy"></i><span>Consultar Empleados</span></a>
                         </div>
                     </li>
                     <li class="item" id="usuario">
@@ -109,8 +109,8 @@
                             <i class="fas fa-user-lock"></i><span>Usuario <i class="fas fa-chevron-down drop-down"></i></span>
                         </a>
                         <div class="sub-menu">
-                            <a href="?pagina=registro_usuario"><i class="fas fa-user-plus"></i><span>Nuevo usuario</span></a>
-                            <a href="?pagina=ver_usuarios"><i class="fas fa-copy"></i><span>Consultar Usuarios</span></a>
+                            <a href="?controlador=usuario&accion=registrar"><i class="fas fa-user-plus"></i><span>Nuevo usuario</span></a>
+                            <a href="?controlador=usuario&accion=consultar"><i class="fas fa-copy"></i><span>Consultar Usuarios</span></a>
                         </div>
                     </li>
                 <?php
@@ -122,7 +122,7 @@
                     </a>
             </li>
                 <li class="item">
-                    <a href="?pagina=reportes" class="menu-btn">
+                    <a href="?controlador=reporte&accion=consultar" class="menu-btn">
                         <i class="fas fa-poll-h"></i><span>Reportes</span>
                     </a>
                 </li>

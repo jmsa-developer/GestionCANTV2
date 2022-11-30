@@ -11,9 +11,15 @@ class EntradaControlador extends BaseControlador
 
         $this->render('consultar_entrada.php');
     }
+    public function registrar(){
 
+        $this->render('entrada.php');
 
+    }
+   
 }
+
+
 
 
 
