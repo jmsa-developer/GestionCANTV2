@@ -113,4 +113,4 @@
 
 </div>
 <script src="js/empleado.js"></script>
-<?php require "vista/componentes/footer.php" ?>
+<?php require "componentes/footer.php" ?>

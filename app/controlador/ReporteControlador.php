@@ -4,15 +4,17 @@ namespace App\controlador;
 
 use App\modelo\Usuario;
 
-class ReporteControlador extends BaseControlador
+class CentralesControlador extends BaseControlador
 {
+
     public function consultar(){
 
-        $this->render('reportes.php');
-    }
+    $this->render('consultar_centrales.php');
+  }
+  public function registrar(){
 
-
+    $this->render('centrales.php');
+  }
 }
-
 
 

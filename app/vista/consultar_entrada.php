@@ -27,4 +27,4 @@
     </div>
     <!--main container end-->
     <script src="js/citas_gestion.js"></script>
-    <?php require "vista/componentes/footer.php" ?>
+    <?php require "componentes/footer.php" ?>

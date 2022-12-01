@@ -78,4 +78,4 @@
     });
 </script>
 <script src="js/curso.js"></script>
-<?php require "vista/componentes/footer.php" ?>
+<?php require "componentes/footer.php" ?>
