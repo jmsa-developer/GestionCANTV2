@@ -9,15 +9,15 @@
         </div>
         <br>
 
-        <form action="" class="formulario" id="formulario">
+        <form class="formulario" id="formulario">
 
             <div class="formulario__grupo" id="grupo__cliente_id">
                 <label for="cliente_id" class="formulario__label">Supervisor</label>
                 <div class="formulario__grupo-input">
                     <select class="formulario__input select-especial" id="cliente_id" name="cliente_id">
                         <option value=""></option>
-                        <?php foreach ($clientes as $cliente) : ?>
-                            <option value="<?= $cliente->id ?>"><?= $cliente->cedula ?> // <?= $cliente->nombre ?></option>
+                        <?php foreach ($supervisores as $supervisor) : ?>
+                            <option value="<?= $supervisor->id ?>"><?= $supervisor->cedula ?> // <?= $supervisor->nombre ?></option>
                         <?php endforeach; ?>
                     </select>
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -33,8 +33,8 @@
                 <div class="formulario__grupo-input">
                     <select class="formulario__input select-especial" id="servicio_id" name="servicio_id">
                         <option value=""></option>
-                        <?php foreach ($servicios as $servicio) : ?>
-                            <option value="<?= $servicio->id ?>"><?= $servicio->nombre ?></option>
+                        <?php foreach ($centrales as $central) : ?>
+                            <option value="<?= $central->id ?>"><?= $central->nombre_ciudad ?></option>
                         <?php endforeach; ?>
                     </select>
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -118,4 +118,4 @@
         });
     </script>
     <script src="js/cita.js"></script>
-    <?php require "vista/componentes/footer.php" ?>
+    <?php require "componentes/footer.php" ?>

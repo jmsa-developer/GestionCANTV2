@@ -2,35 +2,37 @@
 
 namespace App\modelo;
 
-class entrada  extends Persona
+use Exception;
+
+class Entrada  extends Persona
 {
-    private $fecha_entrada;
-    private $hora_entrada;
+    private $fecha;
+    private $hora;
     private $direccion_origen;
     private $id_portador;
-    private $status
+    private $status;
     
 
     public function __construct()
     {
     }
 
-    public function getfecha_entrada(){
-        return $this->fecha_entrada;
+    public function getFecha(){
+        return $this->fecha;
     }
-    public function setfecha_entrada($fecha_entrada){
-        $this->fecha_entrada = $fecha_entrada;
+    public function setFecha($fecha){
+        $this->fecha = $fecha;
     }
-    public function gethora_entrada(){
-        return $this->hora_entrada;
+    public function getHora(){
+        return $this->hora;
     }
-    public function sethora_entrada($hora_entrada){
-        $this->hora_entrada= $hora_entrada;
+    public function setHora($hora){
+        $this->hora= $hora;
     }
-    public function getdireccion_origen(){
+    public function getDireccionOrigen(){
         return $this->direccion_origen;
     }
-    public function setdireccion_origeno($direccion_origen){
+    public function setDireccionOrigen($direccion_origen){
         $this->direccion_origen = $direccion_origen;
     }
     public function id_portadpr(){
@@ -91,19 +93,20 @@ class entrada  extends Persona
     {
         try {
             parent::connect();
-            $consulta = $this->prepare("INSERT INTO entrada(hora_entrada , fecha_entrada , direccion_origen , id_portador, status)"
-                . "VALUES ( :hora_entrada , :fecha_entrada , :direccion_origen , :id_portador, :status");
+            $consulta = $this->prepare("INSERT INTO entrada(hora , fecha , direccion_origen , id_portador)"
+                . "VALUES (:hora , :fecha , :direccion_origen , :id_portador)");
 
-            $consulta->bindParam(":id", $this->id);
-            $consulta->bindParam(":fecha_entrada", $this->fecha_entrada);
-            $consulta->bindParam(":hora_entrada", $this->hora_entrada);
+            $consulta->bindParam(":fecha", $this->fecha);
+            $consulta->bindParam(":hora", $this->hora);
             $consulta->bindParam(":id_portador", $this->id_portador);
             $consulta->bindParam(":direccion_origen", $this->direccion_origen);
-            $consulta->bindParam(":status", $this->estatus);
+
 
             $consulta->execute();
+
             return $this->lastInsertId();
         } catch (Exception $e) {
+
             $this->error = $e->errorInfo[2];
             return false;
         }
@@ -117,9 +120,9 @@ class entrada  extends Persona
 
             $consulta->bindParam(":id", $this->id);
             $consulta->bindParam(":fecha_entrada", $this->fecha_entrada);
-            $consulta->bindParam(":hora_entrada", $this->);
+            $consulta->bindParam(":hora_entrada", $this->hora);
             $consulta->bindParam(":id_portador", $this->estado);
-            $consulta->bindParam(":direccion_origen", $this->numero-pisos);
+            $consulta->bindParam(":direccion_origen", $this->direccion_origen);
             $consulta->bindParam(":status", $this->direccion);
             return $consulta->execute();
         } catch (Exception $e) {

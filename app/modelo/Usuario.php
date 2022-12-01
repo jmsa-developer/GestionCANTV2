@@ -2,67 +2,84 @@
 
 namespace App\modelo;
 
+use Exception;
 use PDO;
 
-class Usuario extends Persona{
+class Usuario extends Persona
+{
 
     protected $usuario;
     protected $clave;
     protected $rol;
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
-    public function getUsuario(){
+    public function getUsuario()
+    {
         return $this->usuario;
     }
-    public function setUsuario($usuario){
+
+    public function setUsuario($usuario)
+    {
         $this->usuario = $usuario;
     }
 
-    public function getClave(){
+    public function getClave()
+    {
         return $this->clave;
     }
-    public function setClave($clave){
+
+    public function setClave($clave)
+    {
         $this->clave = $clave;
     }
 
-    public function getRol(){
+    public function getRol()
+    {
         return $this->rol;
     }
-    public function setRol($rol){
+
+    public function setRol($rol)
+    {
         $this->rol = $rol;
     }
 
-    public function listar($condicion = ""){
+    public function listar($condicion = "")
+    {
         try {
             parent::connect();
-            $consulta = $this->prepare('SELECT id, cedula, CONCAT(nombre," ",apellido) as nombre, usuario, rol, email, estado
-              FROM usuario '.$condicion);
+            $consulta = $this->prepare('SELECT id, cedula, CONCAT(nombre," ",apellido) as nombre, usuario, rol_id, email, estado
+              FROM usuario ' . $condicion);
             $consulta->execute();
             $respuesta = $consulta->fetchAll(PDO::FETCH_OBJ);
             return $respuesta;
-        } catch(Exception $ex){
+        } catch (Exception $ex) {
             $this->error = $ex->errorInfo[2];
             return false;
         }
     }
-    public function consultar(){
+
+    public function consultar()
+    {
         try {
             parent::connect();
             $consulta = $this->prepare("SELECT * FROM usuario WHERE id = $this->id");
             $consulta->execute();
             $respuesta = $consulta->fetch(PDO::FETCH_OBJ);
             return $respuesta;
-        } catch(Exception $ex){
+        } catch (Exception $ex) {
             $this->error = $ex->errorInfo[2];
             return false;
         }
     }
-    public function registrar(){
-        try{
+
+    public function registrar()
+    {
+        try {
             parent::connect();
-            $consulta = $this->prepare("INSERT INTO usuario(cedula, nombre, apellido, usuario, email, clave, rol)" 
+            $consulta = $this->prepare("INSERT INTO usuario(cedula, nombre, apellido, usuario, email, clave, rol)"
                 . "VALUES (:cedula, :nombre, :apellido, :usuario, :email, :clave, :rol)");
 
             $consulta->bindParam(":cedula", $this->cedula);
@@ -75,19 +92,20 @@ class Usuario extends Persona{
             $consulta->execute();
             return $this->lastInsertId();
 
-        } catch(Exception $ex){
+        } catch (Exception $ex) {
             $this->error = $ex->errorInfo[2];
             return false;
         }
     }
-    public function modificar(){
-        try{
+
+    public function modificar()
+    {
+        try {
             parent::connect();
-            if($this->clave == ""){
+            if ($this->clave == "") {
                 $consulta = $this->prepare("UPDATE usuario SET cedula = :cedula, nombre=:nombre, apellido = :apellido, 
                     usuario = :usuario, email = :email, rol = :rol WHERE id = :id");
-            }
-            else{
+            } else {
                 $consulta = $this->prepare("UPDATE usuario SET cedula = :cedula, nombre=:nombre, apellido = :apellido, 
                     usuario = :usuario, email = :email, rol = :rol, clave = :clave WHERE id = :id");
                 $consulta->bindParam(":clave", $this->clave);
@@ -101,37 +119,40 @@ class Usuario extends Persona{
             $consulta->bindParam(":rol", $this->rol);
             return $consulta->execute();
 
-        } catch(Exception $e){
+        } catch (Exception $e) {
             $this->error = $e->errorInfo[2];
             return false;
         }
     }
-    
-    public function inactivar(){
+
+    public function inactivar()
+    {
         try {
             parent::connect();
             $consulta = $this->prepare("UPDATE usuario SET estado = 0 WHERE id = $this->id");
             $respuesta = $consulta->execute();
             return $respuesta;
-        } catch(Exception $e){
+        } catch (Exception $e) {
             $this->error = $e->errorInfo[2];
             return false;
         }
     }
 
-    public function activar(){
+    public function activar()
+    {
         try {
             parent::connect();
             $consulta = $this->prepare("UPDATE usuario SET estado = 1 WHERE id = $this->id");
             $respuesta = $consulta->execute();
             return $respuesta;
-        } catch(Exception $e){
+        } catch (Exception $e) {
             $this->error = $e->errorInfo[2];
             return false;
         }
     }
 
-    public function buscarUsuario($usuario){
+    public function buscarUsuario($usuario)
+    {
         try {
             parent::connect();
             $consulta = $this->prepare("SELECT * FROM usuario WHERE (usuario = :usuario OR email = :usuario) AND estado = 1");
@@ -146,12 +167,18 @@ class Usuario extends Persona{
             $respuesta->rol = $respuestaRol->nombre;
 
             return $respuesta;
-        } catch(Exception $e){
+        } catch (Exception $e) {
             $this->error = $e->errorInfo[2];
             return false;
         }
     }
 
-
+    public static function obtener_administradores()
+    {
+        $usuario = new self();
+        $rol = new Rol();
+        $rol_administrador = $rol->consultar("WHERE nombre = 'Administrador'")->id;
+        return $usuario->listar("WHERE rol_id = '$rol_administrador'");
+    }
 
 }
